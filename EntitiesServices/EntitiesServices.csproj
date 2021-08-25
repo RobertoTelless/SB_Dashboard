@@ -70,6 +70,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web" />
@@ -99,19 +100,578 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ChechTimeAttribute.cs" />
+    <Compile Include="Attributes\CheckTimeAttributeMain.cs" />
+    <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
+    <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
+    <Compile Include="Attributes\DataAnteriorAttribute.cs" />
+    <Compile Include="EntitiesServices\ConfiguracaoService.cs" />
+    <Compile Include="EntitiesServices\ServiceBase.cs" />
+    <Compile Include="Interfaces\Entities\IConfiguracaoService.cs" />
+    <Compile Include="Interfaces\Entities\IServiceBase.cs" />
+    <Compile Include="Interfaces\Repositories\IConfiguracaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Model\AliquotaMunicipal.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ambiente.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AmbienteAndar.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AmbienteDescricao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AmbienteTipo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AmbienteTorreBloco.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ArquivoProcessamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Banco.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Caixinha.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CaixinhaCategoria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CaixinhaLancada.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CaixinhaLancadaAprovacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Carteira.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChecklistPendencia.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChecklistTemplate.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ComoConheceu.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Configuracoes.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContaBancaria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContasPagar.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContasPagarRateio.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contrato.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoAmbiente.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoAmbienteAlbum.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoAmbienteEquipamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoAmbienteEquipamentoAlbum.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoAmbienteEquipamentoImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoAmbienteImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoAreaManutencao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoDocumentoBlob.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoEquipeEspecialidade.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoTerceiro.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContratoTerceiroEspecialidade.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ControlePonto.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\C__EFMigrationsHistory.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DepartamentoOrganizacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Device.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DocumentoFiscal.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Empresa.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmpresaContaBancaria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmpresaDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EmpresaDocumentoBlob.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Equipamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoCategoria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoCorrente.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoGrupo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoMarca.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoModelo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoPotencia.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoPressao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoRefrigerante.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoSubTipo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoTamanho.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoTemperatura.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoTensao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoTipo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoUnidade.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipamentoVazao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Especialidade.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EspecialidadePreventiva.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FatServicosPmsp.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEA.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEAAcaoCorretiva.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEAAcaoCorretivaAlbum.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEAAcaoCorretivaImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEAAcaoCorretivaVideo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEAEfeitoPotencial.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEAModoFalha.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FMEATipo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Funcao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FuncaoMeta.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FuncaoMLR.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ImagemGoogle.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LancamentoPagar.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Lembrete.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MarcadorContato.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MarcadorPesquisa.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MeioComunicacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MeioPagamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Menu.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModeloLPU.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModeloLPUItem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MotivoPerdaOs.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MunicipioIbge.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NivelAcesso.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NivelAcessoItem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Notas.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Orcamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoAlbum.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoMaterial.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoMaterialDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoMaterialServico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoRecurso.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoServico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoTerceiro.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrcamentoTerceiroServico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoAlbum.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoAvaliacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoChecklist.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoChecklistAlbum.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoChecklistHistorico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoChecklistImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoComunicacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoDocumentoFollowUp.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoHistorico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoHistoricoFollowUp.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoParcelamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoPesquisa.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoPesquisaSatisfacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoStatusHistorico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoVisita.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoVisitaAlbum.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoVisitaImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrdemServicoVisitaItem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Pagamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagamentoBkp.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagamentoCategoria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagamentoComunicacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagamentoDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagamentoHistorico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagamentoRateio.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PagamentoRecibo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parcelamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Peca.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PerfilAcesso.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PersonaAlvo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PesquisaSatisfacaoGestor.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PesquisaSatisfacaoGestorJornada.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PesquisaSatisfacaoGestorLog.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Pessoa.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PessoaContaBancaria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PessoaContato.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PessoaContatoMarcadorPesquisa.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PessoaDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PessoaDocumentoBlob.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PessoaImagem.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PontoFalta.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PontoFeriadosRecessos.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PontoFerias.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PontoJornada.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PontoPedidosHoraExtra.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PontoRegistro.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Projeto.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Recebimento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RecebimentoDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RecebimentoHistorico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Recorrencia.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SB_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SB_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SB_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SB_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SB_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Servico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ServicoCategoria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ServicoSubTipo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ServicoTipo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Situacao.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Speech.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TarefaGrupos.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TarefaListas.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Tarefas.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TemplateDocTecnico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TemplateProposta.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TipoDocumento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TipoMaoObra.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TipoMaterial.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TipoProduto.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TransacaoBancaria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TransferenciaBancaria.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Unidade.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkingClasses\CNPJ.cs" />
+    <Compile Include="WorkingClasses\Endereco.cs" />
+    <Compile Include="WorkingClasses\FileQueue.cs" />
+    <Compile Include="WorkingClasses\Login.cs" />
+    <Compile Include="WorkingClasses\TrocaSenha.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\SB_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SB_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\SB_Model.edmx.diagram">
+      <DependentUpon>SB_Model.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Attributes\" />
-    <Folder Include="EntitiesServices\" />
-    <Folder Include="Interfaces\Entities\" />
-    <Folder Include="Interfaces\Repositories\" />
-    <Folder Include="Model\" />
-    <Folder Include="WorkingClasses\" />
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{9a9d1615-7fa7-4b20-9d2c-7233d8aeb347}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\SB_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SB_Model.edmx</DependentUpon>
+      <LastGenOutput>SB_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\SB_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SB_Model.edmx</DependentUpon>
+      <LastGenOutput>SB_Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

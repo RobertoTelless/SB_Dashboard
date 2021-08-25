@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5cf197f852ef4631a5ade5966dfd1e9d" Name="Diagram1">
+        <EntityTypeShape EntityType="OnSuiteBIModel.C__EFMigrationsHistory" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.AliquotaMunicipal" Width="1.5" PointX="22.5" PointY="87.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Ambiente" Width="1.5" PointX="3" PointY="130.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.AmbienteAndar" Width="1.5" PointX="0.75" PointY="127.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.AmbienteDescricao" Width="1.5" PointX="0.75" PointY="134.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.AmbienteTipo" Width="1.5" PointX="0.75" PointY="130.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.AmbienteTorreBloco" Width="1.5" PointX="0.75" PointY="136.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ArquivoProcessamento" Width="1.5" PointX="18.75" PointY="134.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Banco" Width="1.5" PointX="20.25" PointY="110.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Caixinha" Width="1.5" PointX="30" PointY="131.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.CaixinhaCategoria" Width="1.5" PointX="11.25" PointY="114.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.CaixinhaLancada" Width="1.5" PointX="13.5" PointY="129.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.CaixinhaLancadaAprovacao" Width="1.5" PointX="21.75" PointY="135.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Carteira" Width="1.5" PointX="20.25" PointY="113.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ChecklistPendencia" Width="1.5" PointX="33" PointY="129.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ChecklistTemplate" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ComoConheceu" Width="1.5" PointX="22.5" PointY="94.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Configuracoes" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContaBancaria" Width="1.5" PointX="30" PointY="135.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContasPagar" Width="1.5" PointX="10.5" PointY="125.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContasPagarRateio" Width="1.5" PointX="12.75" PointY="120.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Contrato" Width="1.5" PointX="33" PointY="117.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoAmbiente" Width="1.5" PointX="5.25" PointY="129.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoAmbienteAlbum" Width="1.5" PointX="7.5" PointY="142.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoAmbienteEquipamento" Width="1.5" PointX="10.5" PointY="129.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoAmbienteEquipamentoAlbum" Width="1.5" PointX="12.75" PointY="140.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoAmbienteEquipamentoImagem" Width="1.5" PointX="15" PointY="140.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoAmbienteImagem" Width="1.5" PointX="9.75" PointY="142.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoAreaManutencao" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoDocumento" Width="1.5" PointX="18.75" PointY="138.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoDocumentoBlob" Width="1.5" PointX="21" PointY="138.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoEquipeEspecialidade" Width="1.5" PointX="40.5" PointY="126.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoTerceiro" Width="1.5" PointX="43.5" PointY="134.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ContratoTerceiroEspecialidade" Width="1.5" PointX="40.5" PointY="136.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ControlePonto" Width="1.5" PointX="27" PointY="139.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.DepartamentoOrganizacao" Width="1.5" PointX="22.5" PointY="97.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Device" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.DocumentoFiscal" Width="1.5" PointX="16.5" PointY="124.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Empresa" Width="1.5" PointX="22.5" PointY="99.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EmpresaContaBancaria" Width="1.5" PointX="22.5" PointY="109.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EmpresaDocumento" Width="1.5" PointX="27.75" PointY="116.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EmpresaDocumentoBlob" Width="1.5" PointX="30" PointY="117.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Equipamento" Width="1.5" PointX="45.75" PointY="127.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoCategoria" Width="1.5" PointX="43.5" PointY="115.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoCorrente" Width="1.5" PointX="43.5" PointY="113.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoGrupo" Width="1.5" PointX="41.25" PointY="121.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoMarca" Width="1.5" PointX="43.5" PointY="138.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoModelo" Width="1.5" PointX="45.75" PointY="118.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoPotencia" Width="1.5" PointX="43.5" PointY="141.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoPressao" Width="1.5" PointX="43.5" PointY="143.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoRefrigerante" Width="1.5" PointX="43.5" PointY="146.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoSubTipo" Width="1.5" PointX="46.75" PointY="121.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoTamanho" Width="1.5" PointX="43.5" PointY="148.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoTemperatura" Width="1.5" PointX="43.5" PointY="150.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoTensao" Width="1.5" PointX="43.5" PointY="153.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoTipo" Width="1.5" PointX="43.5" PointY="118.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoUnidade" Width="1.5" PointX="49" PointY="121.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EquipamentoVazao" Width="1.5" PointX="43.5" PointY="155.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Especialidade" Width="1.5" PointX="6" PointY="113.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.EspecialidadePreventiva" Width="1.5" PointX="35.25" PointY="144.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FatServicosPmsp" Width="1.5" PointX="20.25" PointY="103" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEA" Width="1.5" PointX="51" PointY="129.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEAAcaoCorretiva" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEAAcaoCorretivaAlbum" Width="1.5" PointX="5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEAAcaoCorretivaImagem" Width="1.5" PointX="7.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEAAcaoCorretivaVideo" Width="1.5" PointX="5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEAEfeitoPotencial" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEAModoFalha" Width="1.5" PointX="53.25" PointY="128.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FMEATipo" Width="1.5" PointX="53.25" PointY="131.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Funcao" Width="1.5" PointX="22.5" PointY="90.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FuncaoMeta" Width="1.5" PointX="40.5" PointY="143.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.FuncaoMLR" Width="1.5" PointX="38.25" PointY="142.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ImagemGoogle" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.LancamentoPagar" Width="1.5" PointX="10.5" PointY="134.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Lembrete" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.MarcadorContato" Width="1.5" PointX="33.75" PointY="110.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.MarcadorPesquisa" Width="1.5" PointX="33.75" PointY="107.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.MeioComunicacao" Width="1.5" PointX="25.5" PointY="154.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.MeioPagamento" Width="1.5" PointX="24.75" PointY="112.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Menu" Width="1.5" PointX="20.25" PointY="145.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ModeloLPU" Width="1.5" PointX="11.25" PointY="117.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ModeloLPUItem" Width="1.5" PointX="27.75" PointY="112.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.MotivoPerdaOs" Width="1.5" PointX="6" PointY="116.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.MunicipioIbge" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.NivelAcesso" Width="1.5" PointX="22.5" PointY="117.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.NivelAcessoItem" Width="1.5" PointX="24.75" PointY="105.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Notas" Width="1.5" PointX="27" PointY="142.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Orcamento" Width="1.5" PointX="13.5" PointY="123.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoAlbum" Width="1.5" PointX="15.75" PointY="120.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoImagem" Width="1.5" PointX="18" PointY="120.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoMaterial" Width="1.5" PointX="20.75" PointY="120.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoMaterialDocumento" Width="1.5" PointX="30" PointY="127.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoMaterialServico" Width="1.5" PointX="27" PointY="123.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoRecurso" Width="1.5" PointX="21.75" PointY="126.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoServico" Width="1.5" PointX="21.75" PointY="130.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoTerceiro" Width="1.5" PointX="15.75" PointY="116.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrcamentoTerceiroServico" Width="1.5" PointX="27" PointY="120.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServico" Width="1.5" PointX="8.25" PointY="122.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoAlbum" Width="1.5" PointX="10.5" PointY="158.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoAvaliacao" Width="1.5" PointX="33" PointY="135.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoChecklist" Width="1.5" PointX="30" PointY="121.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoChecklistAlbum" Width="1.5" PointX="32.25" PointY="113.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoChecklistHistorico" Width="1.5" PointX="41.25" PointY="139.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoChecklistImagem" Width="1.5" PointX="34.5" PointY="113.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoComunicacao" Width="1.5" PointX="13.5" PointY="136.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoDocumento" Width="1.5" PointX="10.5" PointY="121.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoDocumentoFollowUp" Width="1.5" PointX="32.25" PointY="139.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoHistorico" Width="1.5" PointX="19.5" PointY="130.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoHistoricoFollowUp" Width="1.5" PointX="30" PointY="139.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoImagem" Width="1.5" PointX="12.75" PointY="158.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoParcelamento" Width="1.5" PointX="10.5" PointY="173.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoPesquisa" Width="1.5" PointX="10.5" PointY="176.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoPesquisaSatisfacao" Width="1.5" PointX="10.5" PointY="180.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoStatusHistorico" Width="1.5" PointX="19.5" PointY="126.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoVisita" Width="1.5" PointX="10.5" PointY="188.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoVisitaAlbum" Width="1.5" PointX="12.75" PointY="188.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoVisitaImagem" Width="1.5" PointX="15" PointY="188.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.OrdemServicoVisitaItem" Width="1.5" PointX="12.75" PointY="183.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Pagamento" Width="1.5" PointX="27" PointY="127" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PagamentoBkp" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PagamentoCategoria" Width="1.5" PointX="22.5" PointY="141.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PagamentoComunicacao" Width="1.5" PointX="38.25" PointY="138.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PagamentoDocumento" Width="1.5" PointX="38.25" PointY="119.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PagamentoHistorico" Width="1.5" PointX="32.25" PointY="142.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PagamentoRateio" Width="1.5" PointX="41.25" PointY="134" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PagamentoRecibo" Width="1.5" PointX="35.25" PointY="118.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Parcelamento" Width="1.5" PointX="24.75" PointY="148.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Peca" Width="1.5" PointX="48" PointY="130.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PerfilAcesso" Width="1.5" PointX="22.5" PointY="146.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PersonaAlvo" Width="1.5" PointX="22.5" PointY="149.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PesquisaSatisfacaoGestor" Width="1.5" PointX="38.25" PointY="123.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PesquisaSatisfacaoGestorJornada" Width="1.5" PointX="41" PointY="117.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PesquisaSatisfacaoGestorLog" Width="1.5" PointX="43.25" PointY="125.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Pessoa" Width="1.5" PointX="24.75" PointY="115.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PessoaContaBancaria" Width="1.5" PointX="36" PointY="130.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PessoaContato" Width="1.5" PointX="36" PointY="122.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PessoaContatoMarcadorPesquisa" Width="1.5" PointX="44.25" PointY="122.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PessoaDocumento" Width="1.5" PointX="36" PointY="134.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PessoaDocumentoBlob" Width="1.5" PointX="38.25" PointY="135.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PessoaImagem" Width="1.5" PointX="27" PointY="172" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PontoFalta" Width="1.5" PointX="27" PointY="174.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PontoFeriadosRecessos" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PontoFerias" Width="1.5" PointX="27" PointY="178" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PontoJornada" Width="1.5" PointX="20.25" PointY="90.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PontoPedidosHoraExtra" Width="1.5" PointX="27" PointY="180.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PontoRegistro" Width="1.5" PointX="27" PointY="184.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Projeto" Width="1.5" PointX="36" PointY="138.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Recebimento" Width="1.5" PointX="38.25" PointY="129.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.RecebimentoDocumento" Width="1.5" PointX="40.5" PointY="130.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.RecebimentoHistorico" Width="1.5" PointX="43.5" PointY="130.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Recorrencia" Width="1.5" PointX="24.75" PointY="151.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Servico" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ServicoCategoria" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ServicoSubTipo" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.ServicoTipo" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Situacao" Width="1.5" PointX="6" PointY="118.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Speech" Width="1.5" PointX="27.75" PointY="149.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TarefaGrupos" Width="1.5" PointX="27" PointY="205.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TarefaListas" Width="1.5" PointX="29.25" PointY="160.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Tarefas" Width="1.5" PointX="31.5" PointY="146.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TemplateDocTecnico" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TemplateProposta" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TipoDocumento" Width="1.5" PointX="16.5" PointY="144.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TipoMaoObra" Width="1.5" PointX="27" PointY="208.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TipoMaterial" Width="1.5" PointX="27" PointY="211" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TipoProduto" Width="1.5" PointX="30" PointY="151.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TransacaoBancaria" Width="1.5" PointX="27" PointY="213.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.TransferenciaBancaria" Width="1.5" PointX="24.75" PointY="108.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Unidade" Width="1.5" PointX="18.5" PointY="116.5" IsExpanded="true" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__FatServicosPmsp__AliquotaMunicipal" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Ambiente_AmbienteAndar" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Ambiente_AmbienteDescricao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Ambiente_AmbienteTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Ambiente_AmbienteTorreBloco" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbiente_Ambiente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_Ambiente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbiente_AmbienteAndar" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbiente_AmbienteTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_AmbienteTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbiente_AmbienteTorreBloco" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__DocumentoFiscal__ArquivoProcessamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContaBanc__Banco__65370702" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__EmpresaCo__Banco__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaCon__Banco__2610A626" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Caixinha__ContaB__04859529" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Caixinha__Pessoa__039170F0" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__CaixinhaC__Categ__78A9CE29" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__CaixinhaL__Caixi__799DF262" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__CaixinhaL__Benef__0F03239C" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__CaixinhaL__Caixi__3E7D2C94" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__CaixinhaL__Ordem__076201D4" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__CaixinhaL__Pagam__0B3292B8" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_CaixinhaLancada_AprovadoFinanceiroPor" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_CaixinhaLancada_AprovadoPor" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__CaixinhaL__Pesso__3F7150CD" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__EmpresaCo__Carte__6DCC4D03" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Checklist__Check__6C43F744" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ChecklistPendencia_OrdemServicoChecklistAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ChecklistPendencia_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrcamentoMaterial_ChecklistPendencia" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__ComoConh__22401542" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContaBanc__Favor__662B2B3B" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContasPag__Benef__681373AD" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContasPag__Categ__690797E6" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContasPag__Conta__69FBBC1F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContasPag__Ordem__671F4F74" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContasPag__Proje__6AEFE058" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Contrato__Client__75E27017" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Contrato__Projet__76D69450" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContratoT__Contr__79B300FB" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Contr__74B941B4" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_Contrato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_Gerente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_HelpDesk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_PessoaContato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_PessoaContato1" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_Referencia" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_Supervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Contrato_Vendedor" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbiente_Contrato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoDocumento_Contrato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoEquipeEspecialidade_Contrato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoTerceiroEspecialidade_Contrato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbienteAlbum_ContratoAmbiente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbienteEquipamento_ContratoAmbiente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoDocumento_ContratoAmbiente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbienteImagem_ContratoAmbienteAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbienteEquipamento_Equipamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbienteEquipamentoAlbum_ContratoAmbienteEquipamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoDocumento_ContratoAmbienteEquipamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoAmbienteEquipamentoImagem_ContratoAmbienteEquipamentoAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContratoA__Super__59D0414E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoDocumento_TipoDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoDocumentoBlob_ContratoDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoEquipeEspecialidade_EspecialidadePreventiva" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoEquipeEspecialidade_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ContratoT__Pesso__7AA72534" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoTerceiro_EspecialidadePreventiva" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoTerceiroEspecialidade_EspecialidadePreventiva" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ContratoTerceiroEspecialidade_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__ControleP__Pesso__3572E547" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaCon__Depar__2704CA5F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Pessoa_DepartamentoOrganizacao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__DocumentoFiscal__Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__DocumentoFiscal__ContaBancaria" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__DocumentoFiscal__Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__DocumentoFiscal__FatServicosPsmsp" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__DocumentoFiscal__OrdemServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__EmpresaCo__Empre__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Fatur__1980B20F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__EmpresaFaturamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_EmpresaDocumento_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Conta__0E391C95" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__EmpresaContaBancariaFaturamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Conta__66EA454A" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Transferen__Para__6ABAD62E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Transferenci__De__69C6B1F5" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_EmpresaDocumento_TipoDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_EmpresaDocumentoBlob_EmpresaDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoCorrente" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoGrupo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoMarca" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoPotencia" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoPressao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoRefrigerante" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoSubTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoTamanho" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoTemperatura" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoTensao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoUnidade" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_EquipamentoVazao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Equipamento_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_Equipamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_EquipamentoGrupo_EquipamentoCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_EquipamentoTipo_EquipamentoGrupo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Equipament__Tipo__5F891AA4" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_EquipamentoSubTipo_EquipamentoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Espec__52B92F6B" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FMEA_FMEAModoFalha" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FMEATipo_FMEA" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FMEAAcaoCorretivaAlbum_FMEAAcaoCorretiva" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FMEAAcaoCorretivaVideo_FMEAAcaoCorretiva" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FMEAAcaoCorretivaImagem_FMEAAcaoCorretivaAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Funcao_PontoJornada" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FuncaoMLR_Funcao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Pessoa_Funcao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FuncaoMeta_FuncaoMLR" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_FuncaoMLR_Projeto" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Lancament__Benef__26CFC035" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Lancament__Categ__27C3E46E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Lancament__Orcam__408F9238" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Lancament__Ordem__25DB9BFC" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Lancament__Proje__230A1C49" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaCon__Marca__27F8EE98" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaCon__Marca__6CA4B54E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PessoaContatoMarcadorPesquisa_MarcadorPesquisa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__MeioP__15DA3E5D" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Menu_MenuPai" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ModeloLPUItem_ModeloLPU" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Orcamento_ModeloLPU" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_ModeloLPUItem_Unidade" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Motiv__6CAE0B98" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__NivelAces__Nivel__7C3A67EB" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__NivelAce__0B7CAB7B" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Notas_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Criad__719CDDE7" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Orcam__461E4E5C" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Orcam__74794A92" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Orcam__756D6ECB" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Orcam__7849DB76" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Ordem__70A8B9AE" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Revis__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrcamentoAlbum_Orcamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrcamentoImagem_OrcamentoAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Categ__69C77D4C" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Forne__72910220" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Unida__73852659" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrcamentoMaterialDocumento_OrcamentoMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrcamentoMaterialServico_OrcamentoMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrcamentoMaterialDocumento_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrcamentoMaterialServico_OrcamentoServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Funci__47127295" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Servi__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Servi__7A3223E8" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Unida__76619304" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Orcam__7B264821" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Orcamento__Terce__7755B73D" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Orcam__4183B671" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Aprov__3DF31CAF" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Cadas__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Clien__7D0E9093" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__00DF2177" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__01D345B0" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__038683F8" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__0880433F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__09746778" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__21C0F255" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__26BAB19C" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Ordem__3EE740E8" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Proje__7EF6D905" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Situa__7E02B4CC" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Ordem__12FDD1B2" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Ordem__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_AcompComercial" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_Fechador" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_HelpDesk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_Orcamentista" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_PessoaContato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServico_Supervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoAvaliacao_OrdemServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoHistoricoFollowUp_OrdemServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoPesquisa_OrdemServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoPesquisaSatisfacao_OrdemServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoVisita_OrdemServico" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Album__05A3D694" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoAvaliacao_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Check__533AB45D" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Preen__21F5FC7F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoChecklist_ValidadoPor" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoChecklistAlbum_OrdemServicoChecklist" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoChecklistImagem_OrdemServicoChecklistAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Preen__10030024" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Remet__02C769E9" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServi__Para__04AFB25B" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServico__De__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Envia__047AA831" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoDocumentoFollowUp_OrdemServicoHistoricoFollowUp" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Edita__22B5168E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoHistoricoFollowUp_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__OrdemServ__Pesso__0A688BB1" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoVisitaAlbum_OrdemServicoVisita" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoVisitaItem_OrdemServicoVisita" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoVisitaImagem_OrdemServicoVisitaAlbum" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_OrdemServicoVisitaItem_Unidade" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Benef__11158940" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Cadas__0F2D40CE" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Categ__1209AD79" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Pagam__18B6AB08" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Pagam__55FFB06A" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Parce__13F1F5EB" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Proje__2215F810" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Recor__14E61A24" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PagamentoComunicacao_Pagamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PagamentoRateio_Pagamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PagamentoRecibo_Pagamento" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Super__16CE6296" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PagamentoComunicacao_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Envia__19AACF41" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pagamento__Edita__1B9317B3" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PagamentoRateio_Projeto" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PagamentoRecibo_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Pessoa_PerfilAcesso" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PesquisaS__Pesso__78B651CF" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PesquisaSatisfacaoGestorLog_PesquisaSatisfacaoGestorJornada1" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PesquisaSatisfacaoGestorLog_PessoaContato1" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__Cadastra__24285DB4" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__GerenteC__1E6F845E" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__GerenteC__2057CCD0" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__Parceiro__214BF109" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__Prospect__1F63A897" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Pessoa__Superior__2334397B" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaCon__Favor__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaCon__Pesso__28ED12D1" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaDoc__Pesso__29E1370A" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Edita__636EBA21" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Envia__79FD19BE" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Sacad__4301EA8F" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Transacao__Benef__3B0BC30C" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Pessoa_PontoJornada" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PessoaImagem_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PontoFalta_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PontoFerias_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PontoPedidosHoraExtra_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PontoRegistro_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_TarefaGrupos_Pessoa_CriadorId" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_TarefaListas_Pessoa_CriadorId" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Tarefas_Pessoa_CriadorId" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_PessoaContatoMarcadorPesquisa_PessoaContato" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaDoc__Pesso__2BC97F7C" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__PessoaDoc__TipoD__2AD55B43" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Proje__43F60EC8" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Projeto_Superior" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Receb__627A95E8" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Recebimen__Receb__7908F585" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Servico_ServicoCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Servico_ServicoSubTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_Servico_ServicoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK_TarefaListas_TarefaGrupos_GrupoId" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FK__Transfere__Trans__4830B400" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.BancoCarteira" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.ContratoAmbienteTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.ContratoEquipamentoGrupo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.ContratoEquipamentoSubTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.ContratoEquipamentoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.ContratoEquipe" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.ContratoEspecialidade" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.EmpresaServicoPMSP" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.EquipamentoMarcaGrupo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.EquipamentoPeca" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.EquipamentoUnidadeSubTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FMEAAmbienteTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FMEAEquipamentoGrupo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FMEAEquipamentoSubTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FMEAEquipamentoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FMEAEspecialidade" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.FMEAModo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.OrdemServicoHistoricoVistoriador" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.OrdemServicoMembroEquipe" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.OrdemServicoVistoriador" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PerfilAcessoMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaAcessos" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaCentroCusto" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaCentroLucro" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaEspecialidadePreventiva" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaFuncao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaPersonaAlvo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaTipoMaoObra" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.PessoaTipoMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.ProjetoEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.SpeechMeioComunicacao" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.SpeechPersonaAlvo" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.SpeechTipoProduto" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.TarefasListas" ManuallyRouted="false" />
+        <AssociationConnector Association="OnSuiteBIModel.TarefasMembros" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
