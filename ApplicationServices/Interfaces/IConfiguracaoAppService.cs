@@ -7,11 +7,11 @@ using EntitiesServices.Model;
 
 namespace ApplicationServices.Interfaces
 {
-    public interface IConfiguracaoAppService : IAppServiceBase<CONFIGURACAO>
+    public interface IDashboardAppService : IAppServiceBase<Funcao>
     {
-        Int32 ValidateEdit(CONFIGURACAO item, CONFIGURACAO itemAntes, USUARIO usuario);
-        CONFIGURACAO GetItemById(Int32 id);
-        List<CONFIGURACAO> GetAllItems(Int32 idAss);
-        Int32 ValidateCreate(CONFIGURACAO item);
+        //Int32 ValidateEdit(CONFIGURACAO item, CONFIGURACAO itemAntes, USUARIO usuario);
+        //CONFIGURACAO GetItemById(Int32 id);
+        //List<CONFIGURACAO> GetAllItems(Int32 idAss);
+        //Int32 ValidateCreate(CONFIGURACAO item);
     }
 }

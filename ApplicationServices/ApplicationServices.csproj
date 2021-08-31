@@ -103,7 +103,6 @@
     <Compile Include="Interfaces\IConfiguracaoAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
-    <Compile Include="Services\ConfiguracaoAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

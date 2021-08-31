@@ -105,11 +105,8 @@
     <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
     <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
-    <Compile Include="EntitiesServices\ConfiguracaoService.cs" />
     <Compile Include="EntitiesServices\ServiceBase.cs" />
-    <Compile Include="Interfaces\Entities\IConfiguracaoService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
-    <Compile Include="Interfaces\Repositories\IConfiguracaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Model\AliquotaMunicipal.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
@@ -637,8 +634,6 @@
     <Compile Include="WorkingClasses\CNPJ.cs" />
     <Compile Include="WorkingClasses\Endereco.cs" />
     <Compile Include="WorkingClasses\FileQueue.cs" />
-    <Compile Include="WorkingClasses\Login.cs" />
-    <Compile Include="WorkingClasses\TrocaSenha.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
