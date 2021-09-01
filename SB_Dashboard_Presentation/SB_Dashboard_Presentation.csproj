@@ -1934,6 +1934,7 @@
     <Content Include="Images\landing\laptop.png" />
     <Content Include="Images\landing\perspective.png" />
     <Content Include="Images\logoFullFav.png" />
+    <Content Include="Images\Logo_Dashboard_SB.jpg" />
     <Content Include="Images\off_canvas.jpg" />
     <Content Include="Images\p1.jpg" />
     <Content Include="Images\p2.jpg" />
@@ -2663,6 +2664,7 @@
     <Content Include="amcharts4\themes\patterns.js.map" />
     <Content Include="amcharts4\themes\spiritedaway.js.map" />
     <Content Include="Imagens\PDF1.pdf" />
+    <None Include="Properties\PublishProfiles\SB-Dashboards - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\characterCount.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
@@ -3508,6 +3510,7 @@
     <Content Include="Views\Dashboard\MontarTelaDashboard.cshtml" />
     <Content Include="Views\Dashboard\VerResultados.cshtml" />
     <Content Include="Views\Dashboard\VerResultadosSemGrafico.cshtml" />
+    <Content Include="Views\Shared\_SkinConfig.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
