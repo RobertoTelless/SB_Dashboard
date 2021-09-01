@@ -7,9 +7,7 @@ using EntitiesServices.Model;
 
 namespace ModelServices.Interfaces.Repositories
 {
-    public interface IConfiguracaoRepository : IRepositoryBase<CONFIGURACAO>
+    public interface IDashboardRepository : IRepositoryBase<Funcao>
     {
-        CONFIGURACAO GetItemById(Int32 id);
-        List<CONFIGURACAO> GetAllItems(Int32 idAss);
     }
 }

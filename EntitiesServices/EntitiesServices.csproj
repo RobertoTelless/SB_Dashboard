@@ -105,8 +105,11 @@
     <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
     <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
+    <Compile Include="EntitiesServices\DashboardService.cs" />
     <Compile Include="EntitiesServices\ServiceBase.cs" />
+    <Compile Include="Interfaces\Entities\IDashboardService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
+    <Compile Include="Interfaces\Repositories\IDashboardRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Model\AliquotaMunicipal.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>

@@ -71,6 +71,7 @@ namespace SB_Dashboard_Presentation.Controllers
             ViewBag.Filtro = new SelectList(filtro, "Value", "Text");
 
             ModeloViewModel mod = new ModeloViewModel();
+            mod.FiltroData = DateTime.Today.Date;    
             return View(mod);
         }
 
@@ -124,6 +125,52 @@ namespace SB_Dashboard_Presentation.Controllers
             modelo.Observacao = "Observações quaisquer";
             return View(modelo);
         }
+
+        public ActionResult VerResultadosSemGrafico()
+        {
+            // Prepara view
+            List<ModeloViewModel> lista = new List<ModeloViewModel>();
+            for (int i = 8; i < 13; i++)
+            {
+                ModeloViewModel mod = new ModeloViewModel();
+                mod.MesAno = i.ToString() + "/" + "2020";
+                mod.Valor = 5426 * i;
+                lista.Add(mod);
+            }
+            ViewBag.Lista = lista;
+
+            List<ComentarioViewModel> listaCom = new List<ComentarioViewModel>();
+            for (int i = 1; i < 4; i++)
+            {
+                ComentarioViewModel mod = new ComentarioViewModel();
+                mod.Data = DateTime.Now;
+                mod.Texto = "Texto do Comentário...";
+                mod.Foto = "~/Imagens/Foto_base.jpg";
+                mod.Nome = "Roberto Telles";
+                listaCom.Add(mod);
+            }
+            ViewBag.Lista = lista;
+            ViewBag.ListaComent = listaCom;
+
+            List<AnexosViewModel> listaAnexo = new List<AnexosViewModel>();
+            AnexosViewModel ane = new AnexosViewModel();
+            ane.Arquivo = "~/Imagens/Imagem1.jpg";
+            ane.Data = DateTime.Today.Date;
+            ane.Tipo = 1;
+            ane.Titulo = "Imagem Qualquer";
+            listaAnexo.Add(ane);
+            ane.Arquivo = "~/Imagens/PDF1.pdf";
+            ane.Data = DateTime.Today.Date;
+            ane.Tipo = 2;
+            ane.Titulo = "PDF Qualquer";
+            listaAnexo.Add(ane);
+            ViewBag.ListaAnexo = listaAnexo;
+
+            ModeloViewModel modelo = new ModeloViewModel();
+            modelo.Observacao = "Observações quaisquer";
+            return View(modelo);
+        }
+
 
         [HttpPost]
         public ActionResult IncluirComentario()

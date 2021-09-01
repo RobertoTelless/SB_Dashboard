@@ -3507,6 +3507,7 @@
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Dashboard\MontarTelaDashboard.cshtml" />
     <Content Include="Views\Dashboard\VerResultados.cshtml" />
+    <Content Include="Views\Dashboard\VerResultadosSemGrafico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

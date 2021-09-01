@@ -69,13 +69,13 @@ namespace Presentation.Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
-            //kernel.Bind<IConfiguracaoAppService>().To<ConfiguracaoAppService>();
+            kernel.Bind<IDashboardAppService>().To<DashboardAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
-            //kernel.Bind<IConfiguracaoService>().To<ConfiguracaoService>();
+            kernel.Bind<IDashboardService>().To<DashboardService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
-            //kernel.Bind<IConfiguracaoRepository>().To<ConfiguracaoRepository>();
+            kernel.Bind<IDashboardRepository>().To<DashboardRepository>();
 
         }
     }
