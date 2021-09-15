@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OnSuiteBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OnSuiteBIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -1809,6 +1809,7 @@
           <Property Name="LancamentoPagar" Type="bit" Nullable="false" />
           <Property Name="AprovaCaixinhaFinanceiro" Type="bit" Nullable="false" />
           <Property Name="ExcluiPgtoRecebimento" Type="bit" Nullable="false" />
+          <Property Name="LocalAcesso" Type="int" />
         </EntityType>
         <EntityType Name="PessoaAcessos">
           <Key>
@@ -2279,6 +2280,199 @@
           <Property Name="Grandeza" Type="nvarchar" MaxLength="100" />
           <Property Name="Nome" Type="nvarchar" MaxLength="100" />
           <Property Name="Simbolo" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.CentroCustoReduzido' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CentroCustoReduzido">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="int" />
+          <Property Name="Reduzido" Type="varchar" MaxLength="39" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'OnSuiteBI.dbo.FluxoCaixa' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="FluxoCaixa">
+          <Property Name="DataCriacao" Type="date" />
+          <Property Name="SaidaPrevisto" Type="money" />
+          <Property Name="SaidaRealizado" Type="money" />
+          <Property Name="EntradaPrevisto" Type="money" />
+          <Property Name="EntradaRealizado" Type="money" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.PessoaCaixinha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PessoaCaixinha">
+          <Key>
+            <PropertyRef Name="Beneficiario" />
+          </Key>
+          <Property Name="Beneficiario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Deposito" Type="money" />
+          <Property Name="Lancado" Type="money" />
+          <Property Name="Saldo" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwCentroCustoAgrupado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCentroCustoAgrupado">
+          <Key>
+            <PropertyRef Name="Descricao" />
+          </Key>
+          <Property Name="Descricao" Type="varchar" MaxLength="39" Nullable="false" />
+          <Property Name="Total" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwContasAPagar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwContasAPagar">
+          <Key>
+            <PropertyRef Name="Nota Fiscal" />
+            <PropertyRef Name="Data de Vencimento" />
+            <PropertyRef Name="Valor" />
+            <PropertyRef Name="Encargos" />
+            <PropertyRef Name="Despesa" />
+            <PropertyRef Name="Protesto?" />
+            <PropertyRef Name="Criticidade" />
+            <PropertyRef Name="Pago?" />
+            <PropertyRef Name="Certa/Variavel" />
+            <PropertyRef Name="Liberado para pagamento?" />
+          </Key>
+          <Property Name="Ordem de Servico" Type="int" />
+          <Property Name="Centro de Custos" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Nota Fiscal" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Beneficario" Type="nvarchar" MaxLength="300" />
+          <Property Name="Centro de Lucro" Type="nvarchar" MaxLength="200" />
+          <Property Name="Data de Vencimento" Type="date" Nullable="false" />
+          <Property Name="Data de Emissao" Type="datetime" />
+          <Property Name="Data de Pagamento" Type="date" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="Encargos" Type="money" Nullable="false" />
+          <Property Name="Despesa" Type="bit" Nullable="false" />
+          <Property Name="Protesto?" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Criticidade" Type="int" Nullable="false" />
+          <Property Name="Faturado Para" Type="nvarchar" MaxLength="200" />
+          <Property Name="Pago?" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Certa/Variavel" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Tipo OS" Type="varchar" MaxLength="19" />
+          <Property Name="Liberado para pagamento?" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Tipo Equipe" Type="varchar" MaxLength="8" />
+          <Property Name="Centro Custo Reduzido" Type="varchar" MaxLength="39" />
+          <Property Name="Adm/Produção" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwContasAReceber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwContasAReceber">
+          <Key>
+            <PropertyRef Name="Data de Emissao" />
+            <PropertyRef Name="Data de Vencimento" />
+            <PropertyRef Name="Valor Bruto" />
+            <PropertyRef Name="Valor Liquido" />
+            <PropertyRef Name="Recebido?" />
+          </Key>
+          <Property Name="Centro de Lucro" Type="nvarchar" MaxLength="200" />
+          <Property Name="Ordem de Servico" Type="int" />
+          <Property Name="Sacado" Type="nvarchar" MaxLength="200" />
+          <Property Name="Nota Fiscal" Type="nvarchar" MaxLength="10" />
+          <Property Name="Data de Emissao" Type="date" Nullable="false" />
+          <Property Name="Data de Vencimento" Type="date" Nullable="false" />
+          <Property Name="Data de Recebimento" Type="date" />
+          <Property Name="Valor Bruto" Type="money" Nullable="false" />
+          <Property Name="Valor Liquido" Type="money" Nullable="false" />
+          <Property Name="Aliquota" Type="money" />
+          <Property Name="Observacao" Type="nvarchar" MaxLength="900" />
+          <Property Name="Recebido?" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Ocorrencia" Type="nvarchar(max)" />
+          <Property Name="Ordem de Compra" Type="nvarchar(max)" />
+          <Property Name="Tipo OS" Type="varchar" MaxLength="19" />
+          <Property Name="Probabilidade" Type="int" />
+          <Property Name="Especialidade" Type="nvarchar(max)" />
+          <Property Name="Tipo Equipe" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwLancamentosAPagar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwLancamentosAPagar">
+          <Key>
+            <PropertyRef Name="Valor" />
+          </Key>
+          <Property Name="Ordem de Servico" Type="int" />
+          <Property Name="Centro de Custos" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Beneficiario" Type="nvarchar" MaxLength="200" />
+          <Property Name="Centro de Lucro" Type="nvarchar" MaxLength="200" />
+          <Property Name="Data de Vencimento" Type="date" />
+          <Property Name="Data de Emissao" Type="date" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="Tipo OS" Type="varchar" MaxLength="19" />
+          <Property Name="Situacao" Type="nvarchar" MaxLength="200" />
+          <Property Name="Data Execucao Fim" Type="datetime" />
+          <Property Name="Tipo Equipe" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServico' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwOrdemServico">
+          <Key>
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="Data de Cadastro" />
+            <PropertyRef Name="Com Ordem de Compra" />
+            <PropertyRef Name="Valor Restante Parcelamento" />
+          </Key>
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Centro de Lucro" Type="nvarchar" MaxLength="200" />
+          <Property Name="Ocorrencia" Type="nvarchar(max)" />
+          <Property Name="Tipo" Type="varchar" MaxLength="19" />
+          <Property Name="Situacao" Type="nvarchar" MaxLength="200" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="200" />
+          <Property Name="Especialidade" Type="nvarchar(max)" />
+          <Property Name="Data Significativa" Type="datetime" />
+          <Property Name="Data de Visita (Previsao)" Type="datetime" />
+          <Property Name="Data de Execucao Inicio (Previsao)" Type="datetime" />
+          <Property Name="Data de Execucao Fim (Previsao)" Type="datetime" />
+          <Property Name="Data Execucao Inicio" Type="datetime" />
+          <Property Name="Data Execucao Fim" Type="datetime" />
+          <Property Name="Ordem de Compra" Type="nvarchar(max)" />
+          <Property Name="Equipe" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Vistoriadores" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Observacao" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Data de Cadastro" Type="datetime" Nullable="false" />
+          <Property Name="Data de Visita" Type="datetime" />
+          <Property Name="Com Ordem de Compra" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Cadastrado Por" Type="nvarchar" MaxLength="200" />
+          <Property Name="Aprovado Por" Type="nvarchar" MaxLength="300" />
+          <Property Name="Valor do Orcamento" Type="money" />
+          <Property Name="Despesa" Type="money" />
+          <Property Name="Lancamentos" Type="money" />
+          <Property Name="Solicitante" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Tipo Equipe" Type="varchar" MaxLength="8" />
+          <Property Name="Status Negocio" Type="varchar" MaxLength="13" />
+          <Property Name="Motivo Perda" Type="nvarchar(max)" />
+          <Property Name="Valor Restante Terceiro" Type="money" />
+          <Property Name="Valor Restante Parcelamento" Type="money" Nullable="false" />
+          <Property Name="Janela Emissao Ate" Type="int" />
+          <Property Name="Prazo Pagamento" Type="int" />
+          <Property Name="Probabilidade" Type="int" />
+          <Property Name="Data Previsao Recebimento" Type="datetime" />
+          <Property Name="Data Previsao Pagamento" Type="datetime" />
+          <Property Name="Data Previsao Emissao" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwParcelamento">
+          <Key>
+            <PropertyRef Name="Ordem de Servico" />
+            <PropertyRef Name="Valor Bruto" />
+            <PropertyRef Name="Data de Envio" />
+          </Key>
+          <Property Name="Ordem de Servico" Type="int" Nullable="false" />
+          <Property Name="Centro de Lucro" Type="nvarchar" MaxLength="200" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="200" />
+          <Property Name="Ordem de Compra" Type="nvarchar(max)" />
+          <Property Name="Data de Execucao" Type="datetime" />
+          <Property Name="Valor Bruto" Type="money" Nullable="false" />
+          <Property Name="Ocorrencia" Type="nvarchar(max)" />
+          <Property Name="Observacao" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Especialidade" Type="nvarchar(max)" />
+          <Property Name="Data de Envio" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Data de Vencimento" Type="datetime" />
+          <Property Name="Probabilidade" Type="int" />
+          <Property Name="Tipo Equipe" Type="varchar" MaxLength="8" />
         </EntityType>
         <Association Name="FK__BancoCart__Banco__634EBE90">
           <End Role="Banco" Type="Self.Banco" Multiplicity="1" />
@@ -6545,6 +6739,148 @@
           <EntitySet Name="TransacaoBancaria" EntityType="Self.TransacaoBancaria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransferenciaBancaria" EntityType="Self.TransferenciaBancaria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unidade" EntityType="Self.Unidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CentroCustoReduzido" EntityType="Self.CentroCustoReduzido" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CentroCustoReduzido].[Id] AS [Id], 
+    [CentroCustoReduzido].[Categoria] AS [Categoria], 
+    [CentroCustoReduzido].[Reduzido] AS [Reduzido]
+    FROM [dbo].[CentroCustoReduzido] AS [CentroCustoReduzido]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PessoaCaixinha" EntityType="Self.PessoaCaixinha" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PessoaCaixinha].[Beneficiario] AS [Beneficiario], 
+    [PessoaCaixinha].[Deposito] AS [Deposito], 
+    [PessoaCaixinha].[Lancado] AS [Lancado], 
+    [PessoaCaixinha].[Saldo] AS [Saldo]
+    FROM [dbo].[PessoaCaixinha] AS [PessoaCaixinha]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwCentroCustoAgrupado" EntityType="Self.vwCentroCustoAgrupado" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwCentroCustoAgrupado].[Descricao] AS [Descricao], 
+    [vwCentroCustoAgrupado].[Total] AS [Total]
+    FROM [dbo].[vwCentroCustoAgrupado] AS [vwCentroCustoAgrupado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwContasAPagar" EntityType="Self.vwContasAPagar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwContasAPagar].[Ordem de Servico] AS [Ordem de Servico], 
+    [vwContasAPagar].[Centro de Custos] AS [Centro de Custos], 
+    [vwContasAPagar].[Descricao] AS [Descricao], 
+    [vwContasAPagar].[Nota Fiscal] AS [Nota Fiscal], 
+    [vwContasAPagar].[Beneficario] AS [Beneficario], 
+    [vwContasAPagar].[Centro de Lucro] AS [Centro de Lucro], 
+    [vwContasAPagar].[Data de Vencimento] AS [Data de Vencimento], 
+    [vwContasAPagar].[Data de Emissao] AS [Data de Emissao], 
+    [vwContasAPagar].[Data de Pagamento] AS [Data de Pagamento], 
+    [vwContasAPagar].[Valor] AS [Valor], 
+    [vwContasAPagar].[Encargos] AS [Encargos], 
+    [vwContasAPagar].[Despesa] AS [Despesa], 
+    [vwContasAPagar].[Protesto?] AS [Protesto?], 
+    [vwContasAPagar].[Criticidade] AS [Criticidade], 
+    [vwContasAPagar].[Faturado Para] AS [Faturado Para], 
+    [vwContasAPagar].[Pago?] AS [Pago?], 
+    [vwContasAPagar].[Certa/Variavel] AS [Certa/Variavel], 
+    [vwContasAPagar].[Tipo OS] AS [Tipo OS], 
+    [vwContasAPagar].[Liberado para pagamento?] AS [Liberado para pagamento?], 
+    [vwContasAPagar].[Tipo Equipe] AS [Tipo Equipe], 
+    [vwContasAPagar].[Centro Custo Reduzido] AS [Centro Custo Reduzido], 
+    [vwContasAPagar].[Adm/Produção] AS [Adm/Produção]
+    FROM [dbo].[vwContasAPagar] AS [vwContasAPagar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwContasAReceber" EntityType="Self.vwContasAReceber" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwContasAReceber].[Centro de Lucro] AS [Centro de Lucro], 
+    [vwContasAReceber].[Ordem de Servico] AS [Ordem de Servico], 
+    [vwContasAReceber].[Sacado] AS [Sacado], 
+    [vwContasAReceber].[Nota Fiscal] AS [Nota Fiscal], 
+    [vwContasAReceber].[Data de Emissao] AS [Data de Emissao], 
+    [vwContasAReceber].[Data de Vencimento] AS [Data de Vencimento], 
+    [vwContasAReceber].[Data de Recebimento] AS [Data de Recebimento], 
+    [vwContasAReceber].[Valor Bruto] AS [Valor Bruto], 
+    [vwContasAReceber].[Valor Liquido] AS [Valor Liquido], 
+    [vwContasAReceber].[Aliquota] AS [Aliquota], 
+    [vwContasAReceber].[Observacao] AS [Observacao], 
+    [vwContasAReceber].[Recebido?] AS [Recebido?], 
+    [vwContasAReceber].[Ocorrencia] AS [Ocorrencia], 
+    [vwContasAReceber].[Ordem de Compra] AS [Ordem de Compra], 
+    [vwContasAReceber].[Tipo OS] AS [Tipo OS], 
+    [vwContasAReceber].[Probabilidade] AS [Probabilidade], 
+    [vwContasAReceber].[Especialidade] AS [Especialidade], 
+    [vwContasAReceber].[Tipo Equipe] AS [Tipo Equipe]
+    FROM [dbo].[vwContasAReceber] AS [vwContasAReceber]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwLancamentosAPagar" EntityType="Self.vwLancamentosAPagar" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwLancamentosAPagar].[Ordem de Servico] AS [Ordem de Servico], 
+    [vwLancamentosAPagar].[Centro de Custos] AS [Centro de Custos], 
+    [vwLancamentosAPagar].[Beneficiario] AS [Beneficiario], 
+    [vwLancamentosAPagar].[Centro de Lucro] AS [Centro de Lucro], 
+    [vwLancamentosAPagar].[Data de Vencimento] AS [Data de Vencimento], 
+    [vwLancamentosAPagar].[Data de Emissao] AS [Data de Emissao], 
+    [vwLancamentosAPagar].[Valor] AS [Valor], 
+    [vwLancamentosAPagar].[Tipo OS] AS [Tipo OS], 
+    [vwLancamentosAPagar].[Situacao] AS [Situacao], 
+    [vwLancamentosAPagar].[Data Execucao Fim] AS [Data Execucao Fim], 
+    [vwLancamentosAPagar].[Tipo Equipe] AS [Tipo Equipe]
+    FROM [dbo].[vwLancamentosAPagar] AS [vwLancamentosAPagar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwOrdemServico" EntityType="Self.vwOrdemServico" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwOrdemServico].[Num] AS [Num], 
+    [vwOrdemServico].[Centro de Lucro] AS [Centro de Lucro], 
+    [vwOrdemServico].[Ocorrencia] AS [Ocorrencia], 
+    [vwOrdemServico].[Tipo] AS [Tipo], 
+    [vwOrdemServico].[Situacao] AS [Situacao], 
+    [vwOrdemServico].[Cliente] AS [Cliente], 
+    [vwOrdemServico].[Especialidade] AS [Especialidade], 
+    [vwOrdemServico].[Data Significativa] AS [Data Significativa], 
+    [vwOrdemServico].[Data de Visita (Previsao)] AS [Data de Visita (Previsao)], 
+    [vwOrdemServico].[Data de Execucao Inicio (Previsao)] AS [Data de Execucao Inicio (Previsao)], 
+    [vwOrdemServico].[Data de Execucao Fim (Previsao)] AS [Data de Execucao Fim (Previsao)], 
+    [vwOrdemServico].[Data Execucao Inicio] AS [Data Execucao Inicio], 
+    [vwOrdemServico].[Data Execucao Fim] AS [Data Execucao Fim], 
+    [vwOrdemServico].[Ordem de Compra] AS [Ordem de Compra], 
+    [vwOrdemServico].[Equipe] AS [Equipe], 
+    [vwOrdemServico].[Vistoriadores] AS [Vistoriadores], 
+    [vwOrdemServico].[Observacao] AS [Observacao], 
+    [vwOrdemServico].[Data de Cadastro] AS [Data de Cadastro], 
+    [vwOrdemServico].[Data de Visita] AS [Data de Visita], 
+    [vwOrdemServico].[Com Ordem de Compra] AS [Com Ordem de Compra], 
+    [vwOrdemServico].[Cadastrado Por] AS [Cadastrado Por], 
+    [vwOrdemServico].[Aprovado Por] AS [Aprovado Por], 
+    [vwOrdemServico].[Valor do Orcamento] AS [Valor do Orcamento], 
+    [vwOrdemServico].[Despesa] AS [Despesa], 
+    [vwOrdemServico].[Lancamentos] AS [Lancamentos], 
+    [vwOrdemServico].[Solicitante] AS [Solicitante], 
+    [vwOrdemServico].[Tipo Equipe] AS [Tipo Equipe], 
+    [vwOrdemServico].[Status Negocio] AS [Status Negocio], 
+    [vwOrdemServico].[Motivo Perda] AS [Motivo Perda], 
+    [vwOrdemServico].[Valor Restante Terceiro] AS [Valor Restante Terceiro], 
+    [vwOrdemServico].[Valor Restante Parcelamento] AS [Valor Restante Parcelamento], 
+    [vwOrdemServico].[Janela Emissao Ate] AS [Janela Emissao Ate], 
+    [vwOrdemServico].[Prazo Pagamento] AS [Prazo Pagamento], 
+    [vwOrdemServico].[Probabilidade] AS [Probabilidade], 
+    [vwOrdemServico].[Data Previsao Recebimento] AS [Data Previsao Recebimento], 
+    [vwOrdemServico].[Data Previsao Pagamento] AS [Data Previsao Pagamento], 
+    [vwOrdemServico].[Data Previsao Emissao] AS [Data Previsao Emissao]
+    FROM [dbo].[vwOrdemServico] AS [vwOrdemServico]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwParcelamento" EntityType="Self.vwParcelamento" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwParcelamento].[Ordem de Servico] AS [Ordem de Servico], 
+    [vwParcelamento].[Centro de Lucro] AS [Centro de Lucro], 
+    [vwParcelamento].[Cliente] AS [Cliente], 
+    [vwParcelamento].[Ordem de Compra] AS [Ordem de Compra], 
+    [vwParcelamento].[Data de Execucao] AS [Data de Execucao], 
+    [vwParcelamento].[Valor Bruto] AS [Valor Bruto], 
+    [vwParcelamento].[Ocorrencia] AS [Ocorrencia], 
+    [vwParcelamento].[Observacao] AS [Observacao], 
+    [vwParcelamento].[Especialidade] AS [Especialidade], 
+    [vwParcelamento].[Data de Envio] AS [Data de Envio], 
+    [vwParcelamento].[Data de Vencimento] AS [Data de Vencimento], 
+    [vwParcelamento].[Probabilidade] AS [Probabilidade], 
+    [vwParcelamento].[Tipo Equipe] AS [Tipo Equipe]
+    FROM [dbo].[vwParcelamento] AS [vwParcelamento]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__BancoCart__Banco__634EBE90" Association="Self.FK__BancoCart__Banco__634EBE90">
             <End Role="Banco" EntitySet="Banco" />
             <End Role="BancoCarteira" EntitySet="BancoCarteira" />
@@ -7874,8 +8210,7 @@
             <End Role="TarefasMembros" EntitySet="TarefasMembros" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OnSuiteBIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -9929,6 +10264,7 @@
           <Property Name="LancamentoPagar" Type="Boolean" Nullable="false" />
           <Property Name="AprovaCaixinhaFinanceiro" Type="Boolean" Nullable="false" />
           <Property Name="ExcluiPgtoRecebimento" Type="Boolean" Nullable="false" />
+          <Property Name="LocalAcesso" Type="Int32" />
           <NavigationProperty Name="Caixinha" Relationship="Self.FK__Caixinha__Pessoa__039170F0" FromRole="Pessoa" ToRole="Caixinha" />
           <NavigationProperty Name="CaixinhaLancada" Relationship="Self.FK__CaixinhaL__Benef__0F03239C" FromRole="Pessoa" ToRole="CaixinhaLancada" />
           <NavigationProperty Name="CaixinhaLancada1" Relationship="Self.FK_CaixinhaLancada_AprovadoFinanceiroPor" FromRole="Pessoa" ToRole="CaixinhaLancada" />
@@ -10467,6 +10803,174 @@
           <NavigationProperty Name="OrcamentoMaterial" Relationship="Self.FK__Orcamento__Unida__73852659" FromRole="Unidade" ToRole="OrcamentoMaterial" />
           <NavigationProperty Name="OrcamentoServico" Relationship="Self.FK__Orcamento__Unida__76619304" FromRole="Unidade" ToRole="OrcamentoServico" />
           <NavigationProperty Name="OrdemServicoVisitaItem" Relationship="Self.FK_OrdemServicoVisitaItem_Unidade" FromRole="Unidade" ToRole="OrdemServicoVisitaItem" />
+        </EntityType>
+        <EntityType Name="CentroCustoReduzido">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="Int32" />
+          <Property Name="Reduzido" Type="String" MaxLength="39" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PessoaCaixinha">
+          <Key>
+            <PropertyRef Name="Beneficiario" />
+          </Key>
+          <Property Name="Beneficiario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Deposito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Lancado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="vwCentroCustoAgrupado">
+          <Key>
+            <PropertyRef Name="Descricao" />
+          </Key>
+          <Property Name="Descricao" Type="String" MaxLength="39" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="vwContasAPagar">
+          <Key>
+            <PropertyRef Name="Nota_Fiscal" />
+            <PropertyRef Name="Data_de_Vencimento" />
+            <PropertyRef Name="Valor" />
+            <PropertyRef Name="Encargos" />
+            <PropertyRef Name="Despesa" />
+            <PropertyRef Name="Protesto_" />
+            <PropertyRef Name="Criticidade" />
+            <PropertyRef Name="Pago_" />
+            <PropertyRef Name="Certa_Variavel" />
+            <PropertyRef Name="Liberado_para_pagamento_" />
+          </Key>
+          <Property Name="Ordem_de_Servico" Type="Int32" />
+          <Property Name="Centro_de_Custos" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Descricao" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Nota_Fiscal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Beneficario" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Centro_de_Lucro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Data_de_Vencimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_de_Emissao" Type="DateTime" Precision="3" />
+          <Property Name="Data_de_Pagamento" Type="DateTime" Precision="0" />
+          <Property Name="Valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Encargos" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Despesa" Type="Boolean" Nullable="false" />
+          <Property Name="Protesto_" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Criticidade" Type="Int32" Nullable="false" />
+          <Property Name="Faturado_Para" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Pago_" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Certa_Variavel" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_OS" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="Liberado_para_pagamento_" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_Equipe" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Centro_Custo_Reduzido" Type="String" MaxLength="39" FixedLength="false" Unicode="false" />
+          <Property Name="Adm_Produção" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwContasAReceber">
+          <Key>
+            <PropertyRef Name="Data_de_Emissao" />
+            <PropertyRef Name="Data_de_Vencimento" />
+            <PropertyRef Name="Valor_Bruto" />
+            <PropertyRef Name="Valor_Liquido" />
+            <PropertyRef Name="Recebido_" />
+          </Key>
+          <Property Name="Centro_de_Lucro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Ordem_de_Servico" Type="Int32" />
+          <Property Name="Sacado" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Nota_Fiscal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Data_de_Emissao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_de_Vencimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_de_Recebimento" Type="DateTime" Precision="0" />
+          <Property Name="Valor_Bruto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Valor_Liquido" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Aliquota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Observacao" Type="String" MaxLength="900" FixedLength="false" Unicode="true" />
+          <Property Name="Recebido_" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ocorrencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ordem_de_Compra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_OS" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="Probabilidade" Type="Int32" />
+          <Property Name="Especialidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_Equipe" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwLancamentosAPagar">
+          <Key>
+            <PropertyRef Name="Valor" />
+          </Key>
+          <Property Name="Ordem_de_Servico" Type="Int32" />
+          <Property Name="Centro_de_Custos" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Beneficiario" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Centro_de_Lucro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Data_de_Vencimento" Type="DateTime" Precision="0" />
+          <Property Name="Data_de_Emissao" Type="DateTime" Precision="0" />
+          <Property Name="Valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Tipo_OS" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="Situacao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Data_Execucao_Fim" Type="DateTime" Precision="3" />
+          <Property Name="Tipo_Equipe" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwOrdemServico">
+          <Key>
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="Data_de_Cadastro" />
+            <PropertyRef Name="Com_Ordem_de_Compra" />
+            <PropertyRef Name="Valor_Restante_Parcelamento" />
+          </Key>
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Centro_de_Lucro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Ocorrencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="Situacao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Cliente" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Especialidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data_Significativa" Type="DateTime" Precision="3" />
+          <Property Name="Data_de_Visita__Previsao_" Type="DateTime" Precision="3" />
+          <Property Name="Data_de_Execucao_Inicio__Previsao_" Type="DateTime" Precision="3" />
+          <Property Name="Data_de_Execucao_Fim__Previsao_" Type="DateTime" Precision="3" />
+          <Property Name="Data_Execucao_Inicio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Execucao_Fim" Type="DateTime" Precision="3" />
+          <Property Name="Ordem_de_Compra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Equipe" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Vistoriadores" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Observacao" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Data_de_Cadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data_de_Visita" Type="DateTime" Precision="3" />
+          <Property Name="Com_Ordem_de_Compra" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cadastrado_Por" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Aprovado_Por" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Valor_do_Orcamento" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Despesa" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Lancamentos" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Solicitante" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_Equipe" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Negocio" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo_Perda" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Valor_Restante_Terceiro" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Valor_Restante_Parcelamento" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Janela_Emissao_Ate" Type="Int32" />
+          <Property Name="Prazo_Pagamento" Type="Int32" />
+          <Property Name="Probabilidade" Type="Int32" />
+          <Property Name="Data_Previsao_Recebimento" Type="DateTime" Precision="3" />
+          <Property Name="Data_Previsao_Pagamento" Type="DateTime" Precision="3" />
+          <Property Name="Data_Previsao_Emissao" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vwParcelamento">
+          <Key>
+            <PropertyRef Name="Ordem_de_Servico" />
+            <PropertyRef Name="Valor_Bruto" />
+            <PropertyRef Name="Data_de_Envio" />
+          </Key>
+          <Property Name="Ordem_de_Servico" Type="Int32" Nullable="false" />
+          <Property Name="Centro_de_Lucro" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Cliente" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Ordem_de_Compra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data_de_Execucao" Type="DateTime" Precision="3" />
+          <Property Name="Valor_Bruto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Ocorrencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Observacao" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Especialidade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data_de_Envio" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_de_Vencimento" Type="DateTime" Precision="3" />
+          <Property Name="Probabilidade" Type="Int32" />
+          <Property Name="Tipo_Equipe" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__FatServicosPmsp__AliquotaMunicipal">
           <End Role="FatServicosPmsp" Type="Self.FatServicosPmsp" Multiplicity="1" />
@@ -13962,6 +14466,14 @@
           <EntitySet Name="TransacaoBancaria" EntityType="Self.TransacaoBancaria" />
           <EntitySet Name="TransferenciaBancaria" EntityType="Self.TransferenciaBancaria" />
           <EntitySet Name="Unidade" EntityType="Self.Unidade" />
+          <EntitySet Name="CentroCustoReduzido" EntityType="Self.CentroCustoReduzido" />
+          <EntitySet Name="PessoaCaixinha" EntityType="Self.PessoaCaixinha" />
+          <EntitySet Name="vwCentroCustoAgrupado" EntityType="Self.vwCentroCustoAgrupado" />
+          <EntitySet Name="vwContasAPagar" EntityType="Self.vwContasAPagar" />
+          <EntitySet Name="vwContasAReceber" EntityType="Self.vwContasAReceber" />
+          <EntitySet Name="vwLancamentosAPagar" EntityType="Self.vwLancamentosAPagar" />
+          <EntitySet Name="vwOrdemServico" EntityType="Self.vwOrdemServico" />
+          <EntitySet Name="vwParcelamento" EntityType="Self.vwParcelamento" />
           <AssociationSet Name="FK__FatServicosPmsp__AliquotaMunicipal" Association="Self.FK__FatServicosPmsp__AliquotaMunicipal">
             <End Role="FatServicosPmsp" EntitySet="FatServicosPmsp" />
             <End Role="AliquotaMunicipal" EntitySet="AliquotaMunicipal" />
@@ -16915,6 +17427,7 @@
                 <ScalarProperty Name="LancamentoPagar" ColumnName="LancamentoPagar" />
                 <ScalarProperty Name="AprovaCaixinhaFinanceiro" ColumnName="AprovaCaixinhaFinanceiro" />
                 <ScalarProperty Name="ExcluiPgtoRecebimento" ColumnName="ExcluiPgtoRecebimento" />
+                <ScalarProperty Name="LocalAcesso" ColumnName="LocalAcesso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -17308,6 +17821,164 @@
                 <ScalarProperty Name="Grandeza" ColumnName="Grandeza" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Simbolo" ColumnName="Simbolo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CentroCustoReduzido">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.CentroCustoReduzido">
+              <MappingFragment StoreEntitySet="CentroCustoReduzido">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Reduzido" ColumnName="Reduzido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PessoaCaixinha">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.PessoaCaixinha">
+              <MappingFragment StoreEntitySet="PessoaCaixinha">
+                <ScalarProperty Name="Beneficiario" ColumnName="Beneficiario" />
+                <ScalarProperty Name="Deposito" ColumnName="Deposito" />
+                <ScalarProperty Name="Lancado" ColumnName="Lancado" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCentroCustoAgrupado">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwCentroCustoAgrupado">
+              <MappingFragment StoreEntitySet="vwCentroCustoAgrupado">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwContasAPagar">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwContasAPagar">
+              <MappingFragment StoreEntitySet="vwContasAPagar">
+                <ScalarProperty Name="Ordem_de_Servico" ColumnName="Ordem de Servico" />
+                <ScalarProperty Name="Centro_de_Custos" ColumnName="Centro de Custos" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Nota_Fiscal" ColumnName="Nota Fiscal" />
+                <ScalarProperty Name="Beneficario" ColumnName="Beneficario" />
+                <ScalarProperty Name="Centro_de_Lucro" ColumnName="Centro de Lucro" />
+                <ScalarProperty Name="Data_de_Vencimento" ColumnName="Data de Vencimento" />
+                <ScalarProperty Name="Data_de_Emissao" ColumnName="Data de Emissao" />
+                <ScalarProperty Name="Data_de_Pagamento" ColumnName="Data de Pagamento" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Encargos" ColumnName="Encargos" />
+                <ScalarProperty Name="Despesa" ColumnName="Despesa" />
+                <ScalarProperty Name="Protesto_" ColumnName="Protesto?" />
+                <ScalarProperty Name="Criticidade" ColumnName="Criticidade" />
+                <ScalarProperty Name="Faturado_Para" ColumnName="Faturado Para" />
+                <ScalarProperty Name="Pago_" ColumnName="Pago?" />
+                <ScalarProperty Name="Certa_Variavel" ColumnName="Certa/Variavel" />
+                <ScalarProperty Name="Tipo_OS" ColumnName="Tipo OS" />
+                <ScalarProperty Name="Liberado_para_pagamento_" ColumnName="Liberado para pagamento?" />
+                <ScalarProperty Name="Tipo_Equipe" ColumnName="Tipo Equipe" />
+                <ScalarProperty Name="Centro_Custo_Reduzido" ColumnName="Centro Custo Reduzido" />
+                <ScalarProperty Name="Adm_Produção" ColumnName="Adm/Produção" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwContasAReceber">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwContasAReceber">
+              <MappingFragment StoreEntitySet="vwContasAReceber">
+                <ScalarProperty Name="Centro_de_Lucro" ColumnName="Centro de Lucro" />
+                <ScalarProperty Name="Ordem_de_Servico" ColumnName="Ordem de Servico" />
+                <ScalarProperty Name="Sacado" ColumnName="Sacado" />
+                <ScalarProperty Name="Nota_Fiscal" ColumnName="Nota Fiscal" />
+                <ScalarProperty Name="Data_de_Emissao" ColumnName="Data de Emissao" />
+                <ScalarProperty Name="Data_de_Vencimento" ColumnName="Data de Vencimento" />
+                <ScalarProperty Name="Data_de_Recebimento" ColumnName="Data de Recebimento" />
+                <ScalarProperty Name="Valor_Bruto" ColumnName="Valor Bruto" />
+                <ScalarProperty Name="Valor_Liquido" ColumnName="Valor Liquido" />
+                <ScalarProperty Name="Aliquota" ColumnName="Aliquota" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="Recebido_" ColumnName="Recebido?" />
+                <ScalarProperty Name="Ocorrencia" ColumnName="Ocorrencia" />
+                <ScalarProperty Name="Ordem_de_Compra" ColumnName="Ordem de Compra" />
+                <ScalarProperty Name="Tipo_OS" ColumnName="Tipo OS" />
+                <ScalarProperty Name="Probabilidade" ColumnName="Probabilidade" />
+                <ScalarProperty Name="Especialidade" ColumnName="Especialidade" />
+                <ScalarProperty Name="Tipo_Equipe" ColumnName="Tipo Equipe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwLancamentosAPagar">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwLancamentosAPagar">
+              <MappingFragment StoreEntitySet="vwLancamentosAPagar">
+                <ScalarProperty Name="Ordem_de_Servico" ColumnName="Ordem de Servico" />
+                <ScalarProperty Name="Centro_de_Custos" ColumnName="Centro de Custos" />
+                <ScalarProperty Name="Beneficiario" ColumnName="Beneficiario" />
+                <ScalarProperty Name="Centro_de_Lucro" ColumnName="Centro de Lucro" />
+                <ScalarProperty Name="Data_de_Vencimento" ColumnName="Data de Vencimento" />
+                <ScalarProperty Name="Data_de_Emissao" ColumnName="Data de Emissao" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Tipo_OS" ColumnName="Tipo OS" />
+                <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+                <ScalarProperty Name="Data_Execucao_Fim" ColumnName="Data Execucao Fim" />
+                <ScalarProperty Name="Tipo_Equipe" ColumnName="Tipo Equipe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwOrdemServico">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwOrdemServico">
+              <MappingFragment StoreEntitySet="vwOrdemServico">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Centro_de_Lucro" ColumnName="Centro de Lucro" />
+                <ScalarProperty Name="Ocorrencia" ColumnName="Ocorrencia" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Especialidade" ColumnName="Especialidade" />
+                <ScalarProperty Name="Data_Significativa" ColumnName="Data Significativa" />
+                <ScalarProperty Name="Data_de_Visita__Previsao_" ColumnName="Data de Visita (Previsao)" />
+                <ScalarProperty Name="Data_de_Execucao_Inicio__Previsao_" ColumnName="Data de Execucao Inicio (Previsao)" />
+                <ScalarProperty Name="Data_de_Execucao_Fim__Previsao_" ColumnName="Data de Execucao Fim (Previsao)" />
+                <ScalarProperty Name="Data_Execucao_Inicio" ColumnName="Data Execucao Inicio" />
+                <ScalarProperty Name="Data_Execucao_Fim" ColumnName="Data Execucao Fim" />
+                <ScalarProperty Name="Ordem_de_Compra" ColumnName="Ordem de Compra" />
+                <ScalarProperty Name="Equipe" ColumnName="Equipe" />
+                <ScalarProperty Name="Vistoriadores" ColumnName="Vistoriadores" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="Data_de_Cadastro" ColumnName="Data de Cadastro" />
+                <ScalarProperty Name="Data_de_Visita" ColumnName="Data de Visita" />
+                <ScalarProperty Name="Com_Ordem_de_Compra" ColumnName="Com Ordem de Compra" />
+                <ScalarProperty Name="Cadastrado_Por" ColumnName="Cadastrado Por" />
+                <ScalarProperty Name="Aprovado_Por" ColumnName="Aprovado Por" />
+                <ScalarProperty Name="Valor_do_Orcamento" ColumnName="Valor do Orcamento" />
+                <ScalarProperty Name="Despesa" ColumnName="Despesa" />
+                <ScalarProperty Name="Lancamentos" ColumnName="Lancamentos" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="Tipo_Equipe" ColumnName="Tipo Equipe" />
+                <ScalarProperty Name="Status_Negocio" ColumnName="Status Negocio" />
+                <ScalarProperty Name="Motivo_Perda" ColumnName="Motivo Perda" />
+                <ScalarProperty Name="Valor_Restante_Terceiro" ColumnName="Valor Restante Terceiro" />
+                <ScalarProperty Name="Valor_Restante_Parcelamento" ColumnName="Valor Restante Parcelamento" />
+                <ScalarProperty Name="Janela_Emissao_Ate" ColumnName="Janela Emissao Ate" />
+                <ScalarProperty Name="Prazo_Pagamento" ColumnName="Prazo Pagamento" />
+                <ScalarProperty Name="Probabilidade" ColumnName="Probabilidade" />
+                <ScalarProperty Name="Data_Previsao_Recebimento" ColumnName="Data Previsao Recebimento" />
+                <ScalarProperty Name="Data_Previsao_Pagamento" ColumnName="Data Previsao Pagamento" />
+                <ScalarProperty Name="Data_Previsao_Emissao" ColumnName="Data Previsao Emissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwParcelamento">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwParcelamento">
+              <MappingFragment StoreEntitySet="vwParcelamento">
+                <ScalarProperty Name="Ordem_de_Servico" ColumnName="Ordem de Servico" />
+                <ScalarProperty Name="Centro_de_Lucro" ColumnName="Centro de Lucro" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Ordem_de_Compra" ColumnName="Ordem de Compra" />
+                <ScalarProperty Name="Data_de_Execucao" ColumnName="Data de Execucao" />
+                <ScalarProperty Name="Valor_Bruto" ColumnName="Valor Bruto" />
+                <ScalarProperty Name="Ocorrencia" ColumnName="Ocorrencia" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="Especialidade" ColumnName="Especialidade" />
+                <ScalarProperty Name="Data_de_Envio" ColumnName="Data de Envio" />
+                <ScalarProperty Name="Data_de_Vencimento" ColumnName="Data de Vencimento" />
+                <ScalarProperty Name="Probabilidade" ColumnName="Probabilidade" />
+                <ScalarProperty Name="Tipo_Equipe" ColumnName="Tipo Equipe" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -36,13 +36,13 @@
 
     <!-- Wrapper-->
     <!-- PageClass give you ability to specify custom style for specific view based on action -->
-    <div id="wrapper" class="@Html.PageClass()">
-
+    @*<div id="wrapper" class="@Html.PageClass()">*@
+    <div id="wrapper" class="gray-bg @ViewBag.SpecialClass"">
         <!-- Navigation -->
-        @Html.Partial("_Navigation")
+        @*@Html.Partial("_Navigation")*@
 
         <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
+        @*<div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">*@
 
             <!-- Top Navbar -->
             @Html.Partial("_TopNavbar")
@@ -51,9 +51,9 @@
             @RenderBody()
 
             <!-- Footer -->
-            @Html.Partial("_Footer")
+            @*@Html.Partial("_Footer")*@
 
-        </div>
+        @*</div>*@
         <!-- End page wrapper-->
 
         <!-- Right Sidebar -->

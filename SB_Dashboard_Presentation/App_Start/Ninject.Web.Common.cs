@@ -69,13 +69,22 @@ namespace Presentation.Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
-            kernel.Bind<IDashboardAppService>().To<DashboardAppService>();
+            kernel.Bind<ICRAppService>().To<CRAppService>();
+            kernel.Bind<ICPAppService>().To<CPAppService>();
+            kernel.Bind<ILPAppService>().To<LPAppService>();
+            kernel.Bind<IPCAppService>().To<PCAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
-            kernel.Bind<IDashboardService>().To<DashboardService>();
+            kernel.Bind<ICRService>().To<CRService>();
+            kernel.Bind<ICPService>().To<CPService>();
+            kernel.Bind<ILPService>().To<LPService>();
+            kernel.Bind<IPCService>().To<PCService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
-            kernel.Bind<IDashboardRepository>().To<DashboardRepository>();
+            kernel.Bind<ICRRepository>().To<CRRepository>();
+            kernel.Bind<ICPRepository>().To<CPRepository>();
+            kernel.Bind<ILPRepository>().To<LPRepository>();
+            kernel.Bind<IPCRepository>().To<PCRepository>();
 
         }
     }

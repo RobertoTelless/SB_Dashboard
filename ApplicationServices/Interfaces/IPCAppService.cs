@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntitiesServices.Model;
-using EntitiesServices.Work_Classes;
 
-namespace ModelServices.Interfaces.EntitiesServices
+namespace ApplicationServices.Interfaces
 {
-    public interface IDashboardService : IServiceBase<Funcao>
+    public interface IPCAppService : IAppServiceBase<vwParcelamento>
     {
+        List<vwParcelamento> GetAllItens();
     }
 }

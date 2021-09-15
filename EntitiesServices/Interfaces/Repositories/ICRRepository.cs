@@ -7,7 +7,8 @@ using EntitiesServices.Model;
 
 namespace ModelServices.Interfaces.Repositories
 {
-    public interface IDashboardRepository : IRepositoryBase<Funcao>
+    public interface ICRRepository : IRepositoryBase<vwContasAReceber>
     {
+        List<vwContasAReceber> GetAllItens();
     }
 }

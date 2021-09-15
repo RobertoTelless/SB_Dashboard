@@ -17,6 +17,24 @@ namespace SB_Dashboard_Presentation.ViewModels
         public String MesAno { get; set; }
         public Decimal Valor { get; set; }
         public String Observacao { get; set; }
+        public DateTime EmissaoInicio { get; set; }
+        public DateTime EmissaoFinal { get; set; }
+        public DateTime VencimentoInicio { get; set; }
+        public DateTime VencimentoFinal { get; set; }
+        public DateTime RecebimentoInicio { get; set; }
+        public DateTime RecebimentoFinal { get; set; }
+        public DateTime PagamentoInicio { get; set; }
+        public DateTime PagamentoFinal { get; set; }
+        public int CentroCusto { get; set; }
+        public int CentroLucro { get; set; }
+
+
+
+
+
+
+
+
         public bool Check
         {
             get

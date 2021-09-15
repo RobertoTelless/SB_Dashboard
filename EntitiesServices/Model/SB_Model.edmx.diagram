@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5cf197f852ef4631a5ade5966dfd1e9d" Name="Diagram1">
+      <Diagram DiagramId="8112e4f25c254b8584d5c39f690c1203" Name="Diagram1">
         <EntityTypeShape EntityType="OnSuiteBIModel.C__EFMigrationsHistory" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.AliquotaMunicipal" Width="1.5" PointX="22.5" PointY="87.125" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.Ambiente" Width="1.5" PointX="3" PointY="130.125" IsExpanded="true" />
@@ -138,7 +138,7 @@
         <EntityTypeShape EntityType="OnSuiteBIModel.PesquisaSatisfacaoGestor" Width="1.5" PointX="38.25" PointY="123.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.PesquisaSatisfacaoGestorJornada" Width="1.5" PointX="41" PointY="117.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.PesquisaSatisfacaoGestorLog" Width="1.5" PointX="43.25" PointY="125.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnSuiteBIModel.Pessoa" Width="1.5" PointX="24.75" PointY="115.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Pessoa" Width="1.5" PointX="24.75" PointY="115.5" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.PessoaContaBancaria" Width="1.5" PointX="36" PointY="130.5" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.PessoaContato" Width="1.5" PointX="36" PointY="122.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.PessoaContatoMarcadorPesquisa" Width="1.5" PointX="44.25" PointY="122.875" IsExpanded="true" />
@@ -164,7 +164,7 @@
         <EntityTypeShape EntityType="OnSuiteBIModel.Speech" Width="1.5" PointX="27.75" PointY="149.125" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.TarefaGrupos" Width="1.5" PointX="27" PointY="205.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.TarefaListas" Width="1.5" PointX="29.25" PointY="160.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnSuiteBIModel.Tarefas" Width="1.5" PointX="31.5" PointY="146.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.Tarefas" Width="1.5" PointX="31.5" PointY="146.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.TemplateDocTecnico" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.TemplateProposta" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.TipoDocumento" Width="1.5" PointX="16.5" PointY="144.75" IsExpanded="true" />
@@ -174,6 +174,14 @@
         <EntityTypeShape EntityType="OnSuiteBIModel.TransacaoBancaria" Width="1.5" PointX="27" PointY="213.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.TransferenciaBancaria" Width="1.5" PointX="24.75" PointY="108.125" IsExpanded="true" />
         <EntityTypeShape EntityType="OnSuiteBIModel.Unidade" Width="1.5" PointX="18.5" PointY="116.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.CentroCustoReduzido" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.PessoaCaixinha" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwCentroCustoAgrupado" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwContasAPagar" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwContasAReceber" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwLancamentosAPagar" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwOrdemServico" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwParcelamento" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
         <AssociationConnector Association="OnSuiteBIModel.FK__FatServicosPmsp__AliquotaMunicipal" ManuallyRouted="false" />
         <AssociationConnector Association="OnSuiteBIModel.FK_Ambiente_AmbienteAndar" ManuallyRouted="false" />
         <AssociationConnector Association="OnSuiteBIModel.FK_Ambiente_AmbienteDescricao" ManuallyRouted="false" />

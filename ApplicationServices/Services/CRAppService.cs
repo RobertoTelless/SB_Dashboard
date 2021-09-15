@@ -12,14 +12,18 @@ using System.Text.RegularExpressions;
 
 namespace ApplicationServices.Services
 {
-    public class DashboardAppService : AppServiceBase<Funcao>, IDashboardAppService
+    public class CRAppService : AppServiceBase<vwContasAReceber>, ICRAppService
     {
-        private readonly IDashboardService _baseService;
+        private readonly ICRService _baseService;
 
-        public DashboardAppService(IDashboardService baseService) : base(baseService)
+        public CRAppService(ICRService baseService) : base(baseService)
         {
             _baseService = baseService;
         }
 
+        public List<vwContasAReceber> GetAllItens()
+        {
+            return _baseService.GetAllItens();
+        }
     }
 }

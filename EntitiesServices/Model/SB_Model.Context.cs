@@ -194,5 +194,13 @@ namespace EntitiesServices.Model
         public virtual DbSet<TransacaoBancaria> TransacaoBancaria { get; set; }
         public virtual DbSet<TransferenciaBancaria> TransferenciaBancaria { get; set; }
         public virtual DbSet<Unidade> Unidade { get; set; }
+        public virtual DbSet<CentroCustoReduzido> CentroCustoReduzido { get; set; }
+        public virtual DbSet<PessoaCaixinha> PessoaCaixinha { get; set; }
+        public virtual DbSet<vwCentroCustoAgrupado> vwCentroCustoAgrupado { get; set; }
+        public virtual DbSet<vwContasAPagar> vwContasAPagar { get; set; }
+        public virtual DbSet<vwContasAReceber> vwContasAReceber { get; set; }
+        public virtual DbSet<vwLancamentosAPagar> vwLancamentosAPagar { get; set; }
+        public virtual DbSet<vwOrdemServico> vwOrdemServico { get; set; }
+        public virtual DbSet<vwParcelamento> vwParcelamento { get; set; }
     }
 }

@@ -168,6 +168,7 @@ namespace EntitiesServices.Model
         public bool LancamentoPagar { get; set; }
         public bool AprovaCaixinhaFinanceiro { get; set; }
         public bool ExcluiPgtoRecebimento { get; set; }
+        public Nullable<int> LocalAcesso { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Caixinha> Caixinha { get; set; }

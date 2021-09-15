@@ -105,11 +105,20 @@
     <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
     <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
-    <Compile Include="EntitiesServices\DashboardService.cs" />
+    <Compile Include="EntitiesServices\PCService.cs" />
+    <Compile Include="EntitiesServices\LPService.cs" />
+    <Compile Include="EntitiesServices\CPService.cs" />
+    <Compile Include="EntitiesServices\CRService.cs" />
     <Compile Include="EntitiesServices\ServiceBase.cs" />
-    <Compile Include="Interfaces\Entities\IDashboardService.cs" />
+    <Compile Include="Interfaces\Entities\IPCService.cs" />
+    <Compile Include="Interfaces\Entities\ILPService.cs" />
+    <Compile Include="Interfaces\Entities\ICPService.cs" />
+    <Compile Include="Interfaces\Entities\ICRService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
-    <Compile Include="Interfaces\Repositories\IDashboardRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPCRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILPRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICPRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICRRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Model\AliquotaMunicipal.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
@@ -148,6 +157,9 @@
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Carteira.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CentroCustoReduzido.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ChecklistPendencia.cs">
@@ -513,6 +525,9 @@
     <Compile Include="Model\Pessoa.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PessoaCaixinha.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\PessoaContaBancaria.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
@@ -633,6 +648,24 @@
     <Compile Include="Model\Unidade.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\vwCentroCustoAgrupado.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwContasAPagar.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwContasAReceber.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwLancamentosAPagar.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwOrdemServico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwParcelamento.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkingClasses\CNPJ.cs" />
     <Compile Include="WorkingClasses\Endereco.cs" />
@@ -649,13 +682,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
-      <Project>{9a9d1615-7fa7-4b20-9d2c-7233d8aeb347}</Project>
-      <Name>CrossCutting</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Content Include="Model\SB_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -667,6 +693,12 @@
       <DependentUpon>SB_Model.edmx</DependentUpon>
       <LastGenOutput>SB_Model.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{9a9d1615-7fa7-4b20-9d2c-7233d8aeb347}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

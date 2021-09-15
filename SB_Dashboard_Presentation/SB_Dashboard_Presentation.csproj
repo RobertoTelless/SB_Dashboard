@@ -2664,6 +2664,7 @@
     <Content Include="amcharts4\themes\patterns.js.map" />
     <Content Include="amcharts4\themes\spiritedaway.js.map" />
     <Content Include="Imagens\PDF1.pdf" />
+    <None Include="Properties\PublishProfiles\ModelosDashboard - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\SB-Dashboards - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\characterCount.js" />
@@ -3511,6 +3512,7 @@
     <Content Include="Views\Dashboard\VerResultados.cshtml" />
     <Content Include="Views\Dashboard\VerResultadosSemGrafico.cshtml" />
     <Content Include="Views\Shared\_SkinConfig.cshtml" />
+    <Content Include="Views\Dashboard\MontarTelaDashboardReal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

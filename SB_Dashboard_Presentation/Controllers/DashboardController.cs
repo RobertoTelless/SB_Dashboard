@@ -25,7 +25,11 @@ namespace SB_Dashboard_Presentation.Controllers
 {
     public class DashboardController : Controller
     {
-        private readonly IDashboardAppService baseApp;
+        private readonly ICRAppService crApp;
+        private readonly ICPAppService cpApp;
+        private readonly ILPAppService lpApp;
+        private readonly IPCAppService pcApp;
+
         private String msg;
         private Exception exception;
         //USUARIO objeto = new USUARIO();
@@ -33,9 +37,12 @@ namespace SB_Dashboard_Presentation.Controllers
         //List<USUARIO> listaMaster = new List<USUARIO>();
         String extensao;
 
-        public DashboardController(IDashboardAppService baseApps)
+        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps)
         {
-            baseApp = baseApps;
+            crApp = crApps;
+            cpApp = cpApps;
+            lpApp = lpApps;
+            pcApp = pcApps;
         }
 
         [HttpGet]
@@ -177,6 +184,87 @@ namespace SB_Dashboard_Presentation.Controllers
         {
             return RedirectToAction("VerResultados");
         }
+
+        [HttpGet]
+        public ActionResult MontarTelaDashboardReal()
+        {
+            // Carrega listas dos filtros
+            List<vwContasAReceber> listaCR = crApp.GetAllItens();
+            var listaCentroLucro = listaCR.Select(p => p.Centro_de_Lucro).Distinct().ToList();
+            List<SelectListItem> listaCL = new List<SelectListItem>();
+            foreach (var item in listaCentroLucro)
+            {
+                listaCL.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+            }
+            ViewBag.CentroLucro = new SelectList(listaCL, "Value", "Text");
+
+            List<vwContasAPagar> listaCP = cpApp.GetAllItens();
+            var listaCentroCusto = listaCP.Select(p => p.Centro_de_Custos).Distinct().ToList();
+            List<SelectListItem> listaCC= new List<SelectListItem>();
+            foreach (var item in listaCentroCusto)
+            {
+                listaCC.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+            }
+            ViewBag.CentroCusto = new SelectList(listaCC, "Value", "Text");
+
+            List<vwLancamentosAPagar> listaLP = lpApp.GetAllItens();
+            List<vwParcelamento> listaPC = pcApp.GetAllItens();
+
+            // Carrega viewmodel
+            DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
+            ModeloViewModel mod = new ModeloViewModel();
+            //mod.EmissaoInicio = inicio;
+            //mod.EmissaoFinal = DateTime.Today.Date;
+            //mod.VencimentoInicio = inicio;
+            //mod.VencimentoFinal = DateTime.Today.Date;
+            //mod.RecebimentoInicio = inicio;
+            //mod.RecebimentoFinal = DateTime.Today.Date;
+            //mod.PagamentoInicio = inicio;
+            //mod.PagamentoFinal = DateTime.Today.Date;
+
+            mod.EmissaoInicio = Convert.ToDateTime("01/05/2019");
+            mod.EmissaoFinal = Convert.ToDateTime("30/05/2019");
+            mod.VencimentoInicio = Convert.ToDateTime("01/05/2019");
+            mod.VencimentoFinal = Convert.ToDateTime("30/05/2019");
+            mod.RecebimentoInicio = Convert.ToDateTime("01/05/2019");
+            mod.RecebimentoFinal = Convert.ToDateTime("30/05/2019");
+            mod.PagamentoInicio = Convert.ToDateTime("01/05/2019");
+            mod.PagamentoFinal = Convert.ToDateTime("30/05/2019");
+
+            // Carrega Indicadores Diretos
+            decimal execPositivo = Convert.ToDecimal(1004092.04);
+            decimal execNegativo = Convert.ToDecimal(318449.39);
+            decimal saldoBancario = Convert.ToDecimal(164604.20);
+
+            ViewBag.ExecPositivo = execPositivo.ToString();
+            ViewBag.ExecNegativo= execNegativo.ToString();
+            ViewBag.SaldoBancario = saldoBancario.ToString();
+
+            // Carrega Indicadores
+            //decimal rec = listaCR.Where(p => p.Data_de_Recebimento.Value.Month == DateTime.Today.Date.Month & p.Data_de_Recebimento.Value.Year == DateTime.Today.Date.Year).Sum(p => p.Valor_Liquido);
+            //decimal pag = listaCP.Where(p => p.Data_de_Pagamento.Value.Month == DateTime.Today.Date.Month & p.Data_de_Pagamento.Value.Year == DateTime.Today.Date.Year).Sum(p => p.Valor);
+            //decimal lp = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == DateTime.Today.Date.Month & p.Data_de_Vencimento.Value.Year == DateTime.Today.Date.Year).Sum(p => p.Valor);
+            //decimal pc = listaPC.Sum(p => p.Valor_Bruto);
+
+            decimal rec = listaCR.Where(p => p.Data_de_Recebimento.Value.Month == 5 & p.Data_de_Recebimento.Value.Year == 2019).Sum(p => p.Valor_Liquido);
+            decimal pag = listaCP.Where(p => p.Data_de_Pagamento.Value.Month == 5 & p.Data_de_Pagamento.Value.Year == 2019).Sum(p => p.Valor);
+            decimal lp = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == 5 & p.Data_de_Vencimento.Value.Year == 2019).Sum(p => p.Valor);
+            decimal pc = listaPC.Sum(p => p.Valor_Bruto);
+
+            ViewBag.Rec = rec;
+            ViewBag.Pag = pag;
+            ViewBag.Lp = lp;
+            ViewBag.Pc = pc;
+
+            // Campos calculados
+            Decimal result = (rec + execPositivo + pc) - (pag + execNegativo + lp);
+            Decimal saldo = result + saldoBancario;
+            ViewBag.Resultado = result;
+            ViewBag.SaldoTotal = saldo;
+
+            return View(mod);
+        }
+
 
     }
 }

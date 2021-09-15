@@ -10,8 +10,13 @@ using System.Data.Entity;
 
 namespace DataServices.Repositories
 {
-    public class DashboardRepository : RepositoryBase<Funcao>, IDashboardRepository
+    public class PCRepository : RepositoryBase<vwParcelamento>, IPCRepository
     {
+        public List<vwParcelamento> GetAllItens()
+        {
+            IQueryable<vwParcelamento> query = Db.vwParcelamento;
+            return query.ToList();
+        }
     }
 }
  
