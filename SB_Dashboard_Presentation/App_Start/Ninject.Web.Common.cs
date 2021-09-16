@@ -73,18 +73,24 @@ namespace Presentation.Start
             kernel.Bind<ICPAppService>().To<CPAppService>();
             kernel.Bind<ILPAppService>().To<LPAppService>();
             kernel.Bind<IPCAppService>().To<PCAppService>();
+            kernel.Bind<IEPAppService>().To<EPAppService>();
+            kernel.Bind<IENAppService>().To<ENAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<ICRService>().To<CRService>();
             kernel.Bind<ICPService>().To<CPService>();
             kernel.Bind<ILPService>().To<LPService>();
             kernel.Bind<IPCService>().To<PCService>();
+            kernel.Bind<IEPService>().To<EPService>();
+            kernel.Bind<IENService>().To<ENService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<ICRRepository>().To<CRRepository>();
             kernel.Bind<ICPRepository>().To<CPRepository>();
             kernel.Bind<ILPRepository>().To<LPRepository>();
             kernel.Bind<IPCRepository>().To<PCRepository>();
+            kernel.Bind<IEPRepository>().To<EPRepository>();
+            kernel.Bind<IENRepository>().To<ENRepository>();
 
         }
     }

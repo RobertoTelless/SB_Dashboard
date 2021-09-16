@@ -8,9 +8,8 @@ using EntitiesServices.Work_Classes;
 
 namespace ModelServices.Interfaces.EntitiesServices
 {
-    public interface ICPService : IServiceBase<vwContasAPagar>
+    public interface IENService : IServiceBase<vwExecutandoNegativo>
     {
-        List<vwContasAPagar> GetAllItens();
-        List<vwContasAPagar> GetByData(DateTime data);
+        List<vwExecutandoNegativo> GetAllItens();
     }
 }

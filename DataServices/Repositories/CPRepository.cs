@@ -17,6 +17,14 @@ namespace DataServices.Repositories
             IQueryable<vwContasAPagar> query = Db.vwContasAPagar;
             return query.ToList();
         }
+
+        public List<vwContasAPagar> GetByData(DateTime data)
+        {
+            IQueryable<vwContasAPagar> query = Db.vwContasAPagar;
+            query = query.Where(p => p.Data_de_Vencimento.Month == data.Month & p.Data_de_Vencimento.Year == data.Year);
+            return query.ToList();
+        }
+
     }
 }
  

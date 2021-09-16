@@ -479,6 +479,8 @@
         <AssociationConnector Association="OnSuiteBIModel.SpeechTipoProduto" ManuallyRouted="false" />
         <AssociationConnector Association="OnSuiteBIModel.TarefasListas" ManuallyRouted="false" />
         <AssociationConnector Association="OnSuiteBIModel.TarefasMembros" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwExecutandoPositivo" Width="1.5" PointX="7.375" PointY="15.75" />
+        <EntityTypeShape EntityType="OnSuiteBIModel.vwExecutandoNegativo" Width="1.5" PointX="15.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

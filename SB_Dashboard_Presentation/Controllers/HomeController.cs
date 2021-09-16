@@ -16,7 +16,7 @@ namespace ERP_Condominios_Solution.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("MontarTelaDashboard", "Dashboard");
+            return RedirectToAction("MontarTelaDashboardReal", "Dashboard");
         }
 
         public ActionResult About()

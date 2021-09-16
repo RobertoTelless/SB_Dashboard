@@ -3513,6 +3513,8 @@
     <Content Include="Views\Dashboard\VerResultadosSemGrafico.cshtml" />
     <Content Include="Views\Shared\_SkinConfig.cshtml" />
     <Content Include="Views\Dashboard\MontarTelaDashboardReal.cshtml" />
+    <Content Include="Views\Dashboard\VerReceitasExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerTodosReceita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

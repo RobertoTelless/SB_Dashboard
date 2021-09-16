@@ -10,5 +10,6 @@ namespace ApplicationServices.Interfaces
     public interface ICPAppService : IAppServiceBase<vwContasAPagar>
     {
         List<vwContasAPagar> GetAllItens();
+        List<vwContasAPagar> GetByData(DateTime data);
     }
 }

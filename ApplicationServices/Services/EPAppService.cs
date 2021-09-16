@@ -12,24 +12,18 @@ using System.Text.RegularExpressions;
 
 namespace ApplicationServices.Services
 {
-    public class CRAppService : AppServiceBase<vwContasAReceber>, ICRAppService
+    public class EPAppService : AppServiceBase<vwExecutandoPositivo>, IEPAppService
     {
-        private readonly ICRService _baseService;
+        private readonly IEPService _baseService;
 
-        public CRAppService(ICRService baseService) : base(baseService)
+        public EPAppService(IEPService baseService) : base(baseService)
         {
             _baseService = baseService;
         }
 
-        public List<vwContasAReceber> GetAllItens()
+        public List<vwExecutandoPositivo> GetAllItens()
         {
             return _baseService.GetAllItens();
         }
-
-        public List<vwContasAReceber> GetByData(DateTime data)
-        {
-            return _baseService.GetByData(data);
-        }
-
     }
 }

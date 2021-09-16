@@ -25,5 +25,10 @@ namespace ApplicationServices.Services
         {
             return _baseService.GetAllItens();
         }
+
+        public List<vwContasAPagar> GetByData(DateTime data)
+        {
+            return _baseService.GetByData(data);
+        }
     }
 }

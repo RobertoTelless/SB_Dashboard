@@ -2292,15 +2292,6 @@ warning 6002: The table/view 'OnSuiteBI.dbo.CentroCustoReduzido' does not have a
           <Property Name="Reduzido" Type="varchar" MaxLength="39" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'OnSuiteBI.dbo.FluxoCaixa' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="FluxoCaixa">
-          <Property Name="DataCriacao" Type="date" />
-          <Property Name="SaidaPrevisto" Type="money" />
-          <Property Name="SaidaRealizado" Type="money" />
-          <Property Name="EntradaPrevisto" Type="money" />
-          <Property Name="EntradaRealizado" Type="money" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.PessoaCaixinha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PessoaCaixinha">
           <Key>
@@ -2387,6 +2378,31 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwContasAReceber' does not have a pr
           <Property Name="Especialidade" Type="nvarchar(max)" />
           <Property Name="Tipo Equipe" Type="varchar" MaxLength="8" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwExecutandoNegativo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwExecutandoNegativo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Revisao" Type="int" />
+          <Property Name="ExecutandoNegativo" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwExecutandoPositivo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwExecutandoPositivo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExecutandoPositivo" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'OnSuiteBI.dbo.vwExtrato' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwExtrato">
+          <Property Name="Id" Type="bigint" />
+          <Property Name="Saldo" Type="money" />
+        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwLancamentosAPagar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwLancamentosAPagar">
@@ -6807,6 +6823,19 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
     [vwContasAReceber].[Especialidade] AS [Especialidade], 
     [vwContasAReceber].[Tipo Equipe] AS [Tipo Equipe]
     FROM [dbo].[vwContasAReceber] AS [vwContasAReceber]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwExecutandoNegativo" EntityType="Self.vwExecutandoNegativo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwExecutandoNegativo].[Id] AS [Id], 
+    [vwExecutandoNegativo].[Revisao] AS [Revisao], 
+    [vwExecutandoNegativo].[ExecutandoNegativo] AS [ExecutandoNegativo]
+    FROM [dbo].[vwExecutandoNegativo] AS [vwExecutandoNegativo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwExecutandoPositivo" EntityType="Self.vwExecutandoPositivo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwExecutandoPositivo].[Id] AS [Id], 
+    [vwExecutandoPositivo].[ExecutandoPositivo] AS [ExecutandoPositivo]
+    FROM [dbo].[vwExecutandoPositivo] AS [vwExecutandoPositivo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwLancamentosAPagar" EntityType="Self.vwLancamentosAPagar" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -15662,7 +15691,24 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
             <End Role="Pessoa" EntitySet="Pessoa" />
             <End Role="Tarefas" EntitySet="Tarefas" />
           </AssociationSet>
+          <EntitySet Name="vwExecutandoPositivo" EntityType="OnSuiteBIModel.vwExecutandoPositivo" />
+          <EntitySet Name="vwExecutandoNegativo" EntityType="OnSuiteBIModel.vwExecutandoNegativo" />
         </EntityContainer>
+        <EntityType Name="vwExecutandoPositivo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExecutandoPositivo" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="vwExecutandoNegativo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Revisao" Type="Int32" />
+          <Property Name="ExecutandoNegativo" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18262,6 +18308,23 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
               <ScalarProperty Name="Id" ColumnName="TarefaId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="vwExecutandoPositivo">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwExecutandoPositivo">
+              <MappingFragment StoreEntitySet="vwExecutandoPositivo">
+                <ScalarProperty Name="ExecutandoPositivo" ColumnName="ExecutandoPositivo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwExecutandoNegativo">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwExecutandoNegativo">
+              <MappingFragment StoreEntitySet="vwExecutandoNegativo">
+                <ScalarProperty Name="ExecutandoNegativo" ColumnName="ExecutandoNegativo" />
+                <ScalarProperty Name="Revisao" ColumnName="Revisao" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

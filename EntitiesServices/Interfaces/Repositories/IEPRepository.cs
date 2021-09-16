@@ -7,9 +7,8 @@ using EntitiesServices.Model;
 
 namespace ModelServices.Interfaces.Repositories
 {
-    public interface ICPRepository : IRepositoryBase<vwContasAPagar>
+    public interface IEPRepository : IRepositoryBase<vwExecutandoPositivo>
     {
-        List<vwContasAPagar> GetAllItens();
-        List<vwContasAPagar> GetByData(DateTime data);
+        List<vwExecutandoPositivo> GetAllItens();
     }
 }

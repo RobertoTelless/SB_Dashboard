@@ -31,6 +31,11 @@ namespace ModelServices.EntitiesServices
             return _baseRepository.GetAllItens();
         }
 
+        public List<vwContasAPagar> GetByData(DateTime data)
+        {
+            return _baseRepository.GetByData(data);
+        }
+
         public Int32 Create(vwContasAPagar item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))

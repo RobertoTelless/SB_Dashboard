@@ -105,16 +105,22 @@
     <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
     <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
+    <Compile Include="EntitiesServices\ENService.cs" />
+    <Compile Include="EntitiesServices\EPService.cs" />
     <Compile Include="EntitiesServices\PCService.cs" />
     <Compile Include="EntitiesServices\LPService.cs" />
     <Compile Include="EntitiesServices\CPService.cs" />
     <Compile Include="EntitiesServices\CRService.cs" />
     <Compile Include="EntitiesServices\ServiceBase.cs" />
+    <Compile Include="Interfaces\Entities\IENService.cs" />
+    <Compile Include="Interfaces\Entities\IEPService.cs" />
     <Compile Include="Interfaces\Entities\IPCService.cs" />
     <Compile Include="Interfaces\Entities\ILPService.cs" />
     <Compile Include="Interfaces\Entities\ICPService.cs" />
     <Compile Include="Interfaces\Entities\ICRService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
+    <Compile Include="Interfaces\Repositories\IENRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IEPRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPCRepository.cs" />
     <Compile Include="Interfaces\Repositories\ILPRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICPRepository.cs" />
@@ -655,6 +661,12 @@
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\vwContasAReceber.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwExecutandoNegativo.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwExecutandoPositivo.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\vwLancamentosAPagar.cs">

@@ -16,27 +16,22 @@ using System.Data;
 
 namespace ModelServices.EntitiesServices
 {
-    public class CRService : ServiceBase<vwContasAReceber>, ICRService
+    public class EPService : ServiceBase<vwExecutandoPositivo>, IEPService
     {
-        private readonly ICRRepository _baseRepository;
+        private readonly IEPRepository _baseRepository;
         protected OnSuiteBIEntities Db = new OnSuiteBIEntities();
 
-        public CRService(ICRRepository baseRepository) : base(baseRepository)
+        public EPService(IEPRepository baseRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
         }
 
-        public List<vwContasAReceber> GetAllItens()
+        public List<vwExecutandoPositivo> GetAllItens()
         {
             return _baseRepository.GetAllItens();
         }
 
-        public List<vwContasAReceber> GetByData(DateTime data)
-        {
-            return _baseRepository.GetByData(data);
-        }
-
-        public Int32 Create(vwContasAReceber item)
+        public Int32 Create(vwExecutandoPositivo item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -55,13 +50,13 @@ namespace ModelServices.EntitiesServices
         }
 
 
-        public Int32 Edit(vwContasAReceber item)
+        public Int32 Edit(vwExecutandoPositivo item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    vwContasAReceber obj = _baseRepository.GetById(item.Ordem_de_Servico);
+                    vwExecutandoPositivo obj = _baseRepository.GetById(item.Id);
                     _baseRepository.Detach(obj);
                     _baseRepository.Update(item);
                     transaction.Commit();
@@ -75,7 +70,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Delete(vwContasAReceber item)
+        public Int32 Delete(vwExecutandoPositivo item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {

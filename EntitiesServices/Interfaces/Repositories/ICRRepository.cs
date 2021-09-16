@@ -10,5 +10,6 @@ namespace ModelServices.Interfaces.Repositories
     public interface ICRRepository : IRepositoryBase<vwContasAReceber>
     {
         List<vwContasAReceber> GetAllItens();
+        List<vwContasAReceber> GetByData(DateTime data);
     }
 }

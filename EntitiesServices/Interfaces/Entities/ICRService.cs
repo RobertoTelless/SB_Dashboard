@@ -11,5 +11,6 @@ namespace ModelServices.Interfaces.EntitiesServices
     public interface ICRService : IServiceBase<vwContasAReceber>
     {
         List<vwContasAReceber> GetAllItens();
+        List<vwContasAReceber> GetByData(DateTime data);
     }
 }

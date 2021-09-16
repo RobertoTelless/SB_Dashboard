@@ -7,9 +7,8 @@ using EntitiesServices.Model;
 
 namespace ApplicationServices.Interfaces
 {
-    public interface ICRAppService : IAppServiceBase<vwContasAReceber>
+    public interface IEPAppService : IAppServiceBase<vwExecutandoPositivo>
     {
-        List<vwContasAReceber> GetAllItens();
-        List<vwContasAReceber> GetByData(DateTime data);
+        List<vwExecutandoPositivo> GetAllItens();
     }
 }
