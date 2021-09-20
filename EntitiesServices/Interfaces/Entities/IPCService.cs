@@ -11,5 +11,6 @@ namespace ModelServices.Interfaces.EntitiesServices
     public interface IPCService : IServiceBase<vwParcelamento>
     {
         List<vwParcelamento> GetAllItens();
+        List<vwParcelamento> ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro);
     }
 }

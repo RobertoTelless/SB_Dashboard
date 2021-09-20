@@ -11,22 +11,22 @@ namespace SB_Dashboard_Presentation.ViewModels
     public class ModeloViewModel
     {
         [Key]
-        public int Filtro { get; set; }
+        public Int32 Filtro { get; set; }
         public DateTime FiltroData { get; set; }
         public String FiltroTexto { get; set; }
         public String MesAno { get; set; }
         public Decimal Valor { get; set; }
         public String Observacao { get; set; }
-        public DateTime EmissaoInicio { get; set; }
-        public DateTime EmissaoFinal { get; set; }
-        public DateTime VencimentoInicio { get; set; }
-        public DateTime VencimentoFinal { get; set; }
-        public DateTime RecebimentoInicio { get; set; }
-        public DateTime RecebimentoFinal { get; set; }
-        public DateTime PagamentoInicio { get; set; }
-        public DateTime PagamentoFinal { get; set; }
-        public int CentroCusto { get; set; }
-        public int CentroLucro { get; set; }
+        public DateTime? EmissaoInicio { get; set; }
+        public DateTime? EmissaoFinal { get; set; }
+        public DateTime? VencimentoInicio { get; set; }
+        public DateTime? VencimentoFinal { get; set; }
+        public DateTime? RecebimentoInicio { get; set; }
+        public DateTime? RecebimentoFinal { get; set; }
+        public DateTime? PagamentoInicio { get; set; }
+        public DateTime? PagamentoFinal { get; set; }
+        public String CentroCusto { get; set; }
+        public String CentroLucro { get; set; }
 
 
 

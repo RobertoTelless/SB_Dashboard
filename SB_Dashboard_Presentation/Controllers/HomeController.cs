@@ -16,6 +16,13 @@ namespace ERP_Condominios_Solution.Controllers
     {
         public ActionResult Index()
         {
+            Session["CarregaListas"] = 0;
+            Session["Filtro"] = null;
+            Session["FalhaCR"] = 0;
+            Session["FalhaCP"] = 0;
+            Session["FalhaPC"] = 0;
+            Session["FalhaLP"] = 0;
+            Session["Inicio"] = 0;
             return RedirectToAction("MontarTelaDashboardReal", "Dashboard");
         }
 

@@ -11,5 +11,6 @@ namespace ApplicationServices.Interfaces
     {
         List<vwContasAReceber> GetAllItens();
         List<vwContasAReceber> GetByData(DateTime data);
+        Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro, out List<vwContasAReceber> objeto);
     }
 }

@@ -10,5 +10,7 @@ namespace ModelServices.Interfaces.Repositories
     public interface IPCRepository : IRepositoryBase<vwParcelamento>
     {
         List<vwParcelamento> GetAllItens();
+        List<vwParcelamento> ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro);
+
     }
 }

@@ -24,6 +24,59 @@ namespace DataServices.Repositories
             query = query.Where(p => p.Data_de_Vencimento.Month == data.Month & p.Data_de_Vencimento.Year == data.Year);
             return query.ToList();
         }
+
+        public List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro)
+        {
+            List<vwContasAReceber> lista = new List<vwContasAReceber>();
+            IQueryable<vwContasAReceber> query = Db.vwContasAReceber;
+            if (!String.IsNullOrEmpty(centroLucro))
+            {
+                query = query.Where(p => p.Centro_de_Lucro == centroLucro);
+            }
+            if (emissaoInicio != null & emissaoFinal != null)
+            {
+                query = query.Where(p => p.Data_de_Emissao >= emissaoInicio & p.Data_de_Emissao <= emissaoFinal);
+            }
+            else if (emissaoInicio != null & emissaoFinal == null)
+            {
+                query = query.Where(p => p.Data_de_Emissao >= emissaoInicio);
+            }
+            else if (emissaoInicio == null & emissaoFinal != null)
+            {
+                query = query.Where(p => p.Data_de_Emissao <= emissaoFinal);
+            }
+            if (vencInicio != null & vencFinal != null)
+            {
+                query = query.Where(p => p.Data_de_Vencimento >= vencInicio & p.Data_de_Vencimento <= vencFinal);
+            }
+            else if (vencInicio != null & vencFinal == null)
+            {
+                query = query.Where(p => p.Data_de_Vencimento >= vencInicio);
+            }
+            else if (vencInicio == null & vencFinal != null)
+            {
+                query = query.Where(p => p.Data_de_Vencimento <= vencFinal);
+            }
+            if (recInicio != null & recFinal != null)
+            {
+                query = query.Where(p => p.Data_de_Recebimento >= recInicio & p.Data_de_Recebimento <= recFinal);
+            }
+            else if (recInicio != null & recFinal == null)
+            {
+                query = query.Where(p => p.Data_de_Recebimento >= recInicio);
+            }
+            else if (recInicio == null & recFinal != null)
+            {
+                query = query.Where(p => p.Data_de_Recebimento <= recFinal);
+            }
+            if (query != null)
+            {
+                query = query.OrderByDescending(a => a.Data_de_Vencimento);
+                lista = query.ToList<vwContasAReceber>();
+            }
+            return lista;
+        }
+
     }
 }
  

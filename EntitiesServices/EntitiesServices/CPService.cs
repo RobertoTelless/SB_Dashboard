@@ -93,6 +93,10 @@ namespace ModelServices.EntitiesServices
             }
         }
 
+        public List<vwContasAPagar> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? pagInicio, DateTime? pagFinal, String centroCusto)
+        {
+            return _baseRepository.ExecuteFilter(emissaoInicio, emissaoFinal, vencInicio, vencFinal, pagInicio, pagFinal, centroCusto);
+        }
 
     }
 }

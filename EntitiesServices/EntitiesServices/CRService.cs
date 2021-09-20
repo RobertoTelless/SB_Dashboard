@@ -93,6 +93,9 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-
+        public List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro)
+        {
+            return _baseRepository.ExecuteFilter(emissaoInicio, emissaoFinal, vencInicio, vencFinal, recInicio, recFinal, centroLucro);
+        }
     }
 }

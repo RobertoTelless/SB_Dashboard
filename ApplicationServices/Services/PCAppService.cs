@@ -25,5 +25,27 @@ namespace ApplicationServices.Services
         {
             return _baseService.GetAllItens();
         }
+
+        public Int32 ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro, out List<vwParcelamento> objeto)
+        {
+            try
+            {
+                objeto = new List<vwParcelamento>();
+                Int32 volta = 0;
+
+                // Processa filtro
+                objeto = _baseService.ExecuteFilter(vencInicio, vencFinal, centroLucro);
+                if (objeto.Count == 0)
+                {
+                    volta = 1;
+                }
+                return volta;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

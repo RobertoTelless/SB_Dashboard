@@ -1,6 +1,6 @@
 ﻿@using Presentation.Extensions
 @using CrossCutting;
-@model EntitiesServices.Model.vwContasAReceber
+@model EntitiesServices.Model.vwLancamentosAPagar
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,7 +13,7 @@
                 <a href="@Url.Action("MontarTelaDashboard", "Dashboard")">Dashboards</a>
             </li>
             <li class="active">
-                <strong>Receitas - Expansão</strong>
+                <strong>Lançamentos a Pagar - Expansão</strong>
             </li>
         </ol>
         <br />
@@ -53,10 +53,10 @@
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px">
                                 <div class="ibox-title">
                                     <span class="label label-primary pull-right">Hoje</span>
-                                    <h5>Receitas</h5>
+                                    <h5>Lançamentos a Pagar</h5>
                                 </div>
                                 <div class="ibox-content">
-                                    <h1 class="no-margins">@ViewBag.ListaCRNum</h1>
+                                    <h1 class="no-margins">@ViewBag.ListaLPNum</h1>
                                     <small>Lançamentos Filtrados</small>
                                 </div>
                             </div>
@@ -65,10 +65,10 @@
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px">
                                 <div class="ibox-title">
                                     <span class="label label-primary pull-right">Hoje</span>
-                                    <h5>Receitas</h5>
+                                    <h5>Lançamentos a Pagar</h5>
                                 </div>
                                 <div class="ibox-content">
-                                    <h1 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.CRValor)</h1>
+                                    <h1 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.LPValor)</h1>
                                     <small>Total em R$</small>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                         <div class="col-lg-4 col-md-4 col-xs-12">
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 560px">
                                 <div class="ibox-title">
-                                    <h4>Exibição dos Dados e Informações de RECEITA</h4>
+                                    <h4>Exibição dos Dados e Informações de LANÇAMENTOS</h4>
                                     <h4 style="color: brown">(Exibidos os 7 primeiros registros filtrados)</h4>
                                     <div class="ibox-tools">
                                         <a class="collapse-link">
@@ -102,30 +102,30 @@
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row">
-                                        @if ((ViewBag.ListaCR as List<EntitiesServices.Model.vwContasAReceber>).Count > 0)
+                                        @if ((ViewBag.ListaLP as List<EntitiesServices.Model.vwLancamentosAPagar>).Count > 0)
                                         {
                                             <table class="table table-striped table-bordered table-hover">
                                                 <thead style="background-color:lightsteelblue">
                                                     <tr>
                                                         <th>Data Vencimento</th>
-                                                        <th>Sacado</th>
+                                                        <th>Beneficiário</th>
                                                         <th>Valor (R$)</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var cond in (ViewBag.ListaCR as List<EntitiesServices.Model.vwContasAReceber>).OrderByDescending(p => p.Data_de_Vencimento).Take(7).ToList())
+                                                    @foreach (var cond in (ViewBag.ListaLP as List<EntitiesServices.Model.vwLancamentosAPagar>).OrderByDescending(p => p.Data_de_Vencimento).Take(7).ToList())
                                                     {
                                                         <tr>
-                                                            <td>@cond.Data_de_Vencimento.ToShortDateString()</td>
-                                                            <td>@cond.Sacado</td>
-                                                            <td>@CrossCutting.Formatters.DecimalFormatter(cond.Valor_Liquido)</td>
+                                                            <td>@cond.Data_de_Vencimento.Value.ToShortDateString()</td>
+                                                            <td>@cond.Beneficiario</td>
+                                                            <td>@CrossCutting.Formatters.DecimalFormatter(cond.Valor)</td>
                                                        </tr>
                                                     }
                                                 </tbody>
                                             </table>
                                         }
                                         <div class="form-group">
-                                            @Html.ButtonLinkIndex(text: "Ver Mais Informações", action: "VerTodosReceita", controller: "Dashboard")
+                                            @Html.ButtonLinkIndex(text: "Ver Mais Informações", action: "VerTodosLancamentos", controller: "Dashboard")
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                         <div class="col-lg-8 col-md-8 col-xs-12">
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 560px">
                                 <div class="ibox-title">
-                                    <h4>Gráfico do Indicador RECEITAS  -   Ano de Referência: @ViewBag.Ano</h4>
+                                    <h4>Gráfico do Indicador LANÇAMENTOS A PAGAR  -   Ano de Referência: @ViewBag.Ano</h4>
                                     <div class="ibox-tools">
                                         <a class="collapse-link">
                                             <i class="fa fa-chevron-up"></i>
@@ -344,11 +344,6 @@
                         pointBackgroundColor: "rgba(26,179,148,1)",
                         pointBorderColor: "#fff",
                         data: [28, 48, 40, 19, 86, 27, 90, 78, 23, 33, 87, 56]
-                    }, {
-                        label: "Valor Líquido (R$ x 1000)",
-                        backgroundColor: 'rgba(220, 220, 220, 0.5)',
-                        pointBorderColor: "#fff",
-                        data: [23, 42, 35, 12, 78, 22, 80, 70, 17, 28, 75, 41]
                     }
                 ]
             };

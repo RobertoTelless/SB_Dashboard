@@ -88,6 +88,10 @@ namespace ModelServices.EntitiesServices
             }
         }
 
+        public List<vwLancamentosAPagar> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, String centroLucro, String centroCusto)
+        {
+            return _baseRepository.ExecuteFilter(emissaoInicio, emissaoFinal, vencInicio, vencFinal, centroLucro, centroCusto);
+        }
 
     }
 }

@@ -10,5 +10,6 @@ namespace ApplicationServices.Interfaces
     public interface IPCAppService : IAppServiceBase<vwParcelamento>
     {
         List<vwParcelamento> GetAllItens();
+        Int32 ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro, out List<vwParcelamento> objeto);
     }
 }

@@ -31,5 +31,25 @@ namespace ApplicationServices.Services
             return _baseService.GetByData(data);
         }
 
+        public Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro, out List<vwContasAReceber> objeto)
+        {
+            try
+            {
+                objeto = new List<vwContasAReceber>();
+                Int32 volta = 0;
+
+                // Processa filtro
+                objeto = _baseService.ExecuteFilter(emissaoInicio, emissaoFinal, vencInicio, vencFinal, recInicio, recFinal, centroLucro);
+                if (objeto.Count == 0)
+                {
+                    volta = 1;
+                }
+                return volta;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

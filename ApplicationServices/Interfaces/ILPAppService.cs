@@ -10,5 +10,6 @@ namespace ApplicationServices.Interfaces
     public interface ILPAppService : IAppServiceBase<vwLancamentosAPagar>
     {
         List<vwLancamentosAPagar> GetAllItens();
+        Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, String centroLucro, String centroCusto, out List<vwLancamentosAPagar> objeto);
     }
 }

@@ -2665,6 +2665,9 @@
     <Content Include="amcharts4\themes\spiritedaway.js.map" />
     <Content Include="Imagens\PDF1.pdf" />
     <None Include="Properties\PublishProfiles\ModelosDashboard - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\on-suite-dashboards - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\on-suite-dashboards - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\on-suite-dashboards - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\SB-Dashboards - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\characterCount.js" />
@@ -3515,6 +3518,12 @@
     <Content Include="Views\Dashboard\MontarTelaDashboardReal.cshtml" />
     <Content Include="Views\Dashboard\VerReceitasExpansao.cshtml" />
     <Content Include="Views\Dashboard\VerTodosReceita.cshtml" />
+    <Content Include="Views\Dashboard\VerDespesasExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerParcelamentosExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerLancamentosExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerTodosDespesas.cshtml" />
+    <Content Include="Views\Dashboard\VerTodosParcelamentos.cshtml" />
+    <Content Include="Views\Dashboard\VerTodosLancamentos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

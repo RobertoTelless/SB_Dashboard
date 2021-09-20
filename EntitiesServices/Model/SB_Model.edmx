@@ -2303,6 +2303,19 @@ warning 6002: The table/view 'OnSuiteBI.dbo.PessoaCaixinha' does not have a prim
           <Property Name="Saldo" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'OnSuiteBI.dbo.Transacao' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Transacao">
+          <Property Name="Id" Type="nvarchar(max)" />
+          <Property Name="DataCriacao" Type="date" />
+          <Property Name="Pessoa" Type="int" />
+          <Property Name="Valor" Type="money" />
+          <Property Name="ContaBancaria" Type="int" />
+          <Property Name="OrdemServico" Type="int" />
+          <Property Name="CentroCusto" Type="int" />
+          <Property Name="NotaFiscal" Type="nvarchar" MaxLength="50" />
+          <Property Name="FaturadoPara" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwCentroCustoAgrupado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwCentroCustoAgrupado">
           <Key>
@@ -2397,12 +2410,6 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwExecutandoPositivo' does not have 
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExecutandoPositivo" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'OnSuiteBI.dbo.vwExtrato' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwExtrato">
-          <Property Name="Id" Type="bigint" />
-          <Property Name="Saldo" Type="money" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwLancamentosAPagar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwLancamentosAPagar">

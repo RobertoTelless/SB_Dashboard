@@ -94,6 +94,19 @@ namespace SB_Dashboard_Presentation.Controllers
         [HttpPost]
         public ActionResult FiltrarTudoDashboard(ModeloViewModel item)
         {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             return RedirectToAction("MontarTelaDashboard");
         }
 
@@ -197,21 +210,15 @@ namespace SB_Dashboard_Presentation.Controllers
         [HttpGet]
         public ActionResult MontarTelaDashboardReal()
         {
-            // Carrega listas principais
-            //DateTime hoje = DateTime.Today.Date;
-            DateTime hoje = Convert.ToDateTime("10/09/2019");
-            listaCR = crApp.GetByData(hoje);
-            listaCP = cpApp.GetByData(hoje);
-            listaLP = lpApp.GetAllItens();
-            listaPC = pcApp.GetAllItens();
-            listaEP = epApp.GetAllItens();
-            listaEN = enApp.GetAllItens();
-            Session["ListaCR"] = listaCR;
-            Session["ListaCP"] = listaCP;
-            Session["ListaLP"] = listaLP;
-            Session["ListaPC"] = listaPC;
-            Session["ListaEP"] = listaEP;
-            Session["ListaEN"] = listaEN;
+            // Variaveis
+            Decimal rec = 0;
+            Decimal pag = 0;
+            Decimal lp = 0;
+            Decimal pc = 0;
+            Decimal ep = 0;
+            Decimal en = 0;
+            DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
+            DateTime hoje = DateTime.Today.Date;
 
             // Carrega listas dos filtros
             var listaCentroLucro = listaCR.Select(p => p.Centro_de_Lucro).Distinct().ToList();
@@ -224,9 +231,9 @@ namespace SB_Dashboard_Presentation.Controllers
                 }
             }
             ViewBag.CentroLucro = new SelectList(listaCL, "Value", "Text");
-
+                
             var listaCentroCusto = listaCP.Select(p => p.Centro_de_Custos).Distinct().ToList();
-            List<SelectListItem> listaCC= new List<SelectListItem>();
+            List<SelectListItem> listaCC = new List<SelectListItem>();
             foreach (var item in listaCentroCusto)
             {
                 if (item != null)
@@ -236,47 +243,98 @@ namespace SB_Dashboard_Presentation.Controllers
             }
             ViewBag.CentroCusto = new SelectList(listaCC, "Value", "Text");
 
-            // Carrega viewmodel filtro
-            DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
+            // Carrega campos de fikltro
             ModeloViewModel mod = new ModeloViewModel();
-            //mod.EmissaoInicio = inicio;
-            //mod.EmissaoFinal = DateTime.Today.Date;
-            //mod.VencimentoInicio = inicio;
-            //mod.VencimentoFinal = DateTime.Today.Date;
-            //mod.RecebimentoInicio = inicio;
-            //mod.RecebimentoFinal = DateTime.Today.Date;
-            //mod.PagamentoInicio = inicio;
-            //mod.PagamentoFinal = DateTime.Today.Date;
+            if (Session["Filtro"] == null)
+            {
+                //mod.EmissaoInicio = inicio;
+                //mod.EmissaoFinal = DateTime.Today.Date;
+                //mod.VencimentoInicio = inicio;
+                //mod.VencimentoFinal = DateTime.Today.Date;
+                //mod.RecebimentoInicio = inicio;
+                //mod.RecebimentoFinal = DateTime.Today.Date;
+                //mod.PagamentoInicio = inicio;
+                //mod.PagamentoFinal = DateTime.Today.Date;
 
-            mod.EmissaoInicio = Convert.ToDateTime("01/09/2019");
-            mod.EmissaoFinal = Convert.ToDateTime("30/09/2019");
-            mod.VencimentoInicio = Convert.ToDateTime("01/09/2019");
-            mod.VencimentoFinal = Convert.ToDateTime("30/09/2019");
-            mod.RecebimentoInicio = Convert.ToDateTime("01/09/2019");
-            mod.RecebimentoFinal = Convert.ToDateTime("30/09/2019");
-            mod.PagamentoInicio = Convert.ToDateTime("01/09/2019");
-            mod.PagamentoFinal = Convert.ToDateTime("30/09/2019");
-
-            Session["RecIni"] = Convert.ToDateTime("01/09/2019");
-            Session["RecFim"] = Convert.ToDateTime("30/09/2019");
+                mod.EmissaoInicio = null;
+                mod.EmissaoFinal = null;
+                mod.VencimentoInicio = Convert.ToDateTime("01/09/2019");
+                mod.VencimentoFinal = Convert.ToDateTime("30/09/2019");
+                mod.RecebimentoInicio = null;
+                mod.RecebimentoFinal = null;
+                mod.PagamentoInicio = null;
+                mod.PagamentoFinal = null;
+                Session["Filtro"] = null;
+                Session["RecIni"] = Convert.ToDateTime("01/09/2019");
+                Session["RecFim"] = Convert.ToDateTime("30/09/2019");
+                Session["DataBase"] = Convert.ToDateTime("01/09/2019");
+            }
+            else
+            {
+                mod = (ModeloViewModel)Session["Filtro"];
+                Session["RecIni"] = mod.EmissaoInicio;
+                Session["RecFim"] = mod.EmissaoFinal;
+                Session["DataBase"] = mod.EmissaoInicio;
+            }
 
             // Carrega Indicadores Diretos -- A SUBSTITUR
             decimal saldoBancario = Convert.ToDecimal(164604.20);
             ViewBag.SaldoBancario = saldoBancario;
 
-            // Carrega Indicadores
-            //decimal rec = listaCR.Where(p => p.Data_de_Recebimento.Value.Month == DateTime.Today.Date.Month & p.Data_de_Recebimento.Value.Year == DateTime.Today.Date.Year).Sum(p => p.Valor_Liquido);
-            //decimal pag = listaCP.Where(p => p.Data_de_Pagamento.Value.Month == DateTime.Today.Date.Month & p.Data_de_Pagamento.Value.Year == DateTime.Today.Date.Year).Sum(p => p.Valor);
-            //decimal lp = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == DateTime.Today.Date.Month & p.Data_de_Vencimento.Value.Year == DateTime.Today.Date.Year).Sum(p => p.Valor);
-            //decimal pc = listaPC.Sum(p => p.Valor_Bruto);
+            // Carrega listas principais
+            if ((Int32)Session["CarregaListas"] == 0)
+            {
+                hoje = Convert.ToDateTime("10/09/2019");
+                listaCR = crApp.GetByData(hoje);
+                listaCP = cpApp.GetByData(hoje);
+                listaLP = lpApp.GetAllItens();
+                listaPC = pcApp.GetAllItens();
+                listaEP = epApp.GetAllItens();
+                listaEN = enApp.GetAllItens();
+                Session["ListaCR"] = listaCR;
+                Session["ListaCP"] = listaCP;
+                Session["ListaLP"] = listaLP;
+                Session["ListaPC"] = listaPC;
+                Session["ListaEP"] = listaEP;
+                Session["ListaEN"] = listaEN;
+                Session["CarregaListas"] = 1;
 
-            Decimal rec = listaCR.Where(p => p.Data_de_Vencimento.Month == 9 & p.Data_de_Vencimento.Year == 2019).Sum(p => p.Valor_Liquido);
-            Decimal pag = listaCP.Where(p => p.Data_de_Vencimento.Month == 9 & p.Data_de_Vencimento.Year == 2019).Sum(p => p.Valor);
-            Decimal lp = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == 9 & p.Data_de_Vencimento.Value.Year == 2019).Sum(p => p.Valor);
-            Decimal pc = listaPC.Sum(p => p.Valor_Bruto);
-            Decimal ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
-            Decimal en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
+                rec = listaCR.Where(p => p.Data_de_Vencimento.Month == 9 & p.Data_de_Vencimento.Year == 2019).Sum(p => p.Valor_Liquido);
+                pag = listaCP.Where(p => p.Data_de_Vencimento.Month == 9 & p.Data_de_Vencimento.Year == 2019).Sum(p => p.Valor);
+                lp = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == 9 & p.Data_de_Vencimento.Value.Year == 2019).Sum(p => p.Valor);
+                pc = listaPC.Sum(p => p.Valor_Bruto);
+                ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
+                en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
 
+                ViewBag.FalhaCR = listaCR.Count > 0 ? 0 : 1;
+                ViewBag.FalhaCP = listaCP.Count > 0 ? 0 : 1;
+                ViewBag.FalhaPC = listaPC.Count > 0 ? 0 : 1;
+                ViewBag.FalhaLP = listaLP.Count > 0 ? 0 : 1;
+            }
+            else
+            {
+                listaCR = (List<vwContasAReceber>)Session["ListaCR"];
+                listaCP = (List<vwContasAPagar>)Session["ListaCP"];
+                listaPC = (List<vwParcelamento>)Session["ListaPC"];
+                listaLP = (List<vwLancamentosAPagar>)Session["ListaLP"];
+                listaEN = (List<vwExecutandoNegativo>)Session["ListaEN"];
+                listaEP = (List<vwExecutandoPositivo>)Session["ListaEP"];
+                Session["CarregaListas"] = 1;
+
+                rec = listaCR.Sum(p => p.Valor_Liquido);
+                pag = listaCP.Sum(p => p.Valor);
+                lp = listaLP.Sum(p => p.Valor);
+                pc = listaPC.Sum(p => p.Valor_Bruto);
+                ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
+                en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
+
+                ViewBag.FalhaCR = (Int32)Session["FalhaCR"];
+                ViewBag.FalhaCP = (Int32)Session["FalhaCP"];
+                ViewBag.FalhaPC = (Int32)Session["FalhaPC"];
+                ViewBag.FalhaLP = (Int32)Session["FalhaLP"];
+            }
+
+            // Configura view
             ViewBag.Rec = rec;
             ViewBag.Pag = pag;
             ViewBag.Lp = lp;
@@ -295,16 +353,63 @@ namespace SB_Dashboard_Presentation.Controllers
             ViewBag.Resultado = result;
             ViewBag.SaldoTotal = saldo;
 
+            // Retorna
             return View(mod);
         }
 
         public ActionResult VerReceitasExpansao()
         {
+            // Prepara grafico
+            String ano = ((DateTime)Session["DataBase"]).Year.ToString();
+            ViewBag.Ano = ano;            
+            
             // Prepara view
             List<vwContasAReceber> listaCR = (List<vwContasAReceber>)Session["ListaCR"];
             ViewBag.ListaCR = listaCR;
             ViewBag.ListaCRNum = listaCR.Count;
             ViewBag.CRValor = (Decimal)Session["Rec"];
+            return View();
+        }
+
+        public ActionResult VerDespesasExpansao()
+        {
+            // Prepara grafico
+            String ano = ((DateTime)Session["DataBase"]).Year.ToString();
+            ViewBag.Ano = ano;
+
+            // Prepara view
+            List<vwContasAPagar> listaCP = (List<vwContasAPagar>)Session["ListaCP"];
+            ViewBag.ListaCP = listaCP;
+            ViewBag.ListaCPNum = listaCP.Count;
+            ViewBag.CPValor = (Decimal)Session["Pag"];
+            return View();
+        }
+
+        public ActionResult VerParcelamentosExpansao()
+        {
+            // Prepara grafico
+            String ano = ((DateTime)Session["DataBase"]).Year.ToString();
+            ViewBag.Ano = ano;
+
+            // Prepara view
+            List<vwParcelamento> listaPC = (List<vwParcelamento>)Session["ListaPC"];
+            ViewBag.listaPC = listaPC;
+            ViewBag.listaPCNum = listaPC.Count;
+            ViewBag.PCValor = (Decimal)Session["PC"];
+            return View();
+        }
+
+        public ActionResult VerLancamentosExpansao()
+        {
+            // Prepara grafico
+            String ano = ((DateTime)Session["DataBase"]).Year.ToString();
+            ViewBag.Ano = ano;
+
+            // Prepara view
+            List<vwLancamentosAPagar> listaLP = (List<vwLancamentosAPagar>)Session["ListaLP"];
+            ViewBag.listaLP = listaLP;
+            ViewBag.listaLPNum = listaLP.Count;
+            ViewBag.LPValor = (Decimal)Session["LP"];
             return View();
         }
 
@@ -347,6 +452,98 @@ namespace SB_Dashboard_Presentation.Controllers
             ViewBag.ListaCRNum = listaCR.Count;
             ViewBag.CRValor = (Decimal)Session["Rec"];
             return View();
+        }
+
+        public ActionResult VerTodosDespesas()
+        {
+            // Prepara view
+            List<vwContasAPagar> listaCP = (List<vwContasAPagar>)Session["listaCP"];
+            ViewBag.listaCP = listaCP;
+            ViewBag.listaCPNUm = listaCP.Count;
+            ViewBag.CPValor = (Decimal)Session["Pag"];
+            return View();
+        }
+
+        public ActionResult VerTodosParcelamentos()
+        {
+            // Prepara view
+            List<vwParcelamento> listaPC = (List<vwParcelamento>)Session["listaPC"];
+            ViewBag.listaPC = listaPC;
+            ViewBag.listaPCNum = listaPC.Count;
+            ViewBag.PCValor = (Decimal)Session["PC"];
+            return View();
+        }
+
+        public ActionResult VerTodosLancamentos()
+        {
+            // Prepara view
+            List<vwLancamentosAPagar> listaLP = (List<vwLancamentosAPagar>)Session["listaLP"];
+            ViewBag.listaLP = listaLP;
+            ViewBag.listaLPNum = listaLP.Count;
+            ViewBag.LPValor = (Decimal)Session["LP"];
+            return View();
+        }
+
+        public ActionResult RetirarFiltro()
+        {
+            Session["CarregaLista"] = 0;
+            Session["Filtro"] = null;
+            return RedirectToAction("MontarTelaDashboardReal");
+        }
+
+        [HttpPost]
+        public ActionResult FiltrarGeralDashboard(ModeloViewModel item)
+        {
+            try
+            {
+                // Executa a operação
+                Session["Filtro"] = item;
+
+                // Receitas
+                List<vwContasAReceber> listaCR = new List<vwContasAReceber>();
+                Int32 volta = crApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.RecebimentoInicio, item.RecebimentoFinal, item.CentroLucro, out listaCR);
+                if (volta == 1)
+                {
+                    Session["FalhaCR"] = 1;
+                }
+
+                // Despesas
+                List<vwContasAPagar> listaCP = new List<vwContasAPagar>();
+                volta = cpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.PagamentoInicio, item.PagamentoFinal, item.CentroCusto, out listaCP);
+                if (volta == 1)
+                {
+                    Session["FalhaCP"] = 1;
+                }
+
+                // Parcelamentos
+                List<vwParcelamento> listaPC = new List<vwParcelamento>();
+                volta = pcApp.ExecuteFilter(item.VencimentoInicio, item.VencimentoFinal, item.CentroLucro, out listaPC);
+                if (volta == 1)
+                {
+                    Session["FalhaPC"] = 1;
+                }
+
+                // Lancamentos
+                List<vwLancamentosAPagar> listaLP = new List<vwLancamentosAPagar>();
+                volta = lpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.CentroCusto, item.CentroLucro, out listaLP);
+                if (volta == 1)
+                {
+                    Session["FalhaLP"] = 1;
+                }
+
+                // Sucesso
+                Session["CarregaLista"] = 1;
+                Session["ListaCR"] = listaCR;
+                Session["ListaCP"] = listaCP;
+                Session["ListaPC"] = listaPC;
+                Session["ListaLP"] = listaLP;
+                return RedirectToAction("MontarTelaDashboardReal");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return RedirectToAction("MontarTelaDashboardReal");
+            }
         }
 
     }
