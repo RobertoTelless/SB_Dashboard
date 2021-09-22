@@ -26,7 +26,7 @@ namespace ApplicationServices.Services
             return _baseService.GetAllItens();
         }
 
-        public Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, String centroLucro, String centroCusto, out List<vwLancamentosAPagar> objeto)
+        public Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, String centroLucro, String centroCusto, String beneficiario, out List<vwLancamentosAPagar> objeto)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace ApplicationServices.Services
                 Int32 volta = 0;
 
                 // Processa filtro
-                objeto = _baseService.ExecuteFilter(emissaoInicio, emissaoFinal, vencInicio, vencFinal, centroLucro, centroCusto);
+                objeto = _baseService.ExecuteFilter(emissaoInicio, emissaoFinal, vencInicio, vencFinal, centroLucro, centroCusto, beneficiario);
                 if (objeto.Count == 0)
                 {
                     volta = 1;

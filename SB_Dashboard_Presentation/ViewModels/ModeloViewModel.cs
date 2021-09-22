@@ -27,6 +27,8 @@ namespace SB_Dashboard_Presentation.ViewModels
         public DateTime? PagamentoFinal { get; set; }
         public String CentroCusto { get; set; }
         public String CentroLucro { get; set; }
+        public String Beneficiario { get; set; }
+        public String Sacado { get; set; }
 
 
 

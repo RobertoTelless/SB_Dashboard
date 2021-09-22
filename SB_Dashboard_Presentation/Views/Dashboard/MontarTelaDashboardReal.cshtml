@@ -102,49 +102,49 @@
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Emissão (Início)
-                                        @Html.TextBoxFor(m => m.EmissaoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.EmissaoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data1" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Emissão (Final)
-                                        @Html.TextBoxFor(m => m.EmissaoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.EmissaoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data2" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Vencimento (Início)
-                                        @Html.TextBoxFor(m => m.VencimentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.VencimentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data3" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Vencimento (Final)
-                                        @Html.TextBoxFor(m => m.VencimentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.VencimentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data4" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Recebimento (Início)
-                                        @Html.TextBoxFor(m => m.RecebimentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.RecebimentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data5" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Recebimento (Final)
-                                        @Html.TextBoxFor(m => m.RecebimentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.RecebimentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data6" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Pagamento (Início)
-                                        @Html.TextBoxFor(m => m.PagamentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.PagamentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data7" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         Pagamento (Final)
-                                        @Html.TextBoxFor(m => m.PagamentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data" })
+                                        @Html.TextBoxFor(m => m.PagamentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data8" })
                                     </div>
                                 </div>
                                 <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
@@ -159,6 +159,18 @@
                                         @Html.DropDownListFor(m => m.CentroLucro, (SelectList)ViewBag.CentroLucro, "Selecionar", new { @class = "form-control", autofocus = true })
                                     </div>
                                 </div>
+                                <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                        Beneficiário
+                                        @Html.DropDownListFor(m => m.Beneficiario, (SelectList)ViewBag.Beneficiarios, "Selecionar", new { @class = "form-control", autofocus = true })
+                                    </div>
+                                </div>
+                                <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
+                                    <div class="col-lg-12 col-md-12 col-xs-12">
+                                        Sacado
+                                        @Html.DropDownListFor(m => m.Sacado, (SelectList)ViewBag.Sacados, "Selecionar", new { @class = "form-control", autofocus = true })
+                                    </div>
+                                </div>
                             }
                         </div>
 
@@ -171,6 +183,9 @@
                                         <div class="col-lg-12 col-md-12 col-xs-12">
                                             @Html.ButtonLinkIndex(text: "Recarregar", controller: "Dashboard", action: "Voltar")
                                         </div>
+                                        <div class="col-lg-12 col-md-12 col-xs-12">
+                                            @Html.Label("filtro", (String)ViewBag.LinhaFiltro, new { style = "color: green; font-weight: bold;", @class = "form-control", @readonly = "readonly" })
+                                        </div>
                                     </div>
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a data-toggle="tab" href="#tab-1">Fluxo de Caixa</a></li>
@@ -178,7 +193,6 @@
                                         <li class=""><a data-toggle="tab" href="#tab-3">Business Inteligence</a></li>
                                     </ul>
                                     <div class="tab-content">
-
                                         @*Fluxo de Caixa*@
                                         <div id="tab-1" class="tab-pane active">
                                             <div class="panel-body">
@@ -187,7 +201,7 @@
                                                         <div class="col-lg-4">
                                                             <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
                                                                 <div class="ibox-title">
-                                                                    @if (ViewBag.FalhaCR == 1)
+                                                                    @if (ViewBag.FalhaCR == 0)
 	                                                                {
                                                                         <span class="label label-success pull-right">Filtro</span>
                                                                     }
@@ -202,7 +216,7 @@
                                                                     <small style="cursor: pointer; text-decoration: underline; color: #337ab7;" onclick="mostrarDesc('Descrição do que significa este indicador')">Descrição</small>
                                                                     <br />
                                                                     <br />
-                                                                    @if ((Int32)ViewBag.FalhaRC == 0)
+                                                                    @if ((Int32)ViewBag.FalhaCR == 0)
                                                                     {
                                                                         @Html.ButtonLinkIndex(text: "Expandir", controller: "Dashboard", action: "VerReceitasExpansao", buttonClass: "white")
                                                                     }
@@ -217,7 +231,7 @@
                                                         <div class="col-lg-4">
                                                             <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
                                                                 <div class="ibox-title">
-                                                                    @if (ViewBag.FalhaCP == 1)
+                                                                    @if (ViewBag.FalhaCP == 0)
 	                                                                {
                                                                         <span class="label label-success pull-right">Filtro</span>
                                                                     }
@@ -281,7 +295,7 @@
                                                         <div class="col-lg-4">
                                                             <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
                                                                 <div class="ibox-title">
-                                                                    @if (ViewBag.FalhaPC == 1)
+                                                                    @if (ViewBag.FalhaPC == 0)
 	                                                                {
                                                                         <span class="label label-success pull-right">Filtro</span>
                                                                     }
@@ -311,7 +325,7 @@
                                                         <div class="col-lg-4">
                                                             <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
                                                                 <div class="ibox-title">
-                                                                    @if (ViewBag.FalhaLP == 1)
+                                                                    @if (ViewBag.FalhaLP == 0)
 	                                                                {
                                                                         <span class="label label-success pull-right">Filtro</span>
                                                                     }
@@ -476,7 +490,14 @@
     </script>
     <script type="text/javascript">
         $(function () {
-            $("#data").mask("99/99/9999");
+            $("#data1").mask("99/99/9999");
+            $("#data2").mask("99/99/9999");
+            $("#data3").mask("99/99/9999");
+            $("#data4").mask("99/99/9999");
+            $("#data5").mask("99/99/9999");
+            $("#data6").mask("99/99/9999");
+            $("#data7").mask("99/99/9999");
+            $("#data8").mask("99/99/9999");
         });
     </script>
     <script type="text/javascript" language="javascript">

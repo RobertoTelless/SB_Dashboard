@@ -18,13 +18,17 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
-        public List<vwParcelamento> ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro)
+        public List<vwParcelamento> ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro, String sacado)
         {
             List<vwParcelamento> lista = new List<vwParcelamento>();
             IQueryable<vwParcelamento> query = Db.vwParcelamento;
             if (!String.IsNullOrEmpty(centroLucro))
             {
                 query = query.Where(p => p.Centro_de_Lucro == centroLucro);
+            }
+            if (!String.IsNullOrEmpty(sacado))
+            {
+                query = query.Where(p => p.Cliente == sacado);
             }
             if (vencInicio != null & vencFinal != null)
             {

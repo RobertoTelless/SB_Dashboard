@@ -220,30 +220,7 @@ namespace SB_Dashboard_Presentation.Controllers
             DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
             DateTime hoje = DateTime.Today.Date;
 
-            // Carrega listas dos filtros
-            var listaCentroLucro = listaCR.Select(p => p.Centro_de_Lucro).Distinct().ToList();
-            List<SelectListItem> listaCL = new List<SelectListItem>();
-            foreach (var item in listaCentroLucro)
-            {
-                if (item != null)
-                {
-                    listaCL.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
-                }
-            }
-            ViewBag.CentroLucro = new SelectList(listaCL, "Value", "Text");
-                
-            var listaCentroCusto = listaCP.Select(p => p.Centro_de_Custos).Distinct().ToList();
-            List<SelectListItem> listaCC = new List<SelectListItem>();
-            foreach (var item in listaCentroCusto)
-            {
-                if (item != null)
-                {
-                    listaCC.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
-                }
-            }
-            ViewBag.CentroCusto = new SelectList(listaCC, "Value", "Text");
-
-            // Carrega campos de fikltro
+            // Carrega campos de filtro
             ModeloViewModel mod = new ModeloViewModel();
             if (Session["Filtro"] == null)
             {
@@ -264,6 +241,10 @@ namespace SB_Dashboard_Presentation.Controllers
                 mod.RecebimentoFinal = null;
                 mod.PagamentoInicio = null;
                 mod.PagamentoFinal = null;
+                mod.CentroCusto = null;
+                mod.CentroLucro = null;
+                mod.Beneficiario = null;
+                mod.Sacado = null;
                 Session["Filtro"] = null;
                 Session["RecIni"] = Convert.ToDateTime("01/09/2019");
                 Session["RecFim"] = Convert.ToDateTime("30/09/2019");
@@ -284,10 +265,67 @@ namespace SB_Dashboard_Presentation.Controllers
             // Carrega listas principais
             if ((Int32)Session["CarregaListas"] == 0)
             {
+                // Carrega listas dos filtros
+                List<vwContasAReceber> listaCR1 = crApp.GetAllItens();
+                var listaCentroLucro = listaCR1.Select(p => p.Centro_de_Lucro).Distinct().ToList();
+                List<SelectListItem> listaCL = new List<SelectListItem>();
+                foreach (var item in listaCentroLucro)
+                {
+                    if (item != null)
+                    {
+                        listaCL.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                    }
+                }
+                SelectList cl = new SelectList(listaCL, "Value", "Text");
+                ViewBag.CentroLucro = cl;
+                Session["CL"] = cl;
+
+                var listaSacado = listaCR1.Select(p => p.Sacado).Distinct().ToList();
+                List<SelectListItem> sacado = new List<SelectListItem>();
+                foreach (var item in listaSacado)
+                {
+                    if (item != null)
+                    {
+                        sacado.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                    }
+                }
+                SelectList sa = new SelectList(sacado, "Value", "Text");
+                ViewBag.Sacados = sa;
+                Session["SA"] = sa;
+
+                List<vwContasAPagar> listaCP1 = cpApp.GetAllItens();
+                var listaCentroCusto = listaCP1.Select(p => p.Centro_de_Custos).Distinct().ToList();
+                List<SelectListItem> listaCC = new List<SelectListItem>();
+                foreach (var item in listaCentroCusto)
+                {
+                    if (item != null)
+                    {
+                        listaCC.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                    }
+                }
+                SelectList cc = new SelectList(listaCC, "Value", "Text");
+                ViewBag.CentroCusto = cc;
+                Session["CC"] = cc;
+
+
+                var listaBeneficiario = listaCP1.Select(p => p.Beneficario).Distinct().ToList();
+                List<SelectListItem> beneficiario = new List<SelectListItem>();
+                foreach (var item in listaBeneficiario)
+                {
+                    if (item != null)
+                    {
+                        beneficiario.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                    }
+                }
+                ViewBag.Beneficiarios = new SelectList(beneficiario, "Value", "Text");
+                SelectList be = new SelectList(beneficiario, "Value", "Text");
+                ViewBag.Beneficiarios = be;
+                Session["BE"] = be;
+
                 hoje = Convert.ToDateTime("10/09/2019");
-                listaCR = crApp.GetByData(hoje);
-                listaCP = cpApp.GetByData(hoje);
-                listaLP = lpApp.GetAllItens();
+                listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                listaLP = lpApp.GetAllItens().Where(p => p.Data_de_Vencimento.Value.Month == 9 & p.Data_de_Vencimento.Value.Year == 2019).ToList();
                 listaPC = pcApp.GetAllItens();
                 listaEP = epApp.GetAllItens();
                 listaEN = enApp.GetAllItens();
@@ -299,9 +337,9 @@ namespace SB_Dashboard_Presentation.Controllers
                 Session["ListaEN"] = listaEN;
                 Session["CarregaListas"] = 1;
 
-                rec = listaCR.Where(p => p.Data_de_Vencimento.Month == 9 & p.Data_de_Vencimento.Year == 2019).Sum(p => p.Valor_Liquido);
-                pag = listaCP.Where(p => p.Data_de_Vencimento.Month == 9 & p.Data_de_Vencimento.Year == 2019).Sum(p => p.Valor);
-                lp = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == 9 & p.Data_de_Vencimento.Value.Year == 2019).Sum(p => p.Valor);
+                rec = listaCR.Sum(p => p.Valor_Liquido);
+                pag = listaCP.Sum(p => p.Valor);
+                lp = listaLP.Sum(p => p.Valor);
                 pc = listaPC.Sum(p => p.Valor_Bruto);
                 ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
                 en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
@@ -332,6 +370,11 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.FalhaCP = (Int32)Session["FalhaCP"];
                 ViewBag.FalhaPC = (Int32)Session["FalhaPC"];
                 ViewBag.FalhaLP = (Int32)Session["FalhaLP"];
+
+                ViewBag.Beneficiarios = (SelectList)Session["BE"];
+                ViewBag.Sacado = (SelectList)Session["SA"];
+                ViewBag.CentroCusto = (SelectList)Session["CC"];
+                ViewBag.CentroLucro = (SelectList)Session["CL"];
             }
 
             // Configura view
@@ -352,6 +395,120 @@ namespace SB_Dashboard_Presentation.Controllers
             Decimal saldo = result + saldoBancario;
             ViewBag.Resultado = result;
             ViewBag.SaldoTotal = saldo;
+
+            // Monta linha do filtro
+            String linhaFiltro = String.Empty;
+            if (mod.EmissaoInicio != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Emissão-Início: " + mod.EmissaoInicio.Value.ToShortDateString();
+                }
+                else
+                {
+                    linhaFiltro += " | Emissão-Início: " + mod.EmissaoInicio.Value.ToShortDateString();
+                }
+            }
+            if (mod.EmissaoFinal != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Emissão-Final: " + mod.EmissaoFinal.Value.ToShortDateString();
+                }
+                else
+                {
+                    linhaFiltro += " | Emissão-Final: " + mod.EmissaoFinal.Value.ToShortDateString();
+                }
+            }
+            if (mod.VencimentoInicio != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Vencimento-Início: " + mod.VencimentoInicio.Value.ToShortDateString();
+                }
+                else
+                {
+                    linhaFiltro += " | Vencimento-Início: " + mod.VencimentoInicio.Value.ToShortDateString();
+                }
+            }
+            if (mod.VencimentoFinal != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Vencimento-Final: " + mod.VencimentoFinal.Value.ToShortDateString();
+                }
+                else
+                {
+                    linhaFiltro += " | Vencimento-Final: " + mod.VencimentoFinal.Value.ToShortDateString();
+                }
+            }
+            if (mod.PagamentoInicio != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Pagamento-Início: " + mod.PagamentoInicio.Value.ToShortDateString();
+                }
+                else
+                {
+                    linhaFiltro += " | Pagamento-Início: " + mod.PagamentoInicio.Value.ToShortDateString();
+                }
+            }
+            if (mod.PagamentoFinal != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Pagamento-Final: " + mod.PagamentoFinal.Value.ToShortDateString();
+                }
+                else
+                {
+                    linhaFiltro += " | Pagamento-Final: " + mod.PagamentoFinal.Value.ToShortDateString();
+                }
+            }
+            if (mod.CentroCusto != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Centro de Custo: " + mod.CentroCusto;
+                }
+                else
+                {
+                    linhaFiltro += " | Centro de Custo: " + mod.CentroCusto;
+                }
+            }
+            if (mod.CentroLucro != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Centro de Lucro: " + mod.CentroLucro;
+                }
+                else
+                {
+                    linhaFiltro += " | Centro de Lucro: " + mod.CentroLucro;
+                }
+            }
+            if (mod.Beneficiario != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Beneficário: " + mod.Beneficiario;
+                }
+                else
+                {
+                    linhaFiltro += " | Beneficário: " + mod.Beneficiario;
+                }
+            }
+            if (mod.Sacado != null)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Sacado: " + mod.Sacado;
+                }
+                else
+                {
+                    linhaFiltro += " | Sacado: " + mod.Sacado;
+                }
+            }
+            ViewBag.LinhaFiltro = linhaFiltro;
 
             // Retorna
             return View(mod);
@@ -501,7 +658,7 @@ namespace SB_Dashboard_Presentation.Controllers
 
                 // Receitas
                 List<vwContasAReceber> listaCR = new List<vwContasAReceber>();
-                Int32 volta = crApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.RecebimentoInicio, item.RecebimentoFinal, item.CentroLucro, out listaCR);
+                Int32 volta = crApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.RecebimentoInicio, item.RecebimentoFinal, item.CentroLucro, item.Sacado, out listaCR);
                 if (volta == 1)
                 {
                     Session["FalhaCR"] = 1;
@@ -509,7 +666,7 @@ namespace SB_Dashboard_Presentation.Controllers
 
                 // Despesas
                 List<vwContasAPagar> listaCP = new List<vwContasAPagar>();
-                volta = cpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.PagamentoInicio, item.PagamentoFinal, item.CentroCusto, out listaCP);
+                volta = cpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.PagamentoInicio, item.PagamentoFinal, item.CentroCusto, item.Beneficiario, out listaCP);
                 if (volta == 1)
                 {
                     Session["FalhaCP"] = 1;
@@ -517,7 +674,7 @@ namespace SB_Dashboard_Presentation.Controllers
 
                 // Parcelamentos
                 List<vwParcelamento> listaPC = new List<vwParcelamento>();
-                volta = pcApp.ExecuteFilter(item.VencimentoInicio, item.VencimentoFinal, item.CentroLucro, out listaPC);
+                volta = pcApp.ExecuteFilter(item.VencimentoInicio, item.VencimentoFinal, item.CentroLucro, item.Sacado, out listaPC);
                 if (volta == 1)
                 {
                     Session["FalhaPC"] = 1;
@@ -525,7 +682,7 @@ namespace SB_Dashboard_Presentation.Controllers
 
                 // Lancamentos
                 List<vwLancamentosAPagar> listaLP = new List<vwLancamentosAPagar>();
-                volta = lpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.CentroCusto, item.CentroLucro, out listaLP);
+                volta = lpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.CentroCusto, item.CentroLucro, item.Beneficiario, out listaLP);
                 if (volta == 1)
                 {
                     Session["FalhaLP"] = 1;

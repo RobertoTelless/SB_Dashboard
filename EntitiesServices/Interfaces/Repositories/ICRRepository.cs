@@ -11,6 +11,6 @@ namespace ModelServices.Interfaces.Repositories
     {
         List<vwContasAReceber> GetAllItens();
         List<vwContasAReceber> GetByData(DateTime data);
-        List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro);
+        List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro, String sacado);
 }
 }

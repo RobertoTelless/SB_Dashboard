@@ -10,6 +10,6 @@ namespace ModelServices.Interfaces.Repositories
     public interface ILPRepository : IRepositoryBase<vwLancamentosAPagar>
     {
         List<vwLancamentosAPagar> GetAllItens();
-        List<vwLancamentosAPagar> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, String centroLucro, String centroCusto);
+        List<vwLancamentosAPagar> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, String centroLucro, String centroCusto, String beneficiario);
 }
 }

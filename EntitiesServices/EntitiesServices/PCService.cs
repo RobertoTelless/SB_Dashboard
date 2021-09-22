@@ -88,9 +88,9 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public List<vwParcelamento> ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro)
+        public List<vwParcelamento> ExecuteFilter(DateTime? vencInicio, DateTime? vencFinal, String centroLucro, string sacado)
         {
-            return _baseRepository.ExecuteFilter(vencInicio, vencFinal, centroLucro);
+            return _baseRepository.ExecuteFilter(vencInicio, vencFinal, centroLucro, sacado);
         }
 
     }

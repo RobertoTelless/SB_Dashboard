@@ -25,13 +25,17 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
-        public List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro)
+        public List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro, String sacado)
         {
             List<vwContasAReceber> lista = new List<vwContasAReceber>();
             IQueryable<vwContasAReceber> query = Db.vwContasAReceber;
             if (!String.IsNullOrEmpty(centroLucro))
             {
                 query = query.Where(p => p.Centro_de_Lucro == centroLucro);
+            }
+            if (!String.IsNullOrEmpty(sacado))
+            {
+                query = query.Where(p => p.Sacado == sacado);
             }
             if (emissaoInicio != null & emissaoFinal != null)
             {
