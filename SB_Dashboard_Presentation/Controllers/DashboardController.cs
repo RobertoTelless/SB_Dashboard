@@ -314,6 +314,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 SelectList cc = new SelectList(listaCC, "Value", "Text");
                 ViewBag.CentroCusto = cc;
                 Session["CC"] = cc;
+                Session["ListaCP"] = listaCP1;
 
                 var listaBeneficiario = listaCP1.Select(p => p.Beneficario).Distinct().ToList();
                 List<SelectListItem> beneficiario = new List<SelectListItem>();
@@ -527,6 +528,30 @@ namespace SB_Dashboard_Presentation.Controllers
         {
             // Retorna
             return View();
+        }
+
+        public JsonResult GetDadosGraficoDespesas()
+        {
+            DateTime hoje = Convert.ToDateTime("10/09/2019");
+            List<vwContasAPagar> listaCP1 = (List<vwContasAPagar>)Session["ListaCP"];
+            listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Year == hoje.Year).ToList();
+            List<vwContasAPagar> listaMes = new List<vwContasAPagar>();
+            List<String> meses = new List<String>();
+            List<Decimal> valor = new List<Decimal>();
+
+            for (int i = 1; i < 13; i++)
+            {
+                Int32 mes = i;
+                listaMes = listaCP.Where(p => p.Data_de_Vencimento.Month == mes).ToList();
+                var somaMes = listaMes.Sum(p => p.Valor)/1000;
+                meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
+                valor.Add(somaMes);
+            }
+
+            Hashtable result = new Hashtable();
+            result.Add("meses", meses);
+            result.Add("valores", valor);
+            return Json(result);
         }
 
         public JsonResult GetDadosGraficoOrdemServicoSituacao()
