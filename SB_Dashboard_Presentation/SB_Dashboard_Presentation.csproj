@@ -3524,6 +3524,8 @@
     <Content Include="Views\Dashboard\VerTodosDespesas.cshtml" />
     <Content Include="Views\Dashboard\VerTodosParcelamentos.cshtml" />
     <Content Include="Views\Dashboard\VerTodosLancamentos.cshtml" />
+    <Content Include="Views\Dashboard\MontarTelaDashboardOperacional.cshtml" />
+    <Content Include="Views\Dashboard\VerOSSituacaoExpansao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

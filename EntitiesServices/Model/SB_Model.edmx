@@ -2303,19 +2303,6 @@ warning 6002: The table/view 'OnSuiteBI.dbo.PessoaCaixinha' does not have a prim
           <Property Name="Saldo" Type="money" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'OnSuiteBI.dbo.Transacao' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Transacao">
-          <Property Name="Id" Type="nvarchar(max)" />
-          <Property Name="DataCriacao" Type="date" />
-          <Property Name="Pessoa" Type="int" />
-          <Property Name="Valor" Type="money" />
-          <Property Name="ContaBancaria" Type="int" />
-          <Property Name="OrdemServico" Type="int" />
-          <Property Name="CentroCusto" Type="int" />
-          <Property Name="NotaFiscal" Type="nvarchar" MaxLength="50" />
-          <Property Name="FaturadoPara" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwCentroCustoAgrupado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwCentroCustoAgrupado">
           <Key>
@@ -2429,6 +2416,26 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwLancamentosAPagar' does not have a
           <Property Name="Tipo Equipe" Type="varchar" MaxLength="8" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwOperacional' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwOperacional">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EspecialidadeDescricao" />
+            <PropertyRef Name="Situacao" />
+            <PropertyRef Name="SituacaoDescricao" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UF" Type="nvarchar" MaxLength="200" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="200" />
+          <Property Name="Especialidade" Type="int" />
+          <Property Name="EspecialidadeDescricao" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Situacao" Type="int" Nullable="false" />
+          <Property Name="SituacaoDescricao" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
+          <Property Name="TipoDescricao" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServico' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwOrdemServico">
           <Key>
@@ -2475,6 +2482,47 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServico' does not have a prim
           <Property Name="Data Previsao Pagamento" Type="datetime" />
           <Property Name="Data Previsao Emissao" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'OnSuiteBI.dbo.vwOrdemServicoCidade' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwOrdemServicoCidade">
+          <Property Name="Cidade" Type="nvarchar" MaxLength="200" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Total" Type="money" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServicoEspecialidade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwOrdemServicoEspecialidade">
+          <Key>
+            <PropertyRef Name="Descricao" />
+          </Key>
+          <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Total" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServicoSituacao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwOrdemServicoSituacao">
+          <Key>
+            <PropertyRef Name="Descricao" />
+          </Key>
+          <Property Name="Descricao" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Total" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'OnSuiteBI.dbo.vwOrdemServicoTipo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwOrdemServicoTipo">
+          <Property Name="Tipo" Type="varchar" MaxLength="30" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Total" Type="money" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'OnSuiteBI.dbo.vwOrdemServicoUF' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwOrdemServicoUF">
+          <Property Name="UF" Type="nvarchar" MaxLength="200" />
+          <Property Name="Quantidade" Type="int" />
+          <Property Name="Total" Type="money" />
+        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwParcelamento">
@@ -6859,6 +6907,19 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
     [vwLancamentosAPagar].[Tipo Equipe] AS [Tipo Equipe]
     FROM [dbo].[vwLancamentosAPagar] AS [vwLancamentosAPagar]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwOperacional" EntityType="Self.vwOperacional" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwOperacional].[Id] AS [Id], 
+    [vwOperacional].[UF] AS [UF], 
+    [vwOperacional].[Cidade] AS [Cidade], 
+    [vwOperacional].[Especialidade] AS [Especialidade], 
+    [vwOperacional].[EspecialidadeDescricao] AS [EspecialidadeDescricao], 
+    [vwOperacional].[Situacao] AS [Situacao], 
+    [vwOperacional].[SituacaoDescricao] AS [SituacaoDescricao], 
+    [vwOperacional].[Tipo] AS [Tipo], 
+    [vwOperacional].[TipoDescricao] AS [TipoDescricao]
+    FROM [dbo].[vwOperacional] AS [vwOperacional]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwOrdemServico" EntityType="Self.vwOrdemServico" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwOrdemServico].[Num] AS [Num], 
@@ -6899,6 +6960,20 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
     [vwOrdemServico].[Data Previsao Pagamento] AS [Data Previsao Pagamento], 
     [vwOrdemServico].[Data Previsao Emissao] AS [Data Previsao Emissao]
     FROM [dbo].[vwOrdemServico] AS [vwOrdemServico]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwOrdemServicoEspecialidade" EntityType="Self.vwOrdemServicoEspecialidade" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwOrdemServicoEspecialidade].[Descricao] AS [Descricao], 
+    [vwOrdemServicoEspecialidade].[Quantidade] AS [Quantidade], 
+    [vwOrdemServicoEspecialidade].[Total] AS [Total]
+    FROM [dbo].[vwOrdemServicoEspecialidade] AS [vwOrdemServicoEspecialidade]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwOrdemServicoSituacao" EntityType="Self.vwOrdemServicoSituacao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwOrdemServicoSituacao].[Descricao] AS [Descricao], 
+    [vwOrdemServicoSituacao].[Quantidade] AS [Quantidade], 
+    [vwOrdemServicoSituacao].[Total] AS [Total]
+    FROM [dbo].[vwOrdemServicoSituacao] AS [vwOrdemServicoSituacao]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwParcelamento" EntityType="Self.vwParcelamento" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -15700,6 +15775,9 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
           </AssociationSet>
           <EntitySet Name="vwExecutandoPositivo" EntityType="OnSuiteBIModel.vwExecutandoPositivo" />
           <EntitySet Name="vwExecutandoNegativo" EntityType="OnSuiteBIModel.vwExecutandoNegativo" />
+          <EntitySet Name="vwOperacional" EntityType="OnSuiteBIModel.vwOperacional" />
+          <EntitySet Name="vwOrdemServicoEspecialidade" EntityType="OnSuiteBIModel.vwOrdemServicoEspecialidade" />
+          <EntitySet Name="vwOrdemServicoSituacao" EntityType="OnSuiteBIModel.vwOrdemServicoSituacao" />
         </EntityContainer>
         <EntityType Name="vwExecutandoPositivo">
           <Key>
@@ -15715,6 +15793,40 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Revisao" Type="Int32" />
           <Property Name="ExecutandoNegativo" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="vwOperacional">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EspecialidadeDescricao" />
+            <PropertyRef Name="Situacao" />
+            <PropertyRef Name="SituacaoDescricao" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Cidade" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Especialidade" Type="Int32" />
+          <Property Name="EspecialidadeDescricao" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Situacao" Type="Int32" Nullable="false" />
+          <Property Name="SituacaoDescricao" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="TipoDescricao" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwOrdemServicoEspecialidade">
+          <Key>
+            <PropertyRef Name="Descricao" />
+          </Key>
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Quantidade" Type="Int32" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="vwOrdemServicoSituacao">
+          <Key>
+            <PropertyRef Name="Descricao" />
+          </Key>
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Quantidade" Type="Int32" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -18329,6 +18441,39 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
                 <ScalarProperty Name="ExecutandoNegativo" ColumnName="ExecutandoNegativo" />
                 <ScalarProperty Name="Revisao" ColumnName="Revisao" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwOperacional">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwOperacional">
+              <MappingFragment StoreEntitySet="vwOperacional">
+                <ScalarProperty Name="TipoDescricao" ColumnName="TipoDescricao" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="SituacaoDescricao" ColumnName="SituacaoDescricao" />
+                <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+                <ScalarProperty Name="EspecialidadeDescricao" ColumnName="EspecialidadeDescricao" />
+                <ScalarProperty Name="Especialidade" ColumnName="Especialidade" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwOrdemServicoEspecialidade">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwOrdemServicoEspecialidade">
+              <MappingFragment StoreEntitySet="vwOrdemServicoEspecialidade">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwOrdemServicoSituacao">
+            <EntityTypeMapping TypeName="OnSuiteBIModel.vwOrdemServicoSituacao">
+              <MappingFragment StoreEntitySet="vwOrdemServicoSituacao">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

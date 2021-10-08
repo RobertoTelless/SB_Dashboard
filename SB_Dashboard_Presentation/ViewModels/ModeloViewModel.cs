@@ -29,13 +29,11 @@ namespace SB_Dashboard_Presentation.ViewModels
         public String CentroLucro { get; set; }
         public String Beneficiario { get; set; }
         public String Sacado { get; set; }
-
-
-
-
-
-
-
+        public String UF { get; set; }
+        public String Cidade { get; set; }
+        public String Especialidade { get; set; }
+        public String Situacao { get; set; }
+        public String Tipo { get; set; }
 
         public bool Check
         {

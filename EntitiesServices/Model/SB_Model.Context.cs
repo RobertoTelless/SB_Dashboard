@@ -204,5 +204,8 @@ namespace EntitiesServices.Model
         public virtual DbSet<vwParcelamento> vwParcelamento { get; set; }
         public virtual DbSet<vwExecutandoPositivo> vwExecutandoPositivo { get; set; }
         public virtual DbSet<vwExecutandoNegativo> vwExecutandoNegativo { get; set; }
+        public virtual DbSet<vwOperacional> vwOperacional { get; set; }
+        public virtual DbSet<vwOrdemServicoEspecialidade> vwOrdemServicoEspecialidade { get; set; }
+        public virtual DbSet<vwOrdemServicoSituacao> vwOrdemServicoSituacao { get; set; }
     }
 }

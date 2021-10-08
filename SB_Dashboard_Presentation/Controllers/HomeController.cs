@@ -23,6 +23,8 @@ namespace ERP_Condominios_Solution.Controllers
             Session["FalhaPC"] = 0;
             Session["FalhaLP"] = 0;
             Session["Inicio"] = 0;
+            Session["CarregaListas1"] = 0;
+            Session["Filtro1"] = null;
             return RedirectToAction("MontarTelaDashboardReal", "Dashboard");
         }
 

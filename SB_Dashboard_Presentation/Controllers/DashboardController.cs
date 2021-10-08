@@ -31,6 +31,8 @@ namespace SB_Dashboard_Presentation.Controllers
         private readonly IPCAppService pcApp;
         private readonly IEPAppService epApp;
         private readonly IENAppService enApp;
+        private readonly IOSEspAppService oseApp;
+        private readonly IOSSitAppService ossApp;
 
         private String msg;
         private Exception exception;
@@ -42,9 +44,11 @@ namespace SB_Dashboard_Presentation.Controllers
         List<vwParcelamento> listaPC = new List<vwParcelamento>();
         List<vwExecutandoPositivo> listaEP = new List<vwExecutandoPositivo>();
         List<vwExecutandoNegativo> listaEN = new List<vwExecutandoNegativo>();
+        List<vwOrdemServicoEspecialidade> listaOSE = new List<vwOrdemServicoEspecialidade>();
+        List<vwOrdemServicoSituacao> listaOSS = new List<vwOrdemServicoSituacao>();
         String extensao;
 
-        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps)
+        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps, IOSEspAppService oseApps, IOSSitAppService ossApps)
         {
             crApp = crApps;
             cpApp = cpApps;
@@ -52,6 +56,8 @@ namespace SB_Dashboard_Presentation.Controllers
             pcApp = pcApps;
             epApp = epApps;
             enApp = enApps;
+            oseApp = oseApps;
+            ossApp = ossApps;
         }
 
         [HttpGet]
@@ -220,10 +226,11 @@ namespace SB_Dashboard_Presentation.Controllers
             DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
             DateTime hoje = DateTime.Today.Date;
 
-            // Carrega campos de filtro
+            // Carrega campos de filtro Aba Fluxo de Caixa
             ModeloViewModel mod = new ModeloViewModel();
             if (Session["Filtro"] == null)
             {
+                // Fluxo de Caixa          
                 //mod.EmissaoInicio = inicio;
                 //mod.EmissaoFinal = DateTime.Today.Date;
                 //mod.VencimentoInicio = inicio;
@@ -245,6 +252,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 mod.CentroLucro = null;
                 mod.Beneficiario = null;
                 mod.Sacado = null;
+
                 Session["Filtro"] = null;
                 Session["RecIni"] = Convert.ToDateTime("01/09/2019");
                 Session["RecFim"] = Convert.ToDateTime("30/09/2019");
@@ -265,7 +273,7 @@ namespace SB_Dashboard_Presentation.Controllers
             // Carrega listas principais
             if ((Int32)Session["CarregaListas"] == 0)
             {
-                // Carrega listas dos filtros
+                // Carrega listas dos filtros -- Aba Fluxo de Caixa
                 List<vwContasAReceber> listaCR1 = crApp.GetAllItens();
                 var listaCentroLucro = listaCR1.Select(p => p.Centro_de_Lucro).Distinct().ToList();
                 List<SelectListItem> listaCL = new List<SelectListItem>();
@@ -307,7 +315,6 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.CentroCusto = cc;
                 Session["CC"] = cc;
 
-
                 var listaBeneficiario = listaCP1.Select(p => p.Beneficario).Distinct().ToList();
                 List<SelectListItem> beneficiario = new List<SelectListItem>();
                 foreach (var item in listaBeneficiario)
@@ -322,6 +329,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.Beneficiarios = be;
                 Session["BE"] = be;
 
+                // Carrega listas - Aba Fluxo de Caixa
                 hoje = Convert.ToDateTime("10/09/2019");
                 listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
                 listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
@@ -351,6 +359,7 @@ namespace SB_Dashboard_Presentation.Controllers
             }
             else
             {
+                // Aba Fluxo de Caixa
                 listaCR = (List<vwContasAReceber>)Session["ListaCR"];
                 listaCP = (List<vwContasAPagar>)Session["ListaCP"];
                 listaPC = (List<vwParcelamento>)Session["ListaPC"];
@@ -377,7 +386,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.CentroLucro = (SelectList)Session["CL"];
             }
 
-            // Configura view
+            // Configura view - Fluxo de Caixa
             ViewBag.Rec = rec;
             ViewBag.Pag = pag;
             ViewBag.Lp = lp;
@@ -396,7 +405,7 @@ namespace SB_Dashboard_Presentation.Controllers
             ViewBag.Resultado = result;
             ViewBag.SaldoTotal = saldo;
 
-            // Monta linha do filtro
+            // Monta linha do filtro -- Aba Fluxo de caixa
             String linhaFiltro = String.Empty;
             if (mod.EmissaoInicio != null)
             {
@@ -514,6 +523,66 @@ namespace SB_Dashboard_Presentation.Controllers
             return View(mod);
         }
 
+        public ActionResult MontarTelaDashboardOperacional()
+        {
+            // Retorna
+            return View();
+        }
+
+        public JsonResult GetDadosGraficoOrdemServicoSituacao()
+        {
+            List<vwOrdemServicoSituacao> tbl = ossApp.GetAllItens();
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<String> cor = new List<String>();
+
+            foreach (var item in tbl)
+            {
+                desc.Add(item.Descricao);
+                quant.Add(item.Quantidade.Value);               
+            }
+
+            cor.Add("#501954");
+            cor.Add("#1d5419");
+            cor.Add("#f24cfe");
+            cor.Add("#27a1c6");
+            cor.Add("#c6ab27");
+            cor.Add("#27c62c");
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            result.Add("cores", cor);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosOrdemServicoEspecialidade()
+        {
+            List<vwOrdemServicoEspecialidade> tbl = oseApp.GetAllItens();
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<String> cor = new List<String>();
+
+            foreach (var item in tbl)
+            {
+                desc.Add(item.Descricao);
+                quant.Add(item.Quantidade.Value);
+            }
+
+            cor.Add("#501954");
+            cor.Add("#1d5419");
+            cor.Add("#f24cfe");
+            cor.Add("#27a1c6");
+            cor.Add("#c6ab27");
+            cor.Add("#27c62c");
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            result.Add("cores", cor);
+            return Json(result);
+        }
+
         public ActionResult VerReceitasExpansao()
         {
             // Prepara grafico
@@ -528,9 +597,19 @@ namespace SB_Dashboard_Presentation.Controllers
             return View();
         }
 
+        public ActionResult VerOSSituacaoExpansao()
+        {
+            // Prepara view
+            List<vwOrdemServicoSituacao> listaOSS = ossApp.GetAllItens();
+            ViewBag.ListaOSS = listaOSS;
+            ViewBag.ListaOSSNum = listaOSS.Count;
+            return View();
+        }
+
         public ActionResult VerDespesasExpansao()
         {
             // Prepara grafico
+            Session["DataBase"] = Convert.ToDateTime("01/03/2017");
             String ano = ((DateTime)Session["DataBase"]).Year.ToString();
             ViewBag.Ano = ano;
 

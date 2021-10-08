@@ -105,6 +105,8 @@
     <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
     <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
+    <Compile Include="EntitiesServices\OSSitService.cs" />
+    <Compile Include="EntitiesServices\OSEspService.cs" />
     <Compile Include="EntitiesServices\ENService.cs" />
     <Compile Include="EntitiesServices\EPService.cs" />
     <Compile Include="EntitiesServices\PCService.cs" />
@@ -112,6 +114,8 @@
     <Compile Include="EntitiesServices\CPService.cs" />
     <Compile Include="EntitiesServices\CRService.cs" />
     <Compile Include="EntitiesServices\ServiceBase.cs" />
+    <Compile Include="Interfaces\Entities\IOSSitService.cs" />
+    <Compile Include="Interfaces\Entities\IOSEspService.cs" />
     <Compile Include="Interfaces\Entities\IENService.cs" />
     <Compile Include="Interfaces\Entities\IEPService.cs" />
     <Compile Include="Interfaces\Entities\IPCService.cs" />
@@ -119,6 +123,8 @@
     <Compile Include="Interfaces\Entities\ICPService.cs" />
     <Compile Include="Interfaces\Entities\ICRService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
+    <Compile Include="Interfaces\Repositories\IOSSitRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IOSEspRepository.cs" />
     <Compile Include="Interfaces\Repositories\IENRepository.cs" />
     <Compile Include="Interfaces\Repositories\IEPRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPCRepository.cs" />
@@ -672,7 +678,16 @@
     <Compile Include="Model\vwLancamentosAPagar.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\vwOperacional.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\vwOrdemServico.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwOrdemServicoEspecialidade.cs">
+      <DependentUpon>SB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwOrdemServicoSituacao.cs">
       <DependentUpon>SB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\vwParcelamento.cs">
