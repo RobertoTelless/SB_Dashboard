@@ -556,30 +556,31 @@ namespace SB_Dashboard_Presentation.Controllers
             return Json(result);
         }
 
-        public JsonResult GetDadosOrdemServicoEspecialidade()
+        public JsonResult GetDadosGraficoOrdemServicoEspecialidade()
         {
             List<vwOrdemServicoEspecialidade> tbl = oseApp.GetAllItens();
             List<String> desc = new List<String>();
             List<Int32> quant = new List<Int32>();
-            List<String> cor = new List<String>();
+            List<Decimal> valor = new List<Decimal>();
 
             foreach (var item in tbl)
             {
                 desc.Add(item.Descricao);
                 quant.Add(item.Quantidade.Value);
+                if (item.Total != null)
+                {
+                    valor.Add(item.Total.Value);
+                }
+                else
+                {
+                    valor.Add(0);
+                }
             }
-
-            cor.Add("#501954");
-            cor.Add("#1d5419");
-            cor.Add("#f24cfe");
-            cor.Add("#27a1c6");
-            cor.Add("#c6ab27");
-            cor.Add("#27c62c");
 
             Hashtable result = new Hashtable();
             result.Add("labels", desc);
             result.Add("valores", quant);
-            result.Add("cores", cor);
+            result.Add("total", valor);
             return Json(result);
         }
 
@@ -603,6 +604,15 @@ namespace SB_Dashboard_Presentation.Controllers
             List<vwOrdemServicoSituacao> listaOSS = ossApp.GetAllItens();
             ViewBag.ListaOSS = listaOSS;
             ViewBag.ListaOSSNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSSEspecialidadeExpansao()
+        {
+            // Prepara view
+            List<vwOrdemServicoEspecialidade> listaOSE = oseApp.GetAllItens();
+            ViewBag.ListaOSE = listaOSE;
+            ViewBag.ListaOSENum = listaOSE.Count;
             return View();
         }
 
