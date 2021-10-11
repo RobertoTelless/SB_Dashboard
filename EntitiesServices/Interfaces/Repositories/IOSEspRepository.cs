@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntitiesServices.Model;
+using EntitiesServices.DTO;
 
 namespace ModelServices.Interfaces.Repositories
 {
     public interface IOSEspRepository : IRepositoryBase<vwOrdemServicoEspecialidade>
     {
         List<vwOrdemServicoEspecialidade> GetAllItens();
+        List<DTO_OS_UF> GetItensOSUF();
+        List<DTO_OS_UF> GetItensOSTipo();
+        List<DTO_OS_UF> GetItensOSCidade();
+
     }
 }

@@ -105,6 +105,7 @@
     <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
     <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
+    <Compile Include="DTO\DTO_OS_UF.cs" />
     <Compile Include="EntitiesServices\OSSitService.cs" />
     <Compile Include="EntitiesServices\OSEspService.cs" />
     <Compile Include="EntitiesServices\ENService.cs" />

@@ -9,6 +9,7 @@ using ApplicationServices.Interfaces;
 using ModelServices.Interfaces.EntitiesServices;
 using CrossCutting;
 using System.Text.RegularExpressions;
+using EntitiesServices.DTO;
 
 namespace ApplicationServices.Services
 {
@@ -24,6 +25,19 @@ namespace ApplicationServices.Services
         public List<vwOrdemServicoEspecialidade> GetAllItens()
         {
             return _baseService.GetAllItens();
+        }
+
+        public List<DTO_OS_UF> GetItensOSUF()
+        {
+            return _baseService.GetItensOSUF();
+        }
+        public List<DTO_OS_UF> GetItensOSTipo()
+        {
+            return _baseService.GetItensOSTipo();
+        }
+        public List<DTO_OS_UF> GetItensOSCidade()
+        {
+            return _baseService.GetItensOSCidade();
         }
     }
 }

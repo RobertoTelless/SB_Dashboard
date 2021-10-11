@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using EntitiesServices.DTO;
 
 namespace SB_Dashboard_Presentation.Controllers
 {
@@ -609,6 +610,74 @@ namespace SB_Dashboard_Presentation.Controllers
             return Json(result);
         }
 
+        public JsonResult GetDadosGraficoOrdemServicoUF()
+        {
+            List<DTO_OS_UF> tbl = oseApp.GetItensOSUF();
+            Session["OSUF"] = tbl;
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<Decimal> valor = new List<Decimal>();
+
+            foreach (var item in tbl)
+            {
+                if (!String.IsNullOrEmpty(item.UF))
+                {
+                    desc.Add(item.UF);
+                    quant.Add(item.Quantidade);
+                }
+            }
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoOrdemServicoTipo()
+        {
+            List<DTO_OS_UF> tbl = oseApp.GetItensOSTipo();
+            Session["OSTipo"] = tbl;
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+
+            foreach (var item in tbl)
+            {
+                if (!String.IsNullOrEmpty(item.UF))
+                {
+                    desc.Add(item.UF);
+                    quant.Add(item.Quantidade);
+                }
+            }
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoOrdemServicoCidade()
+        {
+            List<DTO_OS_UF> tbl = oseApp.GetItensOSCidade();
+            Session["OSCidade"] = tbl;
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<Decimal> valor = new List<Decimal>();
+
+            foreach (var item in tbl)
+            {
+                if (!String.IsNullOrEmpty(item.UF))
+                {
+                    desc.Add(item.UF);
+                    quant.Add(item.Quantidade);
+                }
+            }
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            return Json(result);
+        }
+
         public ActionResult VerReceitasExpansao()
         {
             // Prepara grafico
@@ -627,6 +696,39 @@ namespace SB_Dashboard_Presentation.Controllers
         {
             // Prepara view
             List<vwOrdemServicoSituacao> listaOSS = ossApp.GetAllItens();
+            ViewBag.ListaOSS = listaOSS;
+            ViewBag.ListaOSSNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSUFExpansao()
+        {
+            // Prepara view
+            List<DTO_OS_UF> listaOSS = (List<DTO_OS_UF>)Session["OSUF"];
+            ViewBag.ListaOSS = listaOSS;
+            ViewBag.ListaOSSNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSTipoExpansao()
+        {
+            // Prepara view
+            List<DTO_OS_UF> listaOSS = (List<DTO_OS_UF>)Session["OSTipo"];
+            ViewBag.ListaOSS = listaOSS;
+            ViewBag.ListaOSSNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSCidadeExpansao()
+        {
+            // Prepara view
+            return View();
+        }
+
+        public ActionResult VerOSCidadeTable()
+        {
+            // Prepara view
+            List<DTO_OS_UF> listaOSS = (List<DTO_OS_UF>)Session["OSCidade"];
             ViewBag.ListaOSS = listaOSS;
             ViewBag.ListaOSSNum = listaOSS.Count;
             return View();

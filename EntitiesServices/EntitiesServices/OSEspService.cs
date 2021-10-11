@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using EntitiesServices.Model;
+using EntitiesServices.DTO;
 using EntitiesServices.Work_Classes;
 using ModelServices.Interfaces.Repositories;
 using ModelServices.Interfaces.EntitiesServices;
@@ -29,6 +30,21 @@ namespace ModelServices.EntitiesServices
         public List<vwOrdemServicoEspecialidade> GetAllItens()
         {
             return _baseRepository.GetAllItens();
+        }
+
+        public List<DTO_OS_UF> GetItensOSUF()
+        {
+            return _baseRepository.GetItensOSUF();
+        }
+
+        public List<DTO_OS_UF> GetItensOSTipo()
+        {
+            return _baseRepository.GetItensOSTipo();
+        }
+
+        public List<DTO_OS_UF> GetItensOSCidade()
+        {
+            return _baseRepository.GetItensOSCidade();
         }
 
         public Int32 Create(vwOrdemServicoEspecialidade item)

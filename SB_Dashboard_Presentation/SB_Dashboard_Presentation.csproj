@@ -3527,6 +3527,10 @@
     <Content Include="Views\Dashboard\MontarTelaDashboardOperacional.cshtml" />
     <Content Include="Views\Dashboard\VerOSSituacaoExpansao.cshtml" />
     <Content Include="Views\Dashboard\VerOSSEspecialidadeExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerOSUFExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerOSTipoExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerOSCidadeExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerOSCidadeTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
