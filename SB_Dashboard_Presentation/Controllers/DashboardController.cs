@@ -243,8 +243,8 @@ namespace SB_Dashboard_Presentation.Controllers
 
                 mod.EmissaoInicio = null;
                 mod.EmissaoFinal = null;
-                mod.VencimentoInicio = Convert.ToDateTime("01/09/2019");
-                mod.VencimentoFinal = Convert.ToDateTime("30/09/2019");
+                mod.VencimentoInicio = null;
+                mod.VencimentoFinal = null;
                 mod.RecebimentoInicio = null;
                 mod.RecebimentoFinal = null;
                 mod.PagamentoInicio = null;
@@ -255,8 +255,8 @@ namespace SB_Dashboard_Presentation.Controllers
                 mod.Sacado = null;
 
                 Session["Filtro"] = null;
-                Session["RecIni"] = Convert.ToDateTime("01/09/2019");
-                Session["RecFim"] = Convert.ToDateTime("30/09/2019");
+                Session["RecIni"] = null;
+                Session["RecFim"] = null;
                 Session["DataBase"] = Convert.ToDateTime("01/09/2019");
             }
             else
@@ -333,9 +333,12 @@ namespace SB_Dashboard_Presentation.Controllers
 
                 // Carrega listas - Aba Fluxo de Caixa
                 hoje = Convert.ToDateTime("10/09/2019");
-                listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
-                listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
-                listaLP = lpApp.GetAllItens().Where(p => p.Data_de_Vencimento.Value.Month == 9 & p.Data_de_Vencimento.Value.Year == 2019).ToList();
+                //listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                //listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                //listaLP = lpApp.GetAllItens().Where(p => p.Data_de_Vencimento.Value.Month == 9 & p.Data_de_Vencimento.Value.Year == 2019).ToList();
+                listaCR = listaCR1;
+                listaCP = listaCP1;
+                listaLP = lpApp.GetAllItens();
                 listaPC = pcApp.GetAllItens();
                 listaEP = epApp.GetAllItens();
                 listaEN = enApp.GetAllItens();
@@ -358,6 +361,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.FalhaCP = listaCP.Count > 0 ? 0 : 1;
                 ViewBag.FalhaPC = listaPC.Count > 0 ? 0 : 1;
                 ViewBag.FalhaLP = listaLP.Count > 0 ? 0 : 1;
+
             }
             else
             {
@@ -553,6 +557,7 @@ namespace SB_Dashboard_Presentation.Controllers
             result.Add("meses", meses);
             result.Add("valores", valor);
             return Json(result);
+
         }
 
         public JsonResult GetDadosGraficoOrdemServicoSituacao()

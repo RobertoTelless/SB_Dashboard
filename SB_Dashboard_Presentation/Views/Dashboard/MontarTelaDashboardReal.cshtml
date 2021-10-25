@@ -108,7 +108,7 @@
                                         @*Fluxo de Caixa*@
                                         <div id="tab-1" class="tab-pane active">
                                             <div class="panel-body">
-                                                <div class="col-lg-2 col-md-2 col-xs-2" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure">
+                                                <div class="col-lg-2 col-md-2 col-xs-2" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color:seagreen">
                                                     @using (Html.BeginForm("FiltrarGeralDashboard", "Dashboard", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
                                                     {
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
@@ -120,84 +120,84 @@
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Emissão (Início)
-                                                                @Html.TextBoxFor(m => m.EmissaoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data1" })
+                                                                @Html.Label("Emissão (Início)", new { style = "color: yellow"})                                                                
+                                                                @Html.TextBoxFor(m => m.EmissaoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", @id = "data1" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Emissão (Final)
+                                                                @Html.Label("Emissão (Final)", new { style = "color: yellow"})                                                                
                                                                 @Html.TextBoxFor(m => m.EmissaoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data2" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Vencimento (Início)
+                                                                @Html.Label("Vencimento (Início)", new { style = "color: yellow"})                                                                
                                                                 @Html.TextBoxFor(m => m.VencimentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data3" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Vencimento (Final)
+                                                                @Html.Label("Vencimento (Final)", new { style = "color: yellow"})                                                                
                                                                 @Html.TextBoxFor(m => m.VencimentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data4" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Recebimento (Início)
+                                                                @Html.Label("Recebimento (Início)", new { style = "color: yellow"})                                                                
                                                                 @Html.TextBoxFor(m => m.RecebimentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data5" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Recebimento (Final)
+                                                                @Html.Label("Recebimento (Final)", new { style = "color: yellow"})                                                                
                                                                 @Html.TextBoxFor(m => m.RecebimentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data6" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Pagamento (Início)
+                                                                @Html.Label("Pagamento (Início)", new { style = "color: yellow"})                                                                
                                                                 @Html.TextBoxFor(m => m.PagamentoInicio,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data7" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Pagamento (Final)
+                                                                @Html.Label("Pagamento (Final)", new { style = "color: yellow"})                                                                
                                                                 @Html.TextBoxFor(m => m.PagamentoFinal,  "{0:dd/MM/yyyy}", new { @class = "form-control date-picker", autofocus = true, @id = "data8" })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Centro Custos
+                                                                @Html.Label("Centro Custos", new { style = "color: yellow"})                                                                
                                                                 @Html.DropDownListFor(m => m.CentroCusto, (SelectList)ViewBag.CentroCustos, "Selecionar", new { @class = "form-control", autofocus = true })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Centro Lucro
+                                                                @Html.Label("Centro Lucro", new { style = "color: yellow"})                                                                
                                                                 @Html.DropDownListFor(m => m.CentroLucro, (SelectList)ViewBag.CentroLucro, "Selecionar", new { @class = "form-control", autofocus = true })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Beneficiário
+                                                                @Html.Label("Beneficário", new { style = "color: yellow"})                                                                
                                                                 @Html.DropDownListFor(m => m.Beneficiario, (SelectList)ViewBag.Beneficiarios, "Selecionar", new { @class = "form-control", autofocus = true })
                                                             </div>
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
                                                             <div class="col-lg-12 col-md-12 col-xs-12">
-                                                                Sacado
+                                                                @Html.Label("Sacado", new { style = "color: yellow"})                                                                
                                                                 @Html.DropDownListFor(m => m.Sacado, (SelectList)ViewBag.Sacados, "Selecionar", new { @class = "form-control", autofocus = true })
                                                             </div>
                                                         </div>
                                                     }
                                                 </div>
-                                                <div class="col-lg-10 col-md-10 col-xs-10" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure">
+                                                <div class="col-lg-10 col-md-10 col-xs-10" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: khaki">
                                                     <div class="row">
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
-                                                            <div class="col-lg-4" style=" margin-left: 2px; margin-top: 2px; margin-right: -2px" >
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
-                                                                    <div class="ibox-title">
+                                                            @*<div class="col-lg-4" style=" margin-left: 4px; margin-top: 4px; margin-right: -4px" >
+                                                                <div class="ibox float-e-margins" style="background-color: crimson">
+                                                                    <div class="ibox-title" style="background-color: crimson">
                                                                         @if (ViewBag.FalhaCR == 0)
 	                                                                    {
                                                                             <span class="label label-success pull-right">Filtro</span>
@@ -208,7 +208,7 @@
                                                                         }
                                                                         <h5>Receitas</h5>
                                                                     </div>
-                                                                    <div class="ibox-content">
+                                                                    <div class="ibox-content" style="background-color: crimson">
                                                                         <h2 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Rec)</h2>
                                                                         <small style="cursor: pointer; text-decoration: underline; color: #337ab7;" onclick="mostrarDesc('Descrição do que significa este indicador')">Descrição</small>
                                                                         <br />
@@ -224,9 +224,34 @@
                                                                         }
                                                                     </div>
                                                                 </div>
+                                                            </div>*@
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 8px; margin-top: 8px; margin-right: -8px; background-color: brown; height: 150px ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-sign-in fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Receitas (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Rec)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                            @if ((Int32)ViewBag.FalhaCR == 0)
+                                                                            {
+                                                                                @Html.ActionLink("Expandir", "VerReceitasExpansao", "Dashboard", new { style = "color: yellow; text-decoration: underline"})
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <br />
+                                                                                <br />
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-lg-4" style=" margin-left: -2px; margin-top: 2px; margin-right: -2px">
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+
+                                                            @*<div class="col-lg-4" style=" margin-left: -2px; margin-top: 2px; margin-right: -2px">
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         @if (ViewBag.FalhaCP == 0)
 	                                                                    {
@@ -254,9 +279,52 @@
                                                                         }
                                                                     </div>
                                                                 </div>
+                                                            </div>*@
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 4px; margin-top: 8px; background-color: brown; height: 150px">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-sign-out fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Despesas (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.pag)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                            @if ((Int32)ViewBag.FalhaCP == 0)
+                                                                            {
+                                                                                @Html.ActionLink("Expandir", "VerDespesasExpansao", "Dashboard", new { style = "color: yellow; text-decoration: underline"})
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <br />
+                                                                                <br />
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-lg-4" style=" margin-left: -2px; margin-top: 2px; margin-right: 2px">
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style="margin-top: 8px; margin-right: 12px; background-color: brown; height: 150px ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-plus fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Executando Positivo (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.ExecPositivo)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                            <br />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            @*<div class="col-lg-4" style=" margin-left: -2px; margin-top: 2px; margin-right: 2px">
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         <span class="label label-primary pull-right">Acumulado</span>
                                                                         <h5>Executando Positivo</h5>
@@ -270,11 +338,78 @@
                                                                         <br />
                                                                     </div>
                                                                 </div>
-                                                            </div>                                                      
+                                                            </div>*@                                                      
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
-                                                            <div class="col-lg-4"  style=" margin-left: 2px; margin-top: 2px; margin-right: -2px" >
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 8px; margin-top: 8px; margin-right: -8px; background-color: brown; height: 150px ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-minus fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Executando Negativo (R$) </span>
+                                                                        <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.ExecNegativo)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 4px; margin-top: 8px; background-color: brown; height: 150px">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-list-ul fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Parcelamentos (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Pc)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                            @if ((Int32)ViewBag.FalhaPC == 0)
+                                                                            {
+                                                                                @Html.ActionLink("Expandir", "VerParcelamentosExpansao", "Dashboard", new { style = "color: yellow; text-decoration: underline"})
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <br />
+                                                                                <br />
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 4px; margin-top: 8px; background-color: brown; height: 150px">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-usd fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Lançamentos a Pagar (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Lp)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                            @if ((Int32)ViewBag.FalhaPC == 0)
+                                                                            {
+                                                                                @Html.ActionLink("Expandir", "VerLancamentosExpansao", "Dashboard", new { style = "color: yellow; text-decoration: underline"})
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <br />
+                                                                                <br />
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                                            
+                                                            @*<div class="col-lg-4"  style=" margin-left: 2px; margin-top: 2px; margin-right: -2px" >
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         <span class="label label-primary pull-right">Acumulado</span>
                                                                         <h5>Executando Negativo</h5>
@@ -290,7 +425,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4" style=" margin-left: -2px; margin-top: 2px; margin-right: -2px" >
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         @if (ViewBag.FalhaPC == 0)
 	                                                                    {
@@ -320,7 +455,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         @if (ViewBag.FalhaLP == 0)
 	                                                                    {
@@ -348,11 +483,59 @@
                                                                         }
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>*@
                                                         </div>
                                                         <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
-                                                            <div class="col-lg-4" style=" margin-left: 2px; margin-top: 2px; margin-right: -2px" >
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 8px; margin-top: 8px; margin-right: -8px; background-color: brown; height: 150px ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-align-justify fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Resultado (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Resultado)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 8px; margin-top: 8px; margin-right: -8px; background-color: brown; height: 150px ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-align-justify fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Saldo Bancário (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.SaldoBancario)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="widget style1 red-bg" style=" margin-left: 8px; margin-top: 8px; margin-right: -8px; background-color: brown; height: 150px ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                            <i class="fa fa-align-justify fa-5x"></i>
+                                                                        </div>
+                                                                        <div class="col-xs-8 text-right">
+                                                                            <span> Saldo Total (R$) </span>
+                                                                            <h2 class="font-bold">@CrossCutting.Formatters.DecimalFormatter(ViewBag.SaldoTotal)</h2>
+                                                                            <br />
+                                                                            <br />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                                            @*<div class="col-lg-4" style=" margin-left: 2px; margin-top: 2px; margin-right: -2px" >
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         <span class="label label-primary pull-right">Acumulado</span>
                                                                         <h5>Resultado</h5>
@@ -367,7 +550,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4"  style=" margin-left: -2px; margin-top: 2px; margin-right: -2px" >
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         <span class="label label-primary pull-right">Acumulado</span>
                                                                         <h5>Saldo Bancário</h5>
@@ -382,7 +565,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4" style=" margin-left: -2px; margin-top: 2px; margin-right: -2px" >
-                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure" >
+                                                                <div class="ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure" >
                                                                     <div class="ibox-title">
                                                                         <span class="label label-success pull-right">Filtro</span>
                                                                         <h5>Saldo Total</h5>
@@ -395,7 +578,7 @@
                                                                         <br />
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>*@
                                                         </div>
                                                     </div>
                                                 </div>
@@ -405,9 +588,9 @@
                                         @*Tela Operacional*@
                                         <div id="tab-2" class="tab-pane">
                                             <div class="panel-body">
-                                                <div class="col-lg-12 col-md-12 col-xs-10" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure">
+                                                <div class="col-lg-12 col-md-12 col-xs-10" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure">
                                                     <div class="col-lg-4 col-md-4 col-xs-12"  style=" margin-left: -15px; margin-top: 2px; margin-right: -2px" >
-                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 500px">
+                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; height: 500px">
                                                             <div class="ibox-title">
                                                                 <h4>Ordens de Serviço por Situação</h4>
                                                                 <div class="ibox-tools">
@@ -446,7 +629,7 @@
                                                         </div>
                                                     </div>                                               
                                                     <div class="col-lg-8 col-md-8 col-xs-12"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
-                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 500px">
+                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; height: 500px">
                                                             <div class="ibox-title">
                                                                 <h4>Ordens de Serviço por Especialidade</h4>
                                                                 <div class="ibox-tools">
@@ -485,9 +668,9 @@
                                                         </div>
                                                     </div>                                               
                                                 </div>
-                                                <div class="col-lg-12 col-md-12 col-xs-10" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure">
+                                                <div class="col-lg-12 col-md-12 col-xs-10" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure">
                                                     <div class="col-lg-6 col-md-6 col-xs-12"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
-                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 415px">
+                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; height: 415px">
                                                             <div class="ibox-title">
                                                                 <h4>Ordens de Serviço por UF</h4>
                                                                 <div class="ibox-tools">
@@ -526,7 +709,7 @@
                                                         </div>
                                                     </div>                                               
                                                     <div class="col-lg-6 col-md-6 col-xs-12"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
-                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 415px">
+                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; height: 415px">
                                                             <div class="ibox-title">
                                                                 <h4>Ordens de Serviço por Tipo</h4>
                                                                 <div class="ibox-tools">
@@ -565,9 +748,9 @@
                                                         </div>
                                                     </div>                                               
                                                 </div>
-                                                <div class="col-lg-12 col-md-12 col-xs-10" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; background-color: azure">
+                                                <div class="col-lg-12 col-md-12 col-xs-10" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: azure">
                                                     <div class="col-lg-12 col-md-12 col-xs-12"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
-                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 665px">
+                                                        <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 2px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; height: 665px">
                                                             <div class="ibox-title">
                                                                 <h4>Ordens de Serviço por Cidade</h4>
                                                                 <div class="ibox-tools">
@@ -651,7 +834,8 @@
     @Scripts.Render("~/plugins/ionRange")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
     @Scripts.Render("~/plugins/chartjs")
-    
+    @Scripts.Render("~/plugins/flot")
+    @Scripts.Render("~/plugins/sparkline")
     <script>
         function mostrarDesc(desc) {
             $('#modalDescBody').html(desc);
