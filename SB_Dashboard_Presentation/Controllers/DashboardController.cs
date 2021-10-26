@@ -560,6 +560,54 @@ namespace SB_Dashboard_Presentation.Controllers
 
         }
 
+        public JsonResult GetDadosGraficoReceitas()
+        {
+            DateTime hoje = Convert.ToDateTime("10/09/2019");
+            List<vwContasAReceber> listaCR1 = (List<vwContasAReceber>)Session["ListaCR"];
+            listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Year == hoje.Year).ToList();
+            List<vwContasAReceber> listaMes = new List<vwContasAReceber>();
+            List<String> meses = new List<String>();
+            List<Decimal> valor = new List<Decimal>();
+
+            for (int i = 1; i < 13; i++)
+            {
+                Int32 mes = i;
+                listaMes = listaCR.Where(p => p.Data_de_Vencimento.Month == mes).ToList();
+                var somaMes = listaMes.Sum(p => p.Valor_Liquido) / 1000;
+                meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
+                valor.Add(somaMes);
+            }
+
+            Hashtable result = new Hashtable();
+            result.Add("meses", meses);
+            result.Add("valores", valor);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoPagar()
+        {
+            DateTime hoje = Convert.ToDateTime("10/09/2019");
+            List<vwLancamentosAPagar> listaLP1 = (List<vwLancamentosAPagar>)Session["ListaLP"];
+            listaLP = listaLP1.Where(p => p.Data_de_Vencimento.Value.Year == hoje.Year).ToList();
+            List<vwLancamentosAPagar> listaMes = new List<vwLancamentosAPagar>();
+            List<String> meses = new List<String>();
+            List<Decimal> valor = new List<Decimal>();
+
+            for (int i = 1; i < 13; i++)
+            {
+                Int32 mes = i;
+                listaMes = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == mes).ToList();
+                var somaMes = listaMes.Sum(p => p.Valor) / 1000;
+                meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
+                valor.Add(somaMes);
+            }
+
+            Hashtable result = new Hashtable();
+            result.Add("meses", meses);
+            result.Add("valores", valor);
+            return Json(result);
+        }
+
         public JsonResult GetDadosGraficoOrdemServicoSituacao()
         {
             List<vwOrdemServicoSituacao> tbl = ossApp.GetAllItens();
