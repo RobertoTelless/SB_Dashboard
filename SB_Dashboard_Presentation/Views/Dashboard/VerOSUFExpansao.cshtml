@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins">
-                <div class="ibox-title">
+                <div class="ibox-title" style="background-color: khaki">
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -42,17 +42,17 @@
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content"  style="background-color: khaki; height: 1250px">
                     <div class="row">
                         <div class="form-group">
-                            @Html.ButtonLinkIndex(text: "Voltar", action: "VoltarBase", controller: "Dashboard")
+                            @Html.ButtonLinkIndex(text: "Voltar", action: "VoltarBase", controller: "Dashboard", buttonClass: "success")
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-xs-12">
-                            <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 1150px">
-                                <div class="ibox-title">
-                                    <h4>Ordens de Serviço por UF</h4>
+                            <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="height: 1150px">
+                                <div class="ibox-title" style="background-color:indianred">
+                                    <h4 style="color:yellow">Ordens de Serviço por UF</h4>
                                     <div class="ibox-tools">
                                         <a class="collapse-link">
                                             <i class="fa fa-chevron-up"></i>
@@ -100,9 +100,9 @@
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-xs-12">
-                            <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="border-bottom: solid; border-bottom-color: darkblue; border-bottom-width: 2px; border-left: solid; border-left-color: darkblue; border-left-width: 1px; border-right: solid; border-right-color: darkblue; border-right-width: 1px; border-top: solid; border-top-color: darkblue; border-top-width: 1px; height: 1000px">
-                                <div class="ibox-title">
-                                    <h4>Ordens de Serviço por UF - Gráfico</h4>
+                            <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="height: 1000px">
+                                <div class="ibox-title" style="background-color:indianred">
+                                    <h4 style="color:yellow">Ordens de Serviço por UF - Gráfico</h4>
                                     <div class="ibox-tools">
                                         <a class="collapse-link">
                                             <i class="fa fa-chevron-up"></i>
@@ -123,7 +123,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="ibox-content">
+                                <div class="ibox-content" style="background-color:burlywood">
                                     <div class="row">
                                         <canvas id="barChart" height="200"></canvas>
                                     </div>
@@ -276,7 +276,7 @@
                     datasets: [
                         {
                             label: "Quantidade",
-                            backgroundColor: 'rgba(26,179,148,0.5)',
+                            backgroundColor: 'rgba(92,5,5,1)',
                             pointBorderColor: "#fff",
                             data: result.valores
                         }
