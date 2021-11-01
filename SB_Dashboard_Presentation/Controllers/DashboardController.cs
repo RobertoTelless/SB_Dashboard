@@ -621,12 +621,12 @@ namespace SB_Dashboard_Presentation.Controllers
                 quant.Add(item.Quantidade.Value);               
             }
 
-            cor.Add("#501954");
-            cor.Add("#1d5419");
-            cor.Add("#f24cfe");
-            cor.Add("#27a1c6");
-            cor.Add("#c6ab27");
-            cor.Add("#27c62c");
+            cor.Add("#359E18");
+            cor.Add("#FFAE00");
+            cor.Add("#FF7F00");
+            cor.Add("#D63131");
+            cor.Add("#27A1C6");
+            cor.Add("#501954 ");
 
             Hashtable result = new Hashtable();
             result.Add("labels", desc);
