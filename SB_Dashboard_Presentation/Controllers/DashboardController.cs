@@ -34,6 +34,7 @@ namespace SB_Dashboard_Presentation.Controllers
         private readonly IENAppService enApp;
         private readonly IOSEspAppService oseApp;
         private readonly IOSSitAppService ossApp;
+        private readonly IOrdemServicoAppService OSApp;
 
         private String msg;
         private Exception exception;
@@ -47,9 +48,10 @@ namespace SB_Dashboard_Presentation.Controllers
         List<vwExecutandoNegativo> listaEN = new List<vwExecutandoNegativo>();
         List<vwOrdemServicoEspecialidade> listaOSE = new List<vwOrdemServicoEspecialidade>();
         List<vwOrdemServicoSituacao> listaOSS = new List<vwOrdemServicoSituacao>();
+        List<OrdemServico> listaOS = new List<OrdemServico>();
         String extensao;
 
-        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps, IOSEspAppService oseApps, IOSSitAppService ossApps)
+        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps, IOSEspAppService oseApps, IOSSitAppService ossApps, IOrdemServicoAppService OSApps)
         {
             crApp = crApps;
             cpApp = cpApps;
@@ -59,6 +61,7 @@ namespace SB_Dashboard_Presentation.Controllers
             enApp = enApps;
             oseApp = oseApps;
             ossApp = ossApps;
+            OSApp = OSApps;
         }
 
         [HttpGet]
@@ -226,6 +229,13 @@ namespace SB_Dashboard_Presentation.Controllers
             Decimal en = 0;
             DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
             DateTime hoje = DateTime.Today.Date;
+            hoje = Convert.ToDateTime("10/09/2019");
+            Session["Hoje"] = hoje;
+
+            List<OrdemServico> listaOSCheia = OSApp.GetAllItens();
+            Session["ListaOSCheia"] = listaOSCheia;
+            List<OrdemServico> listaOSIniciadas = OSApp.GetAllItensIniciadas();
+            Session["ListaOSIniciadas"] = listaOSIniciadas;
 
             // Carrega campos de filtro Aba Fluxo de Caixa
             ModeloViewModel mod = new ModeloViewModel();
@@ -525,6 +535,9 @@ namespace SB_Dashboard_Presentation.Controllers
             }
             ViewBag.LinhaFiltro = linhaFiltro;
 
+            // OS Atraso
+
+
             // Retorna
             return View(mod);
         }
@@ -626,6 +639,129 @@ namespace SB_Dashboard_Presentation.Controllers
             cor.Add("#FF7F00");
             cor.Add("#D63131");
             cor.Add("#27A1C6");
+            cor.Add("#501954 ");
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            result.Add("cores", cor);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoOrdemServicoAtraso()
+        {
+            DateTime hoje = (DateTime)Session["Hoje"];
+            List<OrdemServico> tbl = OSApp.GetOSAtraso(hoje);
+            Session["OSAtrasadas"] = tbl;
+            Int32 numAtraso = tbl.Count;
+            List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSCheia"];
+            Int32 numTotal = total.Count;
+            Int32 ativas = numTotal - numAtraso;
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<String> cor = new List<String>();
+
+            desc.Add("Em Atraso");
+            quant.Add(numAtraso);
+            cor.Add("#359E18");
+            desc.Add("Ativas");
+            quant.Add(ativas);
+            cor.Add("#FFAE00");
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            result.Add("cores", cor);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoOrdemServicoAvaliacao()
+        {
+            List<OrdemServico> tbl = OSApp.GetOSAvaliacao();
+            Session["OSAvaliacao"] = tbl;
+            Int32 numAtraso = tbl.Count;
+            List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSCheia"];
+            Int32 baixo = 0;
+            Int32 alto = 0;
+
+            foreach (OrdemServico item in tbl)
+            {
+                foreach (OrdemServicoAvaliacao aval in item.OrdemServicoAvaliacao)
+                {
+                    if (aval.Avaliacao < 5)
+                    {
+                        baixo++;
+                    }
+                    else
+                    {
+                        alto++;
+                    }
+                }
+            }
+
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<String> cor = new List<String>();
+
+            desc.Add("Avaliação < 5");
+            quant.Add(baixo);
+            cor.Add("#359E18");
+            desc.Add("Avaliação >= 5");
+            quant.Add(alto);
+            cor.Add("#FFAE00");
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            result.Add("cores", cor);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoOrdemServicoPendencia()
+        {
+            List<OrdemServico> tbl = OSApp.GetOSPendencias();
+            Session["OSPendencia"] = tbl;
+            Int32 numPendencia = tbl.Count;
+            List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSIniciadas"];
+            
+            Int32 numTotal = total.Count;
+            Int32 ativas = numTotal - numPendencia;
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<String> cor = new List<String>();
+
+            desc.Add("Com Pendência");
+            quant.Add(numPendencia);
+            cor.Add("#FF7F00");
+            desc.Add("Sem Pendência");
+            quant.Add(ativas);
+            cor.Add("#D63131");
+
+            Hashtable result = new Hashtable();
+            result.Add("labels", desc);
+            result.Add("valores", quant);
+            result.Add("cores", cor);
+            return Json(result);
+        }
+
+        public JsonResult GetDadosGraficoOrdemServicoPesquisa()
+        {
+            List<OrdemServico> tbl = OSApp.GetOSPesquisa();
+            Session["OSPesquisa"] = tbl;
+            Int32 numPendencia = tbl.Count;
+            List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSIniciadas"];
+
+            Int32 numTotal = total.Count;
+            Int32 ativas = numTotal - numPendencia;
+            List<String> desc = new List<String>();
+            List<Int32> quant = new List<Int32>();
+            List<String> cor = new List<String>();
+
+            desc.Add("Com Pesquisa");
+            quant.Add(numPendencia);
+            cor.Add("#27A1C6");
+            desc.Add("Sem Pesquisa");
+            quant.Add(ativas);
             cor.Add("#501954 ");
 
             Hashtable result = new Hashtable();
@@ -760,6 +896,42 @@ namespace SB_Dashboard_Presentation.Controllers
             List<DTO_OS_UF> listaOSS = (List<DTO_OS_UF>)Session["OSUF"];
             ViewBag.ListaOSS = listaOSS;
             ViewBag.ListaOSSNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSAtrasoExpansao()
+        {
+            // Prepara view
+            List<OrdemServico> listaOSS = (List<OrdemServico>)Session["OSAtrasadas"];
+            ViewBag.ListaOSAtraso = listaOSS;
+            ViewBag.ListaOSAtrasoNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSPendenciaExpansao()
+        {
+            // Prepara view
+            List<OrdemServico> listaOSS = (List<OrdemServico>)Session["OSPendencia"];
+            ViewBag.ListaOSAtraso = listaOSS;
+            ViewBag.ListaOSAtrasoNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSPesquisaExpansao()
+        {
+            // Prepara view
+            List<OrdemServico> listaOSS = (List<OrdemServico>)Session["OSPesquisa"];
+            ViewBag.ListaOSAtraso = listaOSS;
+            ViewBag.ListaOSAtrasoNum = listaOSS.Count;
+            return View();
+        }
+
+        public ActionResult VerOSAvaliacaoExpansao()
+        {
+            // Prepara view
+            List<OrdemServico> listaOSS = (List<OrdemServico>)Session["OSAvaliacao"];
+            ViewBag.ListaOSAtraso = listaOSS;
+            ViewBag.ListaOSAtrasoNum = listaOSS.Count;
             return View();
         }
 

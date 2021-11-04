@@ -14,5 +14,6 @@ namespace ApplicationServices.Interfaces
         List<DTO_OS_UF> GetItensOSUF();
         List<DTO_OS_UF> GetItensOSTipo();
         List<DTO_OS_UF> GetItensOSCidade();
+        List<DTO_OS_UF> GetOSAtrasoCidade();
     }
 }

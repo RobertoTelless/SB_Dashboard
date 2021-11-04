@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IAppServiceBase.cs" />
+    <Compile Include="Interfaces\IOrdemServicoAppService.cs" />
     <Compile Include="Interfaces\IOSSitAppService.cs" />
     <Compile Include="Interfaces\IOSEspAppService.cs" />
     <Compile Include="Interfaces\IENAppService.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Interfaces\ICRAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
+    <Compile Include="Services\OrdemServicoAppService.cs" />
     <Compile Include="Services\OSSitAppService.cs" />
     <Compile Include="Services\OSEspAppService.cs" />
     <Compile Include="Services\ENAppService.cs" />

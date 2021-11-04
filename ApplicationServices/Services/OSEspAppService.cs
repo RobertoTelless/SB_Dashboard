@@ -39,5 +39,9 @@ namespace ApplicationServices.Services
         {
             return _baseService.GetItensOSCidade();
         }
+        public List<DTO_OS_UF> GetOSAtrasoCidade()
+        {
+            return _baseService.GetOSAtrasoCidade();
+        }
     }
 }

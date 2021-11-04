@@ -47,6 +47,11 @@ namespace ModelServices.EntitiesServices
             return _baseRepository.GetItensOSCidade();
         }
 
+        public List<DTO_OS_UF> GetOSAtrasoCidade()
+        {
+            return _baseRepository.GetOSAtrasoCidade();
+        }
+
         public Int32 Create(vwOrdemServicoEspecialidade item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))

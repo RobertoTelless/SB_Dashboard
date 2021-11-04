@@ -3532,6 +3532,10 @@
     <Content Include="Views\Dashboard\VerOSCidadeExpansao.cshtml" />
     <Content Include="Views\Dashboard\VerOSCidadeTable.cshtml" />
     <Content Include="Views\Dashboard\MontarTelaDashboardReal - Cópia .cshtml" />
+    <Content Include="Views\Dashboard\VerOSAtrasoExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerOSPendenciaExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerOSPesquisaExpansao.cshtml" />
+    <Content Include="Views\Dashboard\VerOSAvaliacaoExpansao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

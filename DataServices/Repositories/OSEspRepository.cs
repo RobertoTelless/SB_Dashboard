@@ -131,6 +131,26 @@ namespace DataServices.Repositories
             }
         }
 
+        public List<DTO_OS_UF> GetOSAtrasoCidade()
+        {
+            using (var ctx = new OnSuiteBIEntities())
+            {
+                var ss = from ri in ctx.OrdemServico
+                         join rr in ctx.Pessoa
+                            on ri.Cliente equals rr.Id
+                         where ri.DataExecucaoFimPrevisao < DateTime.Today.Date
+                         group ri by ri.Pessoa1.Cidade into g
+                         select new DTO_OS_UF
+                         {
+                             UF = g.Key,
+                             Quantidade = g.Count()
+                         };
+                var x = ss.First();
+                var y = ss.Count();
+                return ss.ToList<DTO_OS_UF>();
+            }
+        }
+
     }
 }
  
