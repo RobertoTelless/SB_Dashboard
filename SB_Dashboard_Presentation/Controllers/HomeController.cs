@@ -25,7 +25,21 @@ namespace ERP_Condominios_Solution.Controllers
             Session["Inicio"] = 0;
             Session["CarregaListas1"] = 0;
             Session["Filtro1"] = null;
-            return RedirectToAction("MontarTelaDashboardReal", "Dashboard");
+            Session["OSAtrasadas"] = null;
+            Session["OSPendencia"] = null;
+            Session["OSPesquisa"] = null;
+            Session["OSAvaliacao"] = null;
+            Session["OSCidade"] = null;
+            Session["OSEspecialidade"] = null;
+            Session["OSSituacao"] = null;
+            Session["OSTipo"] = null;
+            Session["OSUF"] = null;
+            Session["GraficoPagar"] = null;
+            Session["GraficoReceita"] = null;
+            Session["GraficoDespesa"] = null;
+            Session["GraficoCR"] = null;
+            return RedirectToAction("Index", "Dashboard");
+            //return RedirectToAction("MontarTelaDashboardReal", "Dashboard");
         }
 
         public ActionResult About()

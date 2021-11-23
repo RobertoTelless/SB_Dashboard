@@ -22,6 +22,7 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using EntitiesServices.DTO;
 
+
 namespace SB_Dashboard_Presentation.Controllers
 {
     public class DashboardController : Controller
@@ -534,30 +535,72 @@ namespace SB_Dashboard_Presentation.Controllers
             return View(mod);
         }
 
-        public ActionResult MontarTelaDashboardOperacional()
+        public ActionResult MontarTelaOperacional()
         {
+            DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
+            DateTime hoje = DateTime.Today.Date;
+            hoje = Convert.ToDateTime("10/09/2019");
+            Session["Hoje"] = hoje;
+            if ( Session["ListaOSCheia"] == null)
+            {
+                List<OrdemServico> listaOSCheia = OSApp.GetAllItens();
+                Session["ListaOSCheia"] = listaOSCheia;
+            }
+            if (Session["ListaOSIniciadas"] == null)
+            {
+                List<OrdemServico> listaOSIniciadas = OSApp.GetAllItensIniciadas();
+                Session["ListaOSIniciadas"] = listaOSIniciadas;
+            }
             // Retorna
+            return View();
+        }
+
+        public ActionResult MontarTelaBI()
+        {
+            DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
+            DateTime hoje = DateTime.Today.Date;
+            hoje = Convert.ToDateTime("10/09/2019");
+            Session["Hoje"] = hoje;
+            if (Session["ListaOSCheia"] == null)
+            {
+                List<OrdemServico> listaOSCheia = OSApp.GetAllItens();
+                Session["ListaOSCheia"] = listaOSCheia;
+            }
+            if (Session["ListaOSIniciadas"] == null)
+            {
+                List<OrdemServico> listaOSIniciadas = OSApp.GetAllItensIniciadas();
+                Session["ListaOSIniciadas"] = listaOSIniciadas;
+            }
             return View();
         }
 
         public JsonResult GetDadosGraficoDespesas()
         {
-            DateTime hoje = Convert.ToDateTime("10/09/2019");
-            List<vwContasAPagar> listaCP1 = (List<vwContasAPagar>)Session["ListaCP"];
-            listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Year == hoje.Year).ToList();
-            List<vwContasAPagar> listaMes = new List<vwContasAPagar>();
             List<String> meses = new List<String>();
             List<Decimal> valor = new List<Decimal>();
-
-            for (int i = 1; i < 13; i++)
+            if (Session["GraficoDespesa"] == null)
             {
-                Int32 mes = i;
-                listaMes = listaCP.Where(p => p.Data_de_Vencimento.Month == mes).ToList();
-                var somaMes = listaMes.Sum(p => p.Valor)/1000;
-                meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
-                valor.Add(somaMes);
+                DateTime hoje = Convert.ToDateTime("10/09/2019");
+                List<vwContasAPagar> listaCP1 = (List<vwContasAPagar>)Session["ListaCP"];
+                listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                Session["GraficoDespesa"] = listaCP1;
+                List<vwContasAPagar> listaMes = new List<vwContasAPagar>();
+                for (int i = 1; i < 13; i++)
+                {
+                    Int32 mes = i;
+                    listaMes = listaCP.Where(p => p.Data_de_Vencimento.Month == mes).ToList();
+                    var somaMes = listaMes.Sum(p => p.Valor) / 1000;
+                    meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
+                    valor.Add(somaMes);
+                }
+                Session["Meses"] = meses;
+                Session["Valor"] = valor;
             }
-
+            else
+            {
+                meses = (List<String>)Session["Meses"];
+                valor = (List<Decimal>)Session["valor"];
+            }
             Hashtable result = new Hashtable();
             result.Add("meses", meses);
             result.Add("valores", valor);
@@ -567,22 +610,31 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoReceitas()
         {
-            DateTime hoje = Convert.ToDateTime("10/09/2019");
-            List<vwContasAReceber> listaCR1 = (List<vwContasAReceber>)Session["ListaCR"];
-            listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Year == hoje.Year).ToList();
-            List<vwContasAReceber> listaMes = new List<vwContasAReceber>();
             List<String> meses = new List<String>();
             List<Decimal> valor = new List<Decimal>();
-
-            for (int i = 1; i < 13; i++)
+            if (Session["GraficoReceita"] == null)
             {
-                Int32 mes = i;
-                listaMes = listaCR.Where(p => p.Data_de_Vencimento.Month == mes).ToList();
-                var somaMes = listaMes.Sum(p => p.Valor_Liquido) / 1000;
-                meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
-                valor.Add(somaMes);
+                DateTime hoje = Convert.ToDateTime("10/09/2019");
+                List<vwContasAReceber> listaCR1 = (List<vwContasAReceber>)Session["ListaCR"];
+                Session["GraficoReceita"] = listaCR1;
+                listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                List<vwContasAReceber> listaMes = new List<vwContasAReceber>();
+                for (int i = 1; i < 13; i++)
+                {
+                    Int32 mes = i;
+                    listaMes = listaCR.Where(p => p.Data_de_Vencimento.Month == mes).ToList();
+                    var somaMes = listaMes.Sum(p => p.Valor_Liquido) / 1000;
+                    meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
+                    valor.Add(somaMes);
+                }
+                Session["Meses"] = meses;
+                Session["Valor"] = valor;
             }
-
+            else
+            {
+                meses = (List<String>)Session["Meses"];
+                valor = (List<Decimal>)Session["valor"];
+            }
             Hashtable result = new Hashtable();
             result.Add("meses", meses);
             result.Add("valores", valor);
@@ -591,20 +643,30 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoPagar()
         {
-            DateTime hoje = Convert.ToDateTime("10/09/2019");
-            List<vwLancamentosAPagar> listaLP1 = (List<vwLancamentosAPagar>)Session["ListaLP"];
-            listaLP = listaLP1.Where(p => p.Data_de_Vencimento.Value.Year == hoje.Year).ToList();
-            List<vwLancamentosAPagar> listaMes = new List<vwLancamentosAPagar>();
             List<String> meses = new List<String>();
             List<Decimal> valor = new List<Decimal>();
-
-            for (int i = 1; i < 13; i++)
+            if (Session["GraficoPagar"] == null)
             {
-                Int32 mes = i;
-                listaMes = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == mes).ToList();
-                var somaMes = listaMes.Sum(p => p.Valor) / 1000;
-                meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
-                valor.Add(somaMes);
+                DateTime hoje = Convert.ToDateTime("10/09/2019");
+                List<vwLancamentosAPagar> listaLP1 = (List<vwLancamentosAPagar>)Session["ListaLP"];
+                Session["GraficoPagar"] = listaLP1;
+                listaLP = listaLP1.Where(p => p.Data_de_Vencimento.Value.Year == hoje.Year).ToList();
+                List<vwLancamentosAPagar> listaMes = new List<vwLancamentosAPagar>();
+                for (int i = 1; i < 13; i++)
+                {
+                    Int32 mes = i;
+                    listaMes = listaLP.Where(p => p.Data_de_Vencimento.Value.Month == mes).ToList();
+                    var somaMes = listaMes.Sum(p => p.Valor) / 1000;
+                    meses.Add(mes.ToString() + "/" + hoje.Year.ToString());
+                    valor.Add(somaMes);
+                }
+                Session["Meses"] = meses;
+                Session["Valor"] = valor;
+            }
+            else
+            {
+                meses = (List<String>)Session["Meses"];
+                valor = (List<Decimal>)Session["valor"];
             }
 
             Hashtable result = new Hashtable();
@@ -615,15 +677,24 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoSituacao()
         {
-            List<vwOrdemServicoSituacao> tbl = ossApp.GetAllItens();
             List<String> desc = new List<String>();
             List<Int32> quant = new List<Int32>();
             List<String> cor = new List<String>();
-
-            foreach (var item in tbl)
+            if (Session["OSSituacao"] == null)
             {
-                desc.Add(item.Descricao);
-                quant.Add(item.Quantidade.Value);               
+                List<vwOrdemServicoSituacao> tbl = ossApp.GetAllItens();
+                foreach (var item in tbl)
+                {
+                    desc.Add(item.Descricao);
+                    quant.Add(item.Quantidade.Value);
+                }
+                Session["Desc"] = desc;
+                Session["Quant"] = quant;
+            }
+            else
+            {
+                desc = (List<String>)Session["Desc"];
+                quant = (List<Int32>)Session["Quant"];
             }
 
             cor.Add("#359E18");
@@ -642,10 +713,21 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoAtraso()
         {
-            DateTime hoje = (DateTime)Session["Hoje"];
-            List<OrdemServico> tbl = OSApp.GetOSAtraso(hoje);
-            Session["OSAtrasadas"] = tbl;
-            Int32 numAtraso = tbl.Count;
+            Int32 numAtraso = 0;
+            if (Session["OSAtrasadas"] == null)
+            {
+                DateTime hoje = (DateTime)Session["Hoje"];
+                List<OrdemServico> tbl = OSApp.GetOSAtraso(hoje);
+                Session["OSAtrasadas"] = tbl;
+                numAtraso = tbl.Count;
+            }
+            else
+            {
+                List<OrdemServico> tbl = (List<OrdemServico>)Session["OSAtrasadas"];
+                Session["OSAtrasadas"] = tbl;
+                numAtraso = tbl.Count;
+            }
+
             List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSCheia"];
             Int32 numTotal = total.Count;
             Int32 ativas = numTotal - numAtraso;
@@ -669,26 +751,26 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoAvaliacao()
         {
-            List<OrdemServico> tbl = OSApp.GetOSAvaliacao();
-            Session["OSAvaliacao"] = tbl;
-            Int32 numAtraso = tbl.Count;
-            List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSCheia"];
             Int32 baixo = 0;
             Int32 alto = 0;
-
-            foreach (OrdemServico item in tbl)
+            if (Session["OSAvaliacao"] == null)
             {
-                foreach (OrdemServicoAvaliacao aval in item.OrdemServicoAvaliacao)
+                List<OrdemServico> tbl = OSApp.GetOSAvaliacao();
+                Session["OSAvaliacao"] = tbl;
+                List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSCheia"];
+                foreach (OrdemServico item in tbl)
                 {
-                    if (aval.Avaliacao < 5)
-                    {
-                        baixo++;
-                    }
-                    else
-                    {
-                        alto++;
-                    }
+                    baixo += item.OrdemServicoAvaliacao.Where(p => p.Avaliacao < 5).ToList().Count;
+                    alto += item.OrdemServicoAvaliacao.Where(p => p.Avaliacao > 5).ToList().Count;
                 }
+                Session["Alto"] = alto;
+                Session["Baixo"] = baixo;
+            }
+            else
+            {
+                List<OrdemServico> tbl = (List<OrdemServico>)Session["OSAvaliacao"];
+                alto = (Int32)Session["Alto"];
+                baixo = (Int32)Session["Baixo"];
             }
 
             List<String> desc = new List<String>();
@@ -711,9 +793,18 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoPendencia()
         {
-            List<OrdemServico> tbl = OSApp.GetOSPendencias();
-            Session["OSPendencia"] = tbl;
-            Int32 numPendencia = tbl.Count;
+            Int32 numPendencia = 0;
+            if (Session["OSPendencia"] == null)
+            {
+                List<OrdemServico> tbl = OSApp.GetOSPendencias();
+                Session["OSPendencia"] = tbl;
+                numPendencia = tbl.Count;
+            }
+            else
+            {
+                List<OrdemServico> tbl = (List<OrdemServico>)Session["OSPendencia"];
+                numPendencia = tbl.Count;
+            }
             List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSIniciadas"];
             
             Int32 numTotal = total.Count;
@@ -738,11 +829,20 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoPesquisa()
         {
-            List<OrdemServico> tbl = OSApp.GetOSPesquisa();
-            Session["OSPesquisa"] = tbl;
-            Int32 numPendencia = tbl.Count;
-            List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSIniciadas"];
+            Int32 numPendencia = 0;
+            if (Session["OSPesquisa"] == null)
+            {
+                List<OrdemServico> tbl = OSApp.GetOSPesquisa();
+                Session["OSPesquisa"] = tbl;
+                numPendencia = tbl.Count;
+            }
+            else
+            {
+                List<OrdemServico> tbl = (List<OrdemServico>)Session["OSPesquisa"];
+                numPendencia = tbl.Count;
+            }
 
+            List<OrdemServico> total = (List<OrdemServico>)Session["ListaOSIniciadas"];
             Int32 numTotal = total.Count;
             Int32 ativas = numTotal - numPendencia;
             List<String> desc = new List<String>();
@@ -765,23 +865,35 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoEspecialidade()
         {
-            List<vwOrdemServicoEspecialidade> tbl = oseApp.GetAllItens();
             List<String> desc = new List<String>();
             List<Int32> quant = new List<Int32>();
             List<Decimal> valor = new List<Decimal>();
-
-            foreach (var item in tbl)
+            if (Session["OSEspecialidade"] == null)
             {
-                desc.Add(item.Descricao);
-                quant.Add(item.Quantidade.Value);
-                if (item.Total != null)
+                List<vwOrdemServicoEspecialidade> tbl = oseApp.GetAllItens();
+                Session["OSEspecialidade"] = tbl;
+                foreach (var item in tbl)
                 {
-                    valor.Add(item.Total.Value);
+                    desc.Add(item.Descricao);
+                    quant.Add(item.Quantidade.Value);
+                    if (item.Total != null)
+                    {
+                        valor.Add(item.Total.Value);
+                    }
+                    else
+                    {
+                        valor.Add(0);
+                    }
                 }
-                else
-                {
-                    valor.Add(0);
-                }
+                Session["Desc"] = desc;
+                Session["Quant"] = quant;
+                Session["Valor"] = valor;
+            }
+            else
+            {
+                desc = (List<String>)Session["Desc"];
+                quant = (List<Int32>)Session["Quant"];
+                valor = (List<Decimal>)Session["Valor"];
             }
 
             Hashtable result = new Hashtable();
@@ -793,19 +905,28 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoUF()
         {
-            List<DTO_OS_UF> tbl = oseApp.GetItensOSUF();
-            Session["OSUF"] = tbl;
             List<String> desc = new List<String>();
             List<Int32> quant = new List<Int32>();
             List<Decimal> valor = new List<Decimal>();
-
-            foreach (var item in tbl)
+            if (Session["OSUF"] == null)
             {
-                if (!String.IsNullOrEmpty(item.UF))
+                List<DTO_OS_UF> tbl = oseApp.GetItensOSUF();
+                Session["OSUF"] = tbl;
+                foreach (var item in tbl)
                 {
-                    desc.Add(item.UF);
-                    quant.Add(item.Quantidade);
+                    if (!String.IsNullOrEmpty(item.UF))
+                    {
+                        desc.Add(item.UF);
+                        quant.Add(item.Quantidade);
+                    }
                 }
+                Session["Desc"] = desc;
+                Session["Quant"] = quant;
+            }
+            else
+            {
+                desc = (List<String>)Session["Desc"];
+                quant = (List<Int32>)Session["Quant"];
             }
 
             Hashtable result = new Hashtable();
@@ -816,18 +937,27 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoTipo()
         {
-            List<DTO_OS_UF> tbl = oseApp.GetItensOSTipo();
-            Session["OSTipo"] = tbl;
             List<String> desc = new List<String>();
             List<Int32> quant = new List<Int32>();
-
-            foreach (var item in tbl)
+            if (Session["OSTipo"] == null)
             {
-                if (!String.IsNullOrEmpty(item.UF))
+                List<DTO_OS_UF> tbl = oseApp.GetItensOSTipo();
+                Session["OSTipo"] = tbl;
+                foreach (var item in tbl)
                 {
-                    desc.Add(item.UF);
-                    quant.Add(item.Quantidade);
+                    if (!String.IsNullOrEmpty(item.UF))
+                    {
+                        desc.Add(item.UF);
+                        quant.Add(item.Quantidade);
+                    }
                 }
+                Session["Desc"] = desc;
+                Session["Quant"] = quant;
+            }
+            else
+            {
+                desc = (List<String>)Session["Desc"];
+                quant = (List<Int32>)Session["Quant"];
             }
 
             Hashtable result = new Hashtable();
@@ -838,19 +968,28 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public JsonResult GetDadosGraficoOrdemServicoCidade()
         {
-            List<DTO_OS_UF> tbl = oseApp.GetItensOSCidade();
-            Session["OSCidade"] = tbl;
             List<String> desc = new List<String>();
             List<Int32> quant = new List<Int32>();
             List<Decimal> valor = new List<Decimal>();
-
-            foreach (var item in tbl)
+            if (Session["OSCidade"] == null)
             {
-                if (!String.IsNullOrEmpty(item.UF))
+                List<DTO_OS_UF> tbl = oseApp.GetItensOSCidade();
+                Session["OSCidade"] = tbl;
+                foreach (var item in tbl)
                 {
-                    desc.Add(item.UF);
-                    quant.Add(item.Quantidade);
+                    if (!String.IsNullOrEmpty(item.UF))
+                    {
+                        desc.Add(item.UF);
+                        quant.Add(item.Quantidade);
+                    }
                 }
+                Session["Desc"] = desc;
+                Session["Quant"] = quant;
+            }
+            else
+            {
+                desc = (List<String>)Session["Desc"];
+                quant = (List<Int32>)Session["Quant"];
             }
 
             Hashtable result = new Hashtable();
@@ -1010,7 +1149,6 @@ namespace SB_Dashboard_Presentation.Controllers
             {
                 meses = 3;
             }
-
             List<vwContasAReceber> lista = (List<vwContasAReceber>)Session["ListaCR"];
             DateTime data1 = (DateTime)Session["RecIni"];
             DateTime data2 = (DateTime)Session["RecFim"];
@@ -1163,6 +1301,316 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.Message = ex.Message;
                 return RedirectToAction("MontarTelaDashboardReal");
             }
+        }
+
+        [HttpGet]
+        public ActionResult MontarTelaFluxoCaixa()
+        {
+            // Variaveis
+            Decimal rec = 0;
+            Decimal pag = 0;
+            Decimal lp = 0;
+            Decimal pc = 0;
+            Decimal ep = 0;
+            Decimal en = 0;
+            DateTime inicio = Convert.ToDateTime("01/" + DateTime.Today.Date.Month.ToString().PadLeft(2, '0') + "/" + DateTime.Today.Date.Year.ToString());
+            DateTime hoje = DateTime.Today.Date;
+            hoje = Convert.ToDateTime("10/09/2019");
+            Session["Hoje"] = hoje;
+
+            // Carrega campos de filtro Aba Fluxo de Caixa
+            ModeloViewModel mod = new ModeloViewModel();
+            if (Session["Filtro"] == null)
+            {
+                mod.RecebimentoInicio = null;
+                mod.RecebimentoFinal = null;
+                mod.CentroLucro = null;
+
+                Session["Filtro"] = mod;
+                Session["RecIni"] = null;
+                Session["RecFim"] = null;
+                Session["DataBase"] = Convert.ToDateTime("01/09/2019");
+            }
+            else
+            {
+                mod = (ModeloViewModel)Session["Filtro"];
+                Session["RecIni"] = mod.RecebimentoInicio;
+                Session["RecFim"] = mod.RecebimentoFinal;
+                Session["DataBase"] = mod.EmissaoInicio;
+            }
+
+            // Carrega Indicadores Diretos -- A SUBSTITUR
+            decimal saldoBancario = Convert.ToDecimal(164604.20);
+            ViewBag.SaldoBancario = saldoBancario;
+
+            // Carrega listas principais
+            if ((Int32)Session["CarregaListas"] == 0)
+            {
+                // Carrega listas dos filtros -- Aba Fluxo de Caixa
+                List<vwContasAReceber> listaCR1 = crApp.GetAllItens();
+                var listaCentroLucro = listaCR1.Select(p => p.Centro_de_Lucro).Distinct().ToList();
+                List<SelectListItem> listaCL = new List<SelectListItem>();
+                foreach (var item in listaCentroLucro)
+                {
+                    if (item != null)
+                    {
+                        listaCL.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                    }
+                }
+                SelectList cl = new SelectList(listaCL, "Value", "Text");
+                ViewBag.CentroLucro = cl;
+                Session["CL"] = cl;
+
+                List<vwContasAPagar> listaCP1 = cpApp.GetAllItens();
+                var listaCentroCusto = listaCP1.Select(p => p.Centro_de_Custos).Distinct().ToList();
+                List<SelectListItem> listaCC = new List<SelectListItem>();
+                foreach (var item in listaCentroCusto)
+                {
+                    if (item != null)
+                    {
+                        listaCC.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                    }
+                }
+                SelectList cc = new SelectList(listaCC, "Value", "Text");
+                ViewBag.CentroCusto = cc;
+                Session["CC"] = cc;
+                Session["ListaCP"] = listaCP1;
+
+                List<SelectListItem> libPag = new List<SelectListItem>();
+                libPag.Add(new SelectListItem() { Text = "Sim", Value = "Sim" });
+                libPag.Add(new SelectListItem() { Text = "Não", Value = "Não" });
+                ViewBag.LiberadoPag = new SelectList(libPag, "Value", "Text");
+
+                List<SelectListItem> execPos = new List<SelectListItem>();
+                execPos.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execPos.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecPos = new SelectList(execPos, "Value", "Text");
+
+                List<SelectListItem> execNeg = new List<SelectListItem>();
+                execNeg.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execNeg.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecNeg= new SelectList(execNeg, "Value", "Text");
+
+                List<SelectListItem> parc = new List<SelectListItem>();
+                parc.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                parc.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.Parcelamento = new SelectList(parc, "Value", "Text");
+
+                List<SelectListItem> lancPagar = new List<SelectListItem>();
+                lancPagar.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                lancPagar.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.LancPagar = new SelectList(lancPagar, "Value", "Text");
+
+                List<SelectListItem> crit = new List<SelectListItem>();
+                crit.Add(new SelectListItem() { Text = "1", Value = "1" });
+                crit.Add(new SelectListItem() { Text = "2", Value = "2" });
+                crit.Add(new SelectListItem() { Text = "3", Value = "3" });
+                crit.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Criticidade = new SelectList(crit, "Value", "Text");
+
+                List<SelectListItem> prob = new List<SelectListItem>();
+                prob.Add(new SelectListItem() { Text = "1", Value = "1" });
+                prob.Add(new SelectListItem() { Text = "2", Value = "2" });
+                prob.Add(new SelectListItem() { Text = "3", Value = "3" });
+                prob.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Probabilidade = new SelectList(prob, "Value", "Text");
+
+                Session["ExibeExecPos"] = 1;
+                Session["ExibeExecNeg"] = 1;
+                Session["ExibeParc"] = 1;
+                Session["ExibeLancPag"] = 1;
+
+                // Carrega listas - Aba Fluxo de Caixa
+                hoje = Convert.ToDateTime("10/09/2019");
+                //listaCR = listaCR1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                //listaCP = listaCP1.Where(p => p.Data_de_Vencimento.Month == hoje.Month & p.Data_de_Vencimento.Year == hoje.Year).ToList();
+                //listaLP = lpApp.GetAllItens().Where(p => p.Data_de_Vencimento.Value.Month == 9 & p.Data_de_Vencimento.Value.Year == 2019).ToList();
+                listaCR = listaCR1;
+                listaCP = listaCP1;
+                listaLP = lpApp.GetAllItens();
+                listaPC = pcApp.GetAllItens();
+                listaEP = epApp.GetAllItens();
+                listaEN = enApp.GetAllItens();
+                Session["ListaCR"] = listaCR;
+                Session["ListaCP"] = listaCP;
+                Session["ListaLP"] = listaLP;
+                Session["ListaPC"] = listaPC;
+                Session["ListaEP"] = listaEP;
+                Session["ListaEN"] = listaEN;
+                Session["CarregaListas"] = 1;
+
+                rec = listaCR.Sum(p => p.Valor_Liquido);
+                pag = listaCP.Sum(p => p.Valor);
+                lp = listaLP.Sum(p => p.Valor);
+                pc = listaPC.Sum(p => p.Valor_Bruto);
+                ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
+                en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
+
+                ViewBag.FalhaCR = listaCR.Count > 0 ? 0 : 1;
+                ViewBag.FalhaCP = listaCP.Count > 0 ? 0 : 1;
+                ViewBag.FalhaPC = listaPC.Count > 0 ? 0 : 1;
+                ViewBag.FalhaLP = listaLP.Count > 0 ? 0 : 1;
+                Session["CarregaListas"] = 1;
+            }
+            else
+            {
+                // Aba Fluxo de Caixa
+                listaCR = (List<vwContasAReceber>)Session["ListaCR"];
+                listaCP = (List<vwContasAPagar>)Session["ListaCP"];
+                listaPC = (List<vwParcelamento>)Session["ListaPC"];
+                listaLP = (List<vwLancamentosAPagar>)Session["ListaLP"];
+                listaEN = (List<vwExecutandoNegativo>)Session["ListaEN"];
+                listaEP = (List<vwExecutandoPositivo>)Session["ListaEP"];
+                Session["CarregaListas"] = 1;
+
+                rec = listaCR.Sum(p => p.Valor_Liquido);
+                pag = listaCP.Sum(p => p.Valor);
+                lp = listaLP.Sum(p => p.Valor);
+                pc = listaPC.Sum(p => p.Valor_Bruto);
+                ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
+                en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
+
+                ViewBag.FalhaCR = (Int32)Session["FalhaCR"];
+                ViewBag.FalhaCP = (Int32)Session["FalhaCP"];
+                ViewBag.FalhaPC = (Int32)Session["FalhaPC"];
+                ViewBag.FalhaLP = (Int32)Session["FalhaLP"];
+
+                ViewBag.Beneficiarios = (SelectList)Session["BE"];
+                ViewBag.Sacado = (SelectList)Session["SA"];
+                ViewBag.CentroCusto = (SelectList)Session["CC"];
+                ViewBag.CentroLucro = (SelectList)Session["CL"];
+
+                List<SelectListItem> libPag = new List<SelectListItem>();
+                libPag.Add(new SelectListItem() { Text = "Sim", Value = "Sim" });
+                libPag.Add(new SelectListItem() { Text = "Não", Value = "Não" });
+                ViewBag.LiberadoPag = new SelectList(libPag, "Value", "Text");
+
+                List<SelectListItem> execPos = new List<SelectListItem>();
+                execPos.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execPos.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecPos = new SelectList(execPos, "Value", "Text");
+
+                List<SelectListItem> execNeg = new List<SelectListItem>();
+                execNeg.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execNeg.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecNeg = new SelectList(execNeg, "Value", "Text");
+
+                List<SelectListItem> parc = new List<SelectListItem>();
+                parc.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                parc.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.Parcelamento = new SelectList(parc, "Value", "Text");
+
+                List<SelectListItem> lancPagar = new List<SelectListItem>();
+                lancPagar.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                lancPagar.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.LancPagar = new SelectList(lancPagar, "Value", "Text");
+
+                List<SelectListItem> crit = new List<SelectListItem>();
+                crit.Add(new SelectListItem() { Text = "1", Value = "1" });
+                crit.Add(new SelectListItem() { Text = "2", Value = "2" });
+                crit.Add(new SelectListItem() { Text = "3", Value = "3" });
+                crit.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Criticidade = new SelectList(crit, "Value", "Text");
+
+                List<SelectListItem> prob = new List<SelectListItem>();
+                prob.Add(new SelectListItem() { Text = "1", Value = "1" });
+                prob.Add(new SelectListItem() { Text = "2", Value = "2" });
+                prob.Add(new SelectListItem() { Text = "3", Value = "3" });
+                prob.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Probabilidade = new SelectList(prob, "Value", "Text");
+            }
+
+            // Configura view - Fluxo de Caixa
+            ViewBag.Rec = rec;
+            ViewBag.Pag = pag;
+            ViewBag.Lp = lp;
+            ViewBag.Pc = pc;
+            ViewBag.ExecPositivo = ep;
+            ViewBag.ExecNegativo = en;
+
+            Session["Rec"] = rec;
+            Session["Pag"] = pag;
+            Session["LP"] = lp;
+            Session["PC"] = pc;
+
+            // Campos calculados
+            Decimal result = (rec + ep + pc) - (pag + en + lp);
+            Decimal saldo = result + saldoBancario;
+            ViewBag.Resultado = result;
+            ViewBag.SaldoTotal = saldo;
+
+            // Monta linha do filtro -- Aba Fluxo de caixa
+            String linhaFiltro = String.Empty;
+            //if (mod.VencimentoInicio != null)
+            //{
+            //    if (linhaFiltro == String.Empty)
+            //    {
+            //        linhaFiltro = "Vencimento-Início: " + mod.VencimentoInicio.Value.ToShortDateString();
+            //    }
+            //    else
+            //    {
+            //        linhaFiltro += " | Vencimento-Início: " + mod.VencimentoInicio.Value.ToShortDateString();
+            //    }
+            //}
+            //if (mod.VencimentoFinal != null)
+            //{
+            //    if (linhaFiltro == String.Empty)
+            //    {
+            //        linhaFiltro = "Vencimento-Final: " + mod.VencimentoFinal.Value.ToShortDateString();
+            //    }
+            //    else
+            //    {
+            //        linhaFiltro += " | Vencimento-Final: " + mod.VencimentoFinal.Value.ToShortDateString();
+            //    }
+            //}
+            //if (mod.CentroLucro != null)
+            //{
+            //    if (linhaFiltro == String.Empty)
+            //    {
+            //        linhaFiltro = "Centro de Lucro: " + mod.CentroLucro;
+            //    }
+            //    else
+            //    {
+            //        linhaFiltro += " | Centro de Lucro: " + mod.CentroLucro;
+            //    }
+            //}
+            //if (mod.LiberadoPag != null)
+            //{
+            //    if (linhaFiltro == String.Empty)
+            //    {
+            //        linhaFiltro = "Liberado Pagto: " + mod.LiberadoPag;
+            //    }
+            //    else
+            //    {
+            //        linhaFiltro += " | Liberado Pagto: " + mod.LiberadoPag;
+            //    }
+            //}
+            //if (mod.Criticidade != null & mod.Criticidade > 0)
+            //{
+            //    if (linhaFiltro == String.Empty)
+            //    {
+            //        linhaFiltro = "Criticidade: " + mod.Criticidade.ToString();
+            //    }
+            //    else
+            //    {
+            //        linhaFiltro += " | Criticidade: " + mod.Criticidade.ToString();
+            //    }
+            //}
+            //if (mod.Probabilidade != null & mod.Probabilidade > 0)
+            //{
+            //    if (linhaFiltro == String.Empty)
+            //    {
+            //        linhaFiltro = "Probabilidade: " + mod.Probabilidade.ToString();
+            //    }
+            //    else
+            //    {
+            //        linhaFiltro += " | Probabilidade: " + mod.Probabilidade.ToString();
+            //    }
+            //}
+            ViewBag.LinhaFiltro = linhaFiltro;
+
+            // Retorna
+            return View(mod);
         }
 
     }

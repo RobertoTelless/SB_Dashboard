@@ -3536,6 +3536,10 @@
     <Content Include="Views\Dashboard\VerOSPendenciaExpansao.cshtml" />
     <Content Include="Views\Dashboard\VerOSPesquisaExpansao.cshtml" />
     <Content Include="Views\Dashboard\VerOSAvaliacaoExpansao.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\MontarTelaFluxoCaixa.cshtml" />
+    <Content Include="Views\Dashboard\MontarTelaOperacional.cshtml" />
+    <Content Include="Views\Dashboard\MontarTelaBI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

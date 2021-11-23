@@ -47,11 +47,16 @@ namespace DataServices.Repositories
             query = query.Where(p => p.DataExecucaoInicio != null & p.OrdemServicoPesquisa.Count > 0);
             return query.ToList();
         }
-
+        
         public List<OrdemServico> GetOSAvaliacao()
         {
             IQueryable<OrdemServico> query = Db.OrdemServico;
             query = query.Where(p => p.DataExecucaoInicio != null & p.OrdemServicoAvaliacao.Count > 0);
+            
+            
+            
+            
+            
             return query.ToList();
         }
 
