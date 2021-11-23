@@ -11,6 +11,6 @@ namespace ApplicationServices.Interfaces
     {
         List<vwContasAPagar> GetAllItens();
         List<vwContasAPagar> GetByData(DateTime data);
-        Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? pagInicio, DateTime? pagFinal, String centroCusto, String beneficiario, out List<vwContasAPagar> objeto);
+        Int32 ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? pagInicio, DateTime? pagFinal, String centroCusto, String beneficiario, String libPag, Int32? crit, out List<vwContasAPagar> objeto);
     }
 }

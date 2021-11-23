@@ -11,6 +11,6 @@ namespace ModelServices.Interfaces.Repositories
     {
         List<vwContasAPagar> GetAllItens();
         List<vwContasAPagar> GetByData(DateTime data);
-        List<vwContasAPagar> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? pagInicio, DateTime? pagFinal, String centroCusto, String beneficiario);
+        List<vwContasAPagar> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? pagInicio, DateTime? pagFinal, String centroCusto, String beneficiario, String libPag, Int32? crit);
     }
 }

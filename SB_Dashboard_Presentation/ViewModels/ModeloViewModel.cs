@@ -34,6 +34,13 @@ namespace SB_Dashboard_Presentation.ViewModels
         public String Especialidade { get; set; }
         public String Situacao { get; set; }
         public String Tipo { get; set; }
+        public String LiberadoPag { get; set; }
+        public Int32? ExecPositivo { get; set; }
+        public Int32? ExecNegativo { get; set; }
+        public Int32? Parcelamento { get; set; }
+        public Int32? LancPagar { get; set; }
+        public Int32? Criticidade { get; set; }
+        public Int32? Probabilidade { get; set; }
 
         public bool Check
         {

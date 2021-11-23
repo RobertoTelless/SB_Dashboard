@@ -7,6 +7,7 @@ using EntitiesServices.Model;
 using ModelServices.Interfaces.Repositories;
 using EntitiesServices.Work_Classes;
 using System.Data.Entity;
+using EntitiesServices.DTO;
 
 namespace DataServices.Repositories
 {
@@ -25,10 +26,14 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
-        public List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro, String sacado)
+        public List<vwContasAReceber> ExecuteFilter(DateTime? emissaoInicio, DateTime? emissaoFinal, DateTime? vencInicio, DateTime? vencFinal, DateTime? recInicio, DateTime? recFinal, String centroLucro, String sacado, Int32? prob)
         {
             List<vwContasAReceber> lista = new List<vwContasAReceber>();
             IQueryable<vwContasAReceber> query = Db.vwContasAReceber;
+            if (prob != null & prob > 0)
+            {
+                query = query.Where(p => p.Probabilidade == prob);
+            }
             if (!String.IsNullOrEmpty(centroLucro))
             {
                 query = query.Where(p => p.Centro_de_Lucro == centroLucro);

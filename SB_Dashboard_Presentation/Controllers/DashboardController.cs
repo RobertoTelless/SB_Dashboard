@@ -232,37 +232,13 @@ namespace SB_Dashboard_Presentation.Controllers
             hoje = Convert.ToDateTime("10/09/2019");
             Session["Hoje"] = hoje;
 
-            List<OrdemServico> listaOSCheia = OSApp.GetAllItens();
-            Session["ListaOSCheia"] = listaOSCheia;
-            List<OrdemServico> listaOSIniciadas = OSApp.GetAllItensIniciadas();
-            Session["ListaOSIniciadas"] = listaOSIniciadas;
-
             // Carrega campos de filtro Aba Fluxo de Caixa
             ModeloViewModel mod = new ModeloViewModel();
             if (Session["Filtro"] == null)
             {
-                // Fluxo de Caixa          
-                //mod.EmissaoInicio = inicio;
-                //mod.EmissaoFinal = DateTime.Today.Date;
-                //mod.VencimentoInicio = inicio;
-                //mod.VencimentoFinal = DateTime.Today.Date;
-                //mod.RecebimentoInicio = inicio;
-                //mod.RecebimentoFinal = DateTime.Today.Date;
-                //mod.PagamentoInicio = inicio;
-                //mod.PagamentoFinal = DateTime.Today.Date;
-
-                mod.EmissaoInicio = null;
-                mod.EmissaoFinal = null;
-                mod.VencimentoInicio = null;
-                mod.VencimentoFinal = null;
                 mod.RecebimentoInicio = null;
                 mod.RecebimentoFinal = null;
-                mod.PagamentoInicio = null;
-                mod.PagamentoFinal = null;
-                mod.CentroCusto = null;
                 mod.CentroLucro = null;
-                mod.Beneficiario = null;
-                mod.Sacado = null;
 
                 Session["Filtro"] = null;
                 Session["RecIni"] = null;
@@ -272,8 +248,8 @@ namespace SB_Dashboard_Presentation.Controllers
             else
             {
                 mod = (ModeloViewModel)Session["Filtro"];
-                Session["RecIni"] = mod.EmissaoInicio;
-                Session["RecFim"] = mod.EmissaoFinal;
+                Session["RecIni"] = mod.RecebimentoInicio;
+                Session["RecFim"] = mod.RecebimentoFinal;
                 Session["DataBase"] = mod.EmissaoInicio;
             }
 
@@ -284,6 +260,11 @@ namespace SB_Dashboard_Presentation.Controllers
             // Carrega listas principais
             if ((Int32)Session["CarregaListas"] == 0)
             {
+                List<OrdemServico> listaOSCheia = OSApp.GetAllItens();
+                Session["ListaOSCheia"] = listaOSCheia;
+                List<OrdemServico> listaOSIniciadas = OSApp.GetAllItensIniciadas();
+                Session["ListaOSIniciadas"] = listaOSIniciadas;
+
                 // Carrega listas dos filtros -- Aba Fluxo de Caixa
                 List<vwContasAReceber> listaCR1 = crApp.GetAllItens();
                 var listaCentroLucro = listaCR1.Select(p => p.Centro_de_Lucro).Distinct().ToList();
@@ -298,19 +279,6 @@ namespace SB_Dashboard_Presentation.Controllers
                 SelectList cl = new SelectList(listaCL, "Value", "Text");
                 ViewBag.CentroLucro = cl;
                 Session["CL"] = cl;
-
-                var listaSacado = listaCR1.Select(p => p.Sacado).Distinct().ToList();
-                List<SelectListItem> sacado = new List<SelectListItem>();
-                foreach (var item in listaSacado)
-                {
-                    if (item != null)
-                    {
-                        sacado.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
-                    }
-                }
-                SelectList sa = new SelectList(sacado, "Value", "Text");
-                ViewBag.Sacados = sa;
-                Session["SA"] = sa;
 
                 List<vwContasAPagar> listaCP1 = cpApp.GetAllItens();
                 var listaCentroCusto = listaCP1.Select(p => p.Centro_de_Custos).Distinct().ToList();
@@ -327,19 +295,49 @@ namespace SB_Dashboard_Presentation.Controllers
                 Session["CC"] = cc;
                 Session["ListaCP"] = listaCP1;
 
-                var listaBeneficiario = listaCP1.Select(p => p.Beneficario).Distinct().ToList();
-                List<SelectListItem> beneficiario = new List<SelectListItem>();
-                foreach (var item in listaBeneficiario)
-                {
-                    if (item != null)
-                    {
-                        beneficiario.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
-                    }
-                }
-                ViewBag.Beneficiarios = new SelectList(beneficiario, "Value", "Text");
-                SelectList be = new SelectList(beneficiario, "Value", "Text");
-                ViewBag.Beneficiarios = be;
-                Session["BE"] = be;
+                List<SelectListItem> libPag = new List<SelectListItem>();
+                libPag.Add(new SelectListItem() { Text = "Sim", Value = "Sim" });
+                libPag.Add(new SelectListItem() { Text = "Não", Value = "Não" });
+                ViewBag.LiberadoPag = new SelectList(libPag, "Value", "Text");
+
+                List<SelectListItem> execPos = new List<SelectListItem>();
+                execPos.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execPos.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecPos = new SelectList(execPos, "Value", "Text");
+
+                List<SelectListItem> execNeg = new List<SelectListItem>();
+                execNeg.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execNeg.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecNeg= new SelectList(execNeg, "Value", "Text");
+
+                List<SelectListItem> parc = new List<SelectListItem>();
+                parc.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                parc.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.Parcelamento = new SelectList(parc, "Value", "Text");
+
+                List<SelectListItem> lancPagar = new List<SelectListItem>();
+                lancPagar.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                lancPagar.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.LancPagar = new SelectList(lancPagar, "Value", "Text");
+
+                List<SelectListItem> crit = new List<SelectListItem>();
+                crit.Add(new SelectListItem() { Text = "1", Value = "1" });
+                crit.Add(new SelectListItem() { Text = "2", Value = "2" });
+                crit.Add(new SelectListItem() { Text = "3", Value = "3" });
+                crit.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Criticidade = new SelectList(crit, "Value", "Text");
+
+                List<SelectListItem> prob = new List<SelectListItem>();
+                prob.Add(new SelectListItem() { Text = "1", Value = "1" });
+                prob.Add(new SelectListItem() { Text = "2", Value = "2" });
+                prob.Add(new SelectListItem() { Text = "3", Value = "3" });
+                prob.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Probabilidade = new SelectList(prob, "Value", "Text");
+
+                Session["ExibeExecPos"] = 1;
+                Session["ExibeExecNeg"] = 1;
+                Session["ExibeParc"] = 1;
+                Session["ExibeLancPag"] = 1;
 
                 // Carrega listas - Aba Fluxo de Caixa
                 hoje = Convert.ToDateTime("10/09/2019");
@@ -400,6 +398,47 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.Sacado = (SelectList)Session["SA"];
                 ViewBag.CentroCusto = (SelectList)Session["CC"];
                 ViewBag.CentroLucro = (SelectList)Session["CL"];
+
+                List<SelectListItem> libPag = new List<SelectListItem>();
+                libPag.Add(new SelectListItem() { Text = "Sim", Value = "Sim" });
+                libPag.Add(new SelectListItem() { Text = "Não", Value = "Não" });
+                ViewBag.LiberadoPag = new SelectList(libPag, "Value", "Text");
+
+                List<SelectListItem> execPos = new List<SelectListItem>();
+                execPos.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execPos.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecPos = new SelectList(execPos, "Value", "Text");
+
+                List<SelectListItem> execNeg = new List<SelectListItem>();
+                execNeg.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                execNeg.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.ExecNeg = new SelectList(execNeg, "Value", "Text");
+
+                List<SelectListItem> parc = new List<SelectListItem>();
+                parc.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                parc.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.Parcelamento = new SelectList(parc, "Value", "Text");
+
+                List<SelectListItem> lancPagar = new List<SelectListItem>();
+                lancPagar.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+                lancPagar.Add(new SelectListItem() { Text = "Não", Value = "0" });
+                ViewBag.LancPagar = new SelectList(lancPagar, "Value", "Text");
+
+                List<SelectListItem> crit = new List<SelectListItem>();
+                crit.Add(new SelectListItem() { Text = "1", Value = "1" });
+                crit.Add(new SelectListItem() { Text = "2", Value = "2" });
+                crit.Add(new SelectListItem() { Text = "3", Value = "3" });
+                crit.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Criticidade = new SelectList(crit, "Value", "Text");
+
+                List<SelectListItem> prob = new List<SelectListItem>();
+                prob.Add(new SelectListItem() { Text = "1", Value = "1" });
+                prob.Add(new SelectListItem() { Text = "2", Value = "2" });
+                prob.Add(new SelectListItem() { Text = "3", Value = "3" });
+                prob.Add(new SelectListItem() { Text = "4", Value = "4" });
+                ViewBag.Probabilidade = new SelectList(prob, "Value", "Text");
+
+                mod = (ModeloViewModel)Session["Filtro"];
             }
 
             // Configura view - Fluxo de Caixa
@@ -423,28 +462,6 @@ namespace SB_Dashboard_Presentation.Controllers
 
             // Monta linha do filtro -- Aba Fluxo de caixa
             String linhaFiltro = String.Empty;
-            if (mod.EmissaoInicio != null)
-            {
-                if (linhaFiltro == String.Empty)
-                {
-                    linhaFiltro = "Emissão-Início: " + mod.EmissaoInicio.Value.ToShortDateString();
-                }
-                else
-                {
-                    linhaFiltro += " | Emissão-Início: " + mod.EmissaoInicio.Value.ToShortDateString();
-                }
-            }
-            if (mod.EmissaoFinal != null)
-            {
-                if (linhaFiltro == String.Empty)
-                {
-                    linhaFiltro = "Emissão-Final: " + mod.EmissaoFinal.Value.ToShortDateString();
-                }
-                else
-                {
-                    linhaFiltro += " | Emissão-Final: " + mod.EmissaoFinal.Value.ToShortDateString();
-                }
-            }
             if (mod.VencimentoInicio != null)
             {
                 if (linhaFiltro == String.Empty)
@@ -467,39 +484,6 @@ namespace SB_Dashboard_Presentation.Controllers
                     linhaFiltro += " | Vencimento-Final: " + mod.VencimentoFinal.Value.ToShortDateString();
                 }
             }
-            if (mod.PagamentoInicio != null)
-            {
-                if (linhaFiltro == String.Empty)
-                {
-                    linhaFiltro = "Pagamento-Início: " + mod.PagamentoInicio.Value.ToShortDateString();
-                }
-                else
-                {
-                    linhaFiltro += " | Pagamento-Início: " + mod.PagamentoInicio.Value.ToShortDateString();
-                }
-            }
-            if (mod.PagamentoFinal != null)
-            {
-                if (linhaFiltro == String.Empty)
-                {
-                    linhaFiltro = "Pagamento-Final: " + mod.PagamentoFinal.Value.ToShortDateString();
-                }
-                else
-                {
-                    linhaFiltro += " | Pagamento-Final: " + mod.PagamentoFinal.Value.ToShortDateString();
-                }
-            }
-            if (mod.CentroCusto != null)
-            {
-                if (linhaFiltro == String.Empty)
-                {
-                    linhaFiltro = "Centro de Custo: " + mod.CentroCusto;
-                }
-                else
-                {
-                    linhaFiltro += " | Centro de Custo: " + mod.CentroCusto;
-                }
-            }
             if (mod.CentroLucro != null)
             {
                 if (linhaFiltro == String.Empty)
@@ -511,32 +495,40 @@ namespace SB_Dashboard_Presentation.Controllers
                     linhaFiltro += " | Centro de Lucro: " + mod.CentroLucro;
                 }
             }
-            if (mod.Beneficiario != null)
+            if (mod.LiberadoPag != null)
             {
                 if (linhaFiltro == String.Empty)
                 {
-                    linhaFiltro = "Beneficário: " + mod.Beneficiario;
+                    linhaFiltro = "Liberado Pagto: " + mod.LiberadoPag;
                 }
                 else
                 {
-                    linhaFiltro += " | Beneficário: " + mod.Beneficiario;
+                    linhaFiltro += " | Liberado Pagto: " + mod.LiberadoPag;
                 }
             }
-            if (mod.Sacado != null)
+            if (mod.Criticidade != null & mod.Criticidade > 0)
             {
                 if (linhaFiltro == String.Empty)
                 {
-                    linhaFiltro = "Sacado: " + mod.Sacado;
+                    linhaFiltro = "Criticidade: " + mod.Criticidade.ToString();
                 }
                 else
                 {
-                    linhaFiltro += " | Sacado: " + mod.Sacado;
+                    linhaFiltro += " | Criticidade: " + mod.Criticidade.ToString();
+                }
+            }
+            if (mod.Probabilidade != null & mod.Probabilidade > 0)
+            {
+                if (linhaFiltro == String.Empty)
+                {
+                    linhaFiltro = "Probabilidade: " + mod.Probabilidade.ToString();
+                }
+                else
+                {
+                    linhaFiltro += " | Probabilidade: " + mod.Probabilidade.ToString();
                 }
             }
             ViewBag.LinhaFiltro = linhaFiltro;
-
-            // OS Atraso
-
 
             // Retorna
             return View(mod);
@@ -1096,45 +1088,74 @@ namespace SB_Dashboard_Presentation.Controllers
             {
                 // Executa a operação
                 Session["Filtro"] = item;
+                Int32 volta = 0;
 
                 // Receitas
-                List<vwContasAReceber> listaCR = new List<vwContasAReceber>();
-                Int32 volta = crApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.RecebimentoInicio, item.RecebimentoFinal, item.CentroLucro, item.Sacado, out listaCR);
-                if (volta == 1)
+                if (item.RecebimentoInicio != null || item.RecebimentoFinal != null || item.CentroLucro != null || (item.Probabilidade != null & item.Probabilidade > 0) )
                 {
-                    Session["FalhaCR"] = 1;
+                    List<vwContasAReceber> listaCR = new List<vwContasAReceber>();
+                    volta = crApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.RecebimentoInicio, item.RecebimentoFinal, item.CentroLucro, item.Sacado, item.Probabilidade, out listaCR);
+                    if (volta == 1)
+                    {
+                        Session["FalhaCR"] = 1;
+                    }
+                    Session["ListaCR"] = listaCR;
                 }
 
-                // Despesas
-                List<vwContasAPagar> listaCP = new List<vwContasAPagar>();
-                volta = cpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.PagamentoInicio, item.PagamentoFinal, item.CentroCusto, item.Beneficiario, out listaCP);
-                if (volta == 1)
+                if (item.LiberadoPag != null || (item.Criticidade != null & item.Criticidade > 0))
                 {
-                    Session["FalhaCP"] = 1;
+                    List<vwContasAPagar> listaCP = new List<vwContasAPagar>();
+                    volta = cpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.PagamentoInicio, item.PagamentoFinal, item.CentroCusto, item.Beneficiario, item.LiberadoPag, item.Criticidade, out listaCP);
+                    if (volta == 1)
+                    {
+                        Session["FalhaCP"] = 1;
+                    }
+                    Session["ListaCP"] = listaCP;
                 }
 
                 // Parcelamentos
-                List<vwParcelamento> listaPC = new List<vwParcelamento>();
-                volta = pcApp.ExecuteFilter(item.VencimentoInicio, item.VencimentoFinal, item.CentroLucro, item.Sacado, out listaPC);
-                if (volta == 1)
+                if (item.CentroLucro != null || (item.Probabilidade != null & item.Probabilidade > 0))
                 {
-                    Session["FalhaPC"] = 1;
+                    List<vwParcelamento> listaPC = new List<vwParcelamento>();
+                    volta = pcApp.ExecuteFilter(item.VencimentoInicio, item.VencimentoFinal, item.CentroLucro, item.Sacado, item.Probabilidade, out listaPC);
+                    if (volta == 1)
+                    {
+                        Session["FalhaPC"] = 1;
+                    }
+                    Session["ListaPC"] = listaPC;
                 }
 
                 // Lancamentos
-                List<vwLancamentosAPagar> listaLP = new List<vwLancamentosAPagar>();
-                volta = lpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.CentroCusto, item.CentroLucro, item.Beneficiario, out listaLP);
-                if (volta == 1)
+                if (item.CentroLucro != null)
                 {
-                    Session["FalhaLP"] = 1;
+                    List<vwLancamentosAPagar> listaLP = new List<vwLancamentosAPagar>();
+                    volta = lpApp.ExecuteFilter(item.EmissaoInicio, item.EmissaoFinal, item.VencimentoInicio, item.VencimentoFinal, item.CentroCusto, item.CentroLucro, item.Beneficiario, out listaLP);
+                    if (volta == 1)
+                    {
+                        Session["FalhaLP"] = 1;
+                    }
+                    Session["ListaLP"] = listaLP;
                 }
 
                 // Sucesso
                 Session["CarregaLista"] = 1;
-                Session["ListaCR"] = listaCR;
-                Session["ListaCP"] = listaCP;
-                Session["ListaPC"] = listaPC;
-                Session["ListaLP"] = listaLP;
+                if (item.ExecPositivo != null)
+                {
+                    Session["ExibeExecPos"] = item.ExecPositivo;
+                }
+                if (item.ExecNegativo != null)
+                {
+                    Session["ExibeExecNeg"] = item.ExecNegativo;
+                }
+                if (item.Parcelamento != null)
+                {
+                    Session["ExibeParc"] = item.Parcelamento;
+                }
+                if (item.LancPagar != null)
+                {
+                    Session["ExibeLancPag"] = item.LancPagar;
+                }
+
                 return RedirectToAction("MontarTelaDashboardReal");
             }
             catch (Exception ex)
