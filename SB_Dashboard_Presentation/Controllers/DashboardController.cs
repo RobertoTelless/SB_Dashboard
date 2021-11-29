@@ -77,7 +77,7 @@ namespace SB_Dashboard_Presentation.Controllers
             //{
             //    return RedirectToAction("Login", "ControleAcesso");
             //}
-            return RedirectToAction("MontarTelaDashboardReal", "Dashboard");
+            return RedirectToAction("MontarTelaFluxoCaixa", "Dashboard");
         }
 
         public ActionResult VoltarBase()
@@ -86,7 +86,7 @@ namespace SB_Dashboard_Presentation.Controllers
             //{
             //    return RedirectToAction("Login", "ControleAcesso");
             //}
-            return RedirectToAction("MontarTelaDashboardReal", "Dashboard");
+            return RedirectToAction("MontarTelaFluxoCaixa", "Dashboard");
         }
 
         [HttpGet]
@@ -552,6 +552,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 Session["ListaOSIniciadas"] = listaOSIniciadas;
             }
             // Retorna
+            Session["Tela"] = 2;
             return View();
         }
 
@@ -571,6 +572,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 List<OrdemServico> listaOSIniciadas = OSApp.GetAllItensIniciadas();
                 Session["ListaOSIniciadas"] = listaOSIniciadas;
             }
+            Session["Tela"] = 3;
             return View();
         }
 
@@ -825,6 +827,42 @@ namespace SB_Dashboard_Presentation.Controllers
             result.Add("valores", quant);
             result.Add("cores", cor);
             return Json(result);
+        }
+
+        public ActionResult AtualizaDados()
+        {
+            Session["Filtro"] = null;
+            Session["CarregaListas"] = 0;
+            Session["GraficoDespesa"] = null;
+            Session["OSAtrasadas"] = null;
+            Session["OSAvaliacao"] = null;
+            Session["OSCidade"] = null;
+            Session["OSEspecialidade"] = null;
+            Session["OSPendencia"] = null;
+            Session["OSPesquisa"] = null;
+            Session["OSSituacao"] = null;
+            Session["OSTipo"] = null;
+            Session["OSUF"] = null;
+            Session["GraficoPagar"] = null;
+            Session["GraficoReceita"] = null;
+            return RedirectToAction("MontarTelaFluxoCaixa", "Dashboard");
+        }
+
+        public ActionResult ExibirTudo()
+        {
+            if ((Int32)Session["Tela"] == 1)
+            {
+                return RedirectToAction("MontarTelaFluxoCaixa", "Dashboard");
+            }
+            if ((Int32)Session["Tela"] == 2)
+            {
+                return RedirectToAction("MontarTelaOperacional", "Dashboard");
+            }
+            if ((Int32)Session["Tela"] == 3)
+            {
+                return RedirectToAction("MontarTelaBI", "Dashboard");
+            }
+            return RedirectToAction("MontarTelaFluxoCaixa", "Dashboard");
         }
 
         public JsonResult GetDadosGraficoOrdemServicoPesquisa()
@@ -1610,6 +1648,7 @@ namespace SB_Dashboard_Presentation.Controllers
             ViewBag.LinhaFiltro = linhaFiltro;
 
             // Retorna
+            Session["Tela"] = 1;
             return View(mod);
         }
 

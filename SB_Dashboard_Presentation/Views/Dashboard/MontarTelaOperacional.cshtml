@@ -64,29 +64,11 @@
                 @*Abas*@
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     <div class="col-lg-12 col-md-12 col-xs-12" style="background-color: gainsboro">
-                        <div class="col-lg-4 col-md-4 col-xs-12"  style=" margin-left: -15px; margin-top: 6px; margin-right: -2px" >
+                        <div class="col-lg-4 col-md-4 col-xs-12"  style=" margin-left: -15px; margin-top: 6px; margin-right: -2px" id="SIT" >
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="height: 500px">
                                 <div class="ibox-title">
-                                    <h4>Ordens de Serviço por Situação</h4>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-wrench"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            <li>
-                                                <a href="#">Config option 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Config option 2</a>
-                                            </li>
-                                        </ul>
-                                        <a class="close-link">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
+                                    <h5>Ordens de Serviço por Situação</h5>
+                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 190px; height: 20px; vertical-align: top" onclick="FecharSIT()"></button>
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row">
@@ -104,29 +86,11 @@
                             </div>
                         </div>  
                                                     
-                        <div class="col-lg-8 col-md-8 col-xs-12"  style=" margin-left: -2px; margin-top: 6px; margin-right: 2px" >
+                        <div class="col-lg-8 col-md-8 col-xs-12"  style=" margin-left: -2px; margin-top: 6px; margin-right: 2px" id="ESP" >
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="height: 500px">
                                 <div class="ibox-title">
-                                    <h4>Ordens de Serviço por Especialidade</h4>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-wrench"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            <li>
-                                                <a href="#">Config option 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Config option 2</a>
-                                            </li>
-                                        </ul>
-                                        <a class="close-link">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
+                                    <h5>Ordens de Serviço por Especialidade</h5>
+                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 635px; height: 20px; vertical-align: top" onclick="FecharESP()"></button>
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row">
@@ -146,29 +110,11 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-xs-10" style="background-color: gainsboro">
-                        <div class="col-lg-6 col-md-6 col-xs-12"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
+                        <div class="col-lg-6 col-md-6 col-xs-12"  style=" margin-left: -15px; margin-top: -15px; margin-right: 2px" id="UF" >
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="height: 415px">
                                 <div class="ibox-title">
-                                    <h4>Ordens de Serviço por UF</h4>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-wrench"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            <li>
-                                                <a href="#">Config option 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Config option 2</a>
-                                            </li>
-                                        </ul>
-                                        <a class="close-link">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
+                                    <h5>Ordens de Serviço por UF</h5>
+                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 460px; height: 20px; vertical-align: top" onclick="FecharUF()"></button>
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row">
@@ -186,30 +132,12 @@
                             </div>
                         </div>     
                                                     
-                        <div class="col-lg-6 col-md-6 col-xs-12"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
+                        <div class="col-lg-6 col-md-6 col-xs-12"  style=" margin-left: -2px; margin-top: -15px; margin-right: 2px" id="TIPO" >
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="height: 415px">
                                 <div class="ibox-title">
-                                    <h4>Ordens de Serviço por Tipo</h4>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-wrench"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            <li>
-                                                <a href="#">Config option 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Config option 2</a>
-                                            </li>
-                                        </ul>
-                                        <a class="close-link">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                    <h5>Ordens de Serviço por Tipo</h5>
+                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 460px; height: 20px; vertical-align: top" onclick="FecharTIPO()"></button>
+                               </div>
                                 <div class="ibox-content">
                                     <div class="row">
                                         <canvas id="barChart2" height="110"></canvas>
@@ -228,29 +156,11 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-xs-10" style="background-color: gainsboro">
-                        <div class="col-lg-12 col-md-12 col-xs-12"  style=" margin-left: -2px; margin-top: 2px; margin-right: 2px" >
+                        <div class="col-lg-12 col-md-12 col-xs-12"  style=" margin-left: -12px; margin-top: -25px; margin-right: 2px" id="CID" >
                             <div class="col-lg-12 col-md-12 col-xs-12 ibox float-e-margins" style="height: 665px">
                                 <div class="ibox-title">
-                                    <h4>Ordens de Serviço por Cidade</h4>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-wrench"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            <li>
-                                                <a href="#">Config option 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Config option 2</a>
-                                            </li>
-                                        </ul>
-                                        <a class="close-link">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
+                                    <h5>Ordens de Serviço por Cidade</h5>
+                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 1360px; height: 20px; vertical-align: top" onclick="FecharCID()"></button>
                                 </div>
                                 <div class="ibox-content">
                                     <div class="row">
@@ -326,6 +236,24 @@
             prettify: false,
             hasGrid: true
         });
+    </script>
+
+    <script type="text/javascript">
+        function FecharSIT() {
+            $("#SIT").hide();
+        }
+        function FecharESP() {
+            $("#ESP").hide();
+        }
+        function FecharCID() {
+            $("#CID").hide();
+        }
+        function FecharTIPO() {
+            $("#TIPO").hide();
+        }
+        function FecharUF() {
+            $("#UF").hide();
+        }
     </script>
     <script type="text/javascript">
         $(".touchspin2").TouchSpin({

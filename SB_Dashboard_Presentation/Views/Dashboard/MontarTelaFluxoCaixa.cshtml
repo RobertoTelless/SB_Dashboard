@@ -65,14 +65,9 @@
                 <div class="col-lg-12 col-md-12 col-xs-12">
                     @using (Html.BeginForm("FiltrarGeralDashboard", "Dashboard", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", @id = "pwd-container1" }))
                     {
-                        <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
-                            <div class="col-lg-12 col-md-12 col-xs-12">
-                                @Html.Label("filtro", (String)ViewBag.LinhaFiltro, new { style = "color: green; font-weight: bold;", @class = "form-control", @readonly = "readonly" })
-                            </div>
-                        </div>
                         @*Fluxo de Caixa*@
                         <div class="form-group">
-                            <div class="col-lg-2 col-md-2 col-xs-2" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: darkgray">
+                            <div class="col-lg-2 col-md-2 col-xs-2" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: darkgray", id="filtro">
                                 @using (Html.BeginForm("FiltrarGeralDashboard", "Dashboard", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
                                 {
                                     <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
@@ -144,22 +139,18 @@
                                     </div>
                                 }
                             </div>
-                            <div class="col-lg-10 col-md-10 col-xs-10" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: gainsboro">
+                            <div class="col-lg-10 col-md-10 col-xs-10" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: gainsboro" >
                                 <div class="row">
+                                    <div class="form-group" style=" margin-left: -15px; margin-right: -15px; height: 30px">
+                                        <button type="button" class="btn btn-sm btn-primary" aria-label="-" style="margin-left: 15px;" onclick="FechaFiltro()">-</button>
+                                    </div>
                                     <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
-                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: 8px; margin-right: -4px; height: 200px">
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: 2px; margin-right: -4px; height: 200px", id="CR">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
-                                                    @*@if (ViewBag.FalhaCR == 0)
-	                                                {
-                                                        <span class="label label-success pull-right">Filtro</span>
-                                                    }
-                                                    else
-                                                    {
-                                                        <span class="label label-danger pull-right">Sem Retorno</span>
-                                                    }*@
                                                     <h5>Receitas (R$)</h5>
-                                                </div>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 140px; height: 20px; vertical-align: top" onclick="FecharCR()"></button>
+                                                  </div>
                                                 <div class="ibox-content">
                                                     <h2 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Rec)</h2>
                                                     <small style="cursor: pointer; text-decoration: underline; color: #337ab7;" onclick="mostrarDesc('Descrição do que significa este indicador')">Descrição</small>
@@ -178,7 +169,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3" style=" margin-left: -4px; margin-top: 8px; margin-right: -4px; height: 200px">
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: 2px; margin-right: -4px; height: 200px" id="CP">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*@if (ViewBag.FalhaCP == 0)
@@ -190,6 +181,7 @@
                                                         <span class="label label-danger pull-right">Sem Retorno</span>
                                                     }*@
                                                     <h5>Despesas (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 140px; height: 20px; vertical-align: top" onclick="FecharCP()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     <h2 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Pag)</h2>
@@ -209,11 +201,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3" style=" margin-left: -4px; margin-top: 8px; margin-right: -4px; height: 200px" >
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: 2px; margin-right: -4px; height: 200px" id="EP" >
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*<span class="label label-primary pull-right">Acumulado</span>*@
-                                                    <h5>Executando Positivo</h5>
+                                                    <h5>Executando Positivo (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 60px; height: 20px; vertical-align: top" onclick="FecharEP()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     @if ((Int32)Session["ExibeExecPos"] == 1)
@@ -233,11 +226,12 @@
                                             </div>
                                         </div>  
                                                             
-                                        <div class="col-lg-3" style=" margin-left: -4px; margin-top: 8px; margin-right: -4px; height: 200px">
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: 2px; margin-right: -8px; height: 200px" id="EN">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*<span class="label label-primary pull-right">Acumulado</span>*@
-                                                    <h5>Executando Negativo</h5>
+                                                    <h5>Executando Negativo (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 55px; height: 20px; vertical-align: top" onclick="FecharEN()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     @if ((Int32)Session["ExibeExecNeg"] == 1)
@@ -259,7 +253,7 @@
 
                                     </div>
                                     <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
-                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: -8px; margin-right: -4px; height: 200px">
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: -8px; margin-right: -4px; height: 200px" id="PC">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*@if (ViewBag.FalhaPC == 0)
@@ -271,6 +265,7 @@
                                                         <span class="label label-danger pull-right">Sem Retorno</span>
                                                     }*@
                                                     <h5>Parcelamentos (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 95px; height: 20px; vertical-align: top" onclick="FecharPC()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     @if ((Int32)Session["ExibeParc"] == 1)
@@ -297,7 +292,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3" style=" margin-left: -4px; margin-top: -8px; margin-right: -4px; height: 200px">
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: -8px; margin-right: -4px; height: 200px" id="LP">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*@if (ViewBag.FalhaLP == 0)
@@ -309,6 +304,7 @@
                                                         <span class="label label-danger pull-right">Sem Retorno</span>
                                                     }*@
                                                     <h5>Lançamentos a Pagar (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 60px; height: 20px; vertical-align: top" onclick="FecharLP()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     @if ((Int32)Session["ExibeLancPag"] == 1)
@@ -335,11 +331,12 @@
                                             </div>
                                         </div>
                                                         
-                                        <div class="col-lg-3" style=" margin-left: -4px; margin-top: -8px; margin-right: -4px; height: 200px" >
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: -8px; margin-right: -4px; height: 200px" id="RE" >
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*<span class="label label-primary pull-right">Acumulado</span>*@
                                                     <h5>Resultado (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 130px; height: 20px; vertical-align: top" onclick="FecharRE()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     <h2 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.Resultado)</h2>
@@ -352,11 +349,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3" style=" margin-left: -4px; margin-top: -8px; margin-right: -4px; height: 200px">
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: -8px; margin-right: -8px; height: 200px" id="SB">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*<span class="label label-primary pull-right">Acumulado</span>*@
                                                     <h5>Saldo Bancário (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 95px; height: 20px; vertical-align: top" onclick="FecharSB()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     <h2 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.SaldoBancario)</h2>
@@ -371,11 +369,12 @@
                                     </div>
 
                                     <div class="form-group" style=" margin-left: -15px; margin-right: -15px;">
-                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: -8px; margin-right: -4px; height: 200px">
+                                        <div class="col-lg-3" style=" margin-left: 5px; margin-top: -8px; margin-right: -4px; height: 200px" id="ST">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
                                                     @*<span class="label label-success pull-right">Filtro</span>*@
                                                     <h5>Saldo Total (R$)</h5>
+                                                    <button type="button" class="btn btn-sm btn-danger" aria-label="-" style="margin-left: 120px; height: 20px; vertical-align: top" onclick="FecharST()"></button>
                                                 </div>
                                                 <div class="ibox-content">
                                                     <h2 class="no-margins">@CrossCutting.Formatters.DecimalFormatter(ViewBag.SaldoTotal)</h2>
@@ -460,6 +459,55 @@
             buttonup_class: 'btn btn-white'
         });
     </script>
+    <script type="text/javascript">
+        function FechaCard(val) {
+            if (val == '1') {
+                $("#CR").hide();
+            } else if (val == '2') {
+                $("#CR").hide();
+            } else if (val == '3') {
+                $("#CR").hide();
+            } else if (val == '4') {
+                $("#CR").hide();
+            } else if (val == '5') {
+                $("#filtro").hide();
+            }
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        function FechaFiltro() {
+            $("#filtro").hide();
+        }
+        function FecharCR() {
+            $("#CR").hide();
+        }
+        function FecharCP() {
+            $("#CP").hide();
+        }
+        function FecharEP() {
+            $("#EP").hide();
+        }
+        function FecharEN() {
+            $("#EN").hide();
+        }
+        function FecharPC() {
+            $("#PC").hide();
+        }
+        function FecharLP() {
+            $("#LP").hide();
+        }
+        function FecharRE() {
+            $("#RE").hide();
+        }
+        function FecharSB() {
+            $("#SB").hide();
+        }
+        function FecharST() {
+            $("#ST").hide();
+        }
+</script>
     <script type="text/javascript">
         $(function () {
             $("#data1").mask("99/99/9999");

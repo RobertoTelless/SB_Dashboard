@@ -17,7 +17,10 @@
                     @Html.ButtonLinkIndex(text: "Fluxo de Caixa", action: "MontarTelaFluxoCaixa", controller: "Dashboard", buttonClass: "success")
                     @Html.ButtonLinkIndex(text: "Operacional", action: "MontarTelaOperacional", controller: "Dashboard", buttonClass: "success")
                     @Html.ButtonLinkIndex(text: "Business Inteligence", action: "MontarTelaBI", controller: "Dashboard", buttonClass: "success")
-                    @Html.ButtonLinkIndex(text: "Início", action: "Index", controller: "Dashboard")
+                </div>                    
+                <div class="col-lg-4 col-md-4 col-xs-12" style="vertical-align: middle; margin-top: 15px">
+                    @Html.ButtonLinkIndex(text: "Tela Inicial", action: "Index", controller: "Dashboard")
+                    @Html.ButtonLinkIndex(text: "Atualizar Dados", action: "AtualizarDados", controller: "Dashboard")
                 </div>                    
             </div>
         </div>
