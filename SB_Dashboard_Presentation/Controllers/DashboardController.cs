@@ -1252,9 +1252,15 @@ namespace SB_Dashboard_Presentation.Controllers
 
         public ActionResult RetirarFiltro()
         {
-            Session["CarregaLista"] = 0;
+            Session["CarregaLista"] = 1;
+            Session["ListaCR"] = Session["ListaCROrig"];
+            Session["ListaCP"] = Session["ListaCPOrig"];
+            Session["ListaLP"] = Session["ListaLPOrig"];
+            Session["ListaPC"] = Session["ListaPCOrig"];
+            Session["ListaEP"] = Session["ListaEPOrig"];
+            Session["ListaEN"] = Session["ListaENOrig"];
             Session["Filtro"] = null;
-            return RedirectToAction("MontarTelaDashboardReal");
+            return RedirectToAction("MontarTelaFluxoCaixa");
         }
 
         [HttpPost]
@@ -1374,7 +1380,7 @@ namespace SB_Dashboard_Presentation.Controllers
                 mod = (ModeloViewModel)Session["Filtro"];
                 Session["RecIni"] = mod.RecebimentoInicio;
                 Session["RecFim"] = mod.RecebimentoFinal;
-                Session["DataBase"] = mod.EmissaoInicio;
+                Session["DataBase"] = Convert.ToDateTime("01/09/2019");
             }
 
             // Carrega Indicadores Diretos -- A SUBSTITUR
@@ -1475,6 +1481,12 @@ namespace SB_Dashboard_Presentation.Controllers
                 Session["ListaPC"] = listaPC;
                 Session["ListaEP"] = listaEP;
                 Session["ListaEN"] = listaEN;
+                Session["ListaCROrig"] = listaCR;
+                Session["ListaCPOrig"] = listaCP;
+                Session["ListaLPOrig"] = listaLP;
+                Session["ListaPCOrig"] = listaPC;
+                Session["ListaEPOrig"] = listaEP;
+                Session["ListaENOrig"] = listaEN;
                 Session["CarregaListas"] = 1;
 
                 rec = listaCR.Sum(p => p.Valor_Liquido);
@@ -1513,8 +1525,6 @@ namespace SB_Dashboard_Presentation.Controllers
                 ViewBag.FalhaPC = (Int32)Session["FalhaPC"];
                 ViewBag.FalhaLP = (Int32)Session["FalhaLP"];
 
-                ViewBag.Beneficiarios = (SelectList)Session["BE"];
-                ViewBag.Sacado = (SelectList)Session["SA"];
                 ViewBag.CentroCusto = (SelectList)Session["CC"];
                 ViewBag.CentroLucro = (SelectList)Session["CL"];
 
@@ -1579,78 +1589,129 @@ namespace SB_Dashboard_Presentation.Controllers
 
             // Monta linha do filtro -- Aba Fluxo de caixa
             String linhaFiltro = String.Empty;
-            //if (mod.VencimentoInicio != null)
-            //{
-            //    if (linhaFiltro == String.Empty)
-            //    {
-            //        linhaFiltro = "Vencimento-Início: " + mod.VencimentoInicio.Value.ToShortDateString();
-            //    }
-            //    else
-            //    {
-            //        linhaFiltro += " | Vencimento-Início: " + mod.VencimentoInicio.Value.ToShortDateString();
-            //    }
-            //}
-            //if (mod.VencimentoFinal != null)
-            //{
-            //    if (linhaFiltro == String.Empty)
-            //    {
-            //        linhaFiltro = "Vencimento-Final: " + mod.VencimentoFinal.Value.ToShortDateString();
-            //    }
-            //    else
-            //    {
-            //        linhaFiltro += " | Vencimento-Final: " + mod.VencimentoFinal.Value.ToShortDateString();
-            //    }
-            //}
-            //if (mod.CentroLucro != null)
-            //{
-            //    if (linhaFiltro == String.Empty)
-            //    {
-            //        linhaFiltro = "Centro de Lucro: " + mod.CentroLucro;
-            //    }
-            //    else
-            //    {
-            //        linhaFiltro += " | Centro de Lucro: " + mod.CentroLucro;
-            //    }
-            //}
-            //if (mod.LiberadoPag != null)
-            //{
-            //    if (linhaFiltro == String.Empty)
-            //    {
-            //        linhaFiltro = "Liberado Pagto: " + mod.LiberadoPag;
-            //    }
-            //    else
-            //    {
-            //        linhaFiltro += " | Liberado Pagto: " + mod.LiberadoPag;
-            //    }
-            //}
-            //if (mod.Criticidade != null & mod.Criticidade > 0)
-            //{
-            //    if (linhaFiltro == String.Empty)
-            //    {
-            //        linhaFiltro = "Criticidade: " + mod.Criticidade.ToString();
-            //    }
-            //    else
-            //    {
-            //        linhaFiltro += " | Criticidade: " + mod.Criticidade.ToString();
-            //    }
-            //}
-            //if (mod.Probabilidade != null & mod.Probabilidade > 0)
-            //{
-            //    if (linhaFiltro == String.Empty)
-            //    {
-            //        linhaFiltro = "Probabilidade: " + mod.Probabilidade.ToString();
-            //    }
-            //    else
-            //    {
-            //        linhaFiltro += " | Probabilidade: " + mod.Probabilidade.ToString();
-            //    }
-            //}
             ViewBag.LinhaFiltro = linhaFiltro;
+
+            // Seta defaults
+            mod.ExecPositivo = 1;
+            mod.ExecNegativo = 1;
+            mod.Parcelamento = 1;
+            mod.LancPagar = 1;
 
             // Retorna
             Session["Tela"] = 1;
             return View(mod);
         }
 
+        [HttpPost]
+        public ActionResult FiltrarGeralDashboardNovo(ModeloViewModel item)
+        {
+            // Recupera listas
+            Session["CarregaListas"] = 1;
+            Int32 volta = 0;
+            listaCR = (List<vwContasAReceber>)Session["ListaCROrig"];
+            listaCP = (List<vwContasAPagar>)Session["ListaCPOrig"];
+            listaPC = (List<vwParcelamento>)Session["ListaPCOrig"];
+            listaLP = (List<vwLancamentosAPagar>)Session["ListaLPOrig"];
+            listaEN = (List<vwExecutandoNegativo>)Session["ListaENOrig"];
+            listaEP = (List<vwExecutandoPositivo>)Session["ListaEPOrig"];
+
+            Decimal rec = listaCR.Sum(p => p.Valor_Liquido);
+            Decimal pag = listaCP.Sum(p => p.Valor);
+            Decimal lp = listaLP.Sum(p => p.Valor);
+            Decimal pc = listaPC.Sum(p => p.Valor_Bruto);
+            Decimal ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
+            Decimal en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
+
+            // Trata Receitas
+            if (item.RecebimentoInicio != null || item.RecebimentoFinal != null || item.CentroLucro != null || (item.Probabilidade != null & item.Probabilidade > 0))
+            {
+                List<vwContasAReceber> listaCR = new List<vwContasAReceber>();
+                volta = crApp.ExecuteFilter(null, null, null, null, item.RecebimentoInicio, item.RecebimentoFinal, item.CentroLucro, null, item.Probabilidade, out listaCR);
+                if (volta == 1)
+                {
+                    Session["FalhaCR"] = 1;
+                }
+                Session["ListaCR"] = listaCR;
+            }
+
+            // Trata Despesas
+            if (item.RecebimentoInicio != null || item.RecebimentoFinal != null || item.LiberadoPag != null || (item.Criticidade != null & item.Criticidade > 0))
+            {
+                List<vwContasAPagar> listaCP = new List<vwContasAPagar>();
+                volta = cpApp.ExecuteFilter(null, null, item.RecebimentoInicio, item.RecebimentoFinal, null, null, null, null, item.LiberadoPag, item.Criticidade, out listaCP);
+                if (volta == 1)
+                {
+                    Session["FalhaCP"] = 1;
+                }
+                Session["ListaCP"] = listaCP;
+            }
+
+            // Trata Parcelamento
+            if (item.Parcelamento == 1 || item.Parcelamento == null)
+            {
+                if (item.CentroLucro != null || (item.Probabilidade != null & item.Probabilidade > 0))
+                {
+                    List<vwParcelamento> listaPC = new List<vwParcelamento>();
+                    volta = pcApp.ExecuteFilter(null, null, item.CentroLucro, null, item.Probabilidade, out listaPC);
+                    if (volta == 1)
+                    {
+                        Session["FalhaPC"] = 1;
+                    }
+                    Session["ListaPC"] = listaPC;
+                }
+            }
+            else
+            {
+                Session["ListaPC"] = new List<vwParcelamento>();
+            }
+
+            // Trata Lanc.Pagar
+            if (item.LancPagar == 1 || item.LancPagar == null)
+            {
+                if (item.RecebimentoInicio != null || item.RecebimentoFinal != null || item.CentroLucro != null)
+                {
+                    List<vwLancamentosAPagar> listaLP = new List<vwLancamentosAPagar>();
+                    volta = lpApp.ExecuteFilter(null, null, item.RecebimentoInicio, item.RecebimentoFinal, null, item.CentroLucro, null, out listaLP);
+                    if (volta == 1)
+                    {
+                        Session["FalhaLP"] = 1;
+                    }
+                    Session["ListaLP"] = listaLP;
+                }
+            }
+            else
+            {
+                Session["ListaLP"] = new List<vwLancamentosAPagar>();
+            }
+
+            // TRata executando positivo
+            if (item.ExecPositivo == 1 || item.ExecPositivo == null)
+            {
+                listaEP = (List<vwExecutandoPositivo>)Session["ListaEP"];
+            }
+            else
+            {
+                Session["ListaEP"] = new List<vwExecutandoPositivo>();
+            }
+
+            // TRata executando negativo
+            if (item.ExecNegativo == 1 || item.ExecNegativo == null)
+            {
+                listaEN = (List<vwExecutandoNegativo>)Session["ListaEN"];
+            }
+            else
+            {
+                Session["ListaEN"] = new List<vwExecutandoNegativo>();
+            }
+
+            rec = listaCR.Sum(p => p.Valor_Liquido);
+            pag = listaCP.Sum(p => p.Valor);
+            lp = listaLP.Sum(p => p.Valor);
+            pc = listaPC.Sum(p => p.Valor_Bruto);
+            ep = listaEP.Sum(p => p.ExecutandoPositivo.Value);
+            en = listaEN.Sum(p => p.ExecutandoNegativo.Value);
+
+            return RedirectToAction("MontarTelaFluxoCaixa");
+        }
     }
 }
