@@ -130,7 +130,7 @@
                                 }
                             </div>
                             <div class="col-lg-10 col-md-10 col-xs-10" style="border-bottom: solid; border-bottom-color: gainsboro; border-bottom-width: 1px; border-left: solid; border-left-color: gainsboro; border-left-width: 1px; border-right: solid; border-right-color: gainsboro; border-right-width: 1px; border-top: solid; border-top-color: gainsboro; border-top-width: 1px; background-color: gainsboro" >
-                                <div class="row">
+                                <div class="row"  id="sortable-view">
                                     <div class="form-group" style=" margin-left: -15px; margin-right: -15px; height: 30px">
                                         <button type="button" class="btn btn-sm btn-primary" aria-label="-" style="margin-left: 15px;" onclick="FechaFiltro()">X</button>
                                     </div>
@@ -413,8 +413,17 @@
     @Scripts.Render("~/plugins/chartjs")
     @Scripts.Render("~/plugins/flot")
     @Scripts.Render("~/plugins/sparkline")
-    
-   
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/plugins/touchPunch")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            WinMove();
+
+        });
+    </script>
+
     <script>
         function mostrarDesc(desc) {
             $('#modalDescBody').html(desc);

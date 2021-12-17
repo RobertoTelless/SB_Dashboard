@@ -36,6 +36,7 @@ namespace SB_Dashboard_Presentation.Controllers
         private readonly IOSEspAppService oseApp;
         private readonly IOSSitAppService ossApp;
         private readonly IOrdemServicoAppService OSApp;
+        private readonly IProjetoAppService proApp;
 
         private String msg;
         private Exception exception;
@@ -52,7 +53,7 @@ namespace SB_Dashboard_Presentation.Controllers
         List<OrdemServico> listaOS = new List<OrdemServico>();
         String extensao;
 
-        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps, IOSEspAppService oseApps, IOSSitAppService ossApps, IOrdemServicoAppService OSApps)
+        public DashboardController(ICRAppService crApps, ICPAppService cpApps, ILPAppService lpApps, IPCAppService pcApps, IEPAppService epApps, IENAppService enApps, IOSEspAppService oseApps, IOSSitAppService ossApps, IOrdemServicoAppService OSApps, IProjetoAppService proApps)
         {
             crApp = crApps;
             cpApp = cpApps;
@@ -63,6 +64,7 @@ namespace SB_Dashboard_Presentation.Controllers
             oseApp = oseApps;
             ossApp = ossApps;
             OSApp = OSApps;
+            proApp = proApps;
         }
 
         [HttpGet]
@@ -1392,13 +1394,28 @@ namespace SB_Dashboard_Presentation.Controllers
             {
                 // Carrega listas dos filtros -- Aba Fluxo de Caixa
                 List<vwContasAReceber> listaCR1 = crApp.GetAllItens();
-                var listaCentroLucro = listaCR1.Select(p => p.Centro_de_Lucro).Distinct().ToList();
+
+                //var listaCentroLucro = listaCR1.Select(p => p.Centro_de_Lucro).Distinct().ToList();
+                //List<SelectListItem> listaCL = new List<SelectListItem>();
+                //foreach (var item in listaCentroLucro)
+                //{
+                //    if (item != null)
+                //    {
+                //        listaCL.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                //    }
+                //}
+                //SelectList cl = new SelectList(listaCL, "Value", "Text");
+                //ViewBag.CentroLucro = cl;
+                //Session["CL"] = cl;
+
+                List<Projeto> listaProj = proApp.GetAllItens();
+                listaProj = listaProj.Where(p => p.Ativo == true).ToList();
                 List<SelectListItem> listaCL = new List<SelectListItem>();
-                foreach (var item in listaCentroLucro)
+                foreach (var item in listaProj)
                 {
                     if (item != null)
                     {
-                        listaCL.Add(new SelectListItem() { Text = item.ToString(), Value = item.ToString() });
+                        listaCL.Add(new SelectListItem() { Text = item.Descricao, Value = item.Descricao });
                     }
                 }
                 SelectList cl = new SelectList(listaCL, "Value", "Text");
@@ -1687,6 +1704,16 @@ namespace SB_Dashboard_Presentation.Controllers
             // TRata executando positivo
             if (item.ExecPositivo == 1 || item.ExecPositivo == null)
             {
+                if (item.RecebimentoInicio != null || item.RecebimentoFinal != null)
+                {
+                    List<vwExecutandoPositivo> listaEP = new List<vwExecutandoPositivo>();
+                    volta = epApp.ExecuteFilter(null, null, item.RecebimentoInicio, item.RecebimentoFinal, null, null, null, null, null, out listaEP);
+                    if (volta == 1)
+                    {
+                        Session["FalhaEP"] = 1;
+                    }
+                    Session["ListaEP"] = listaEP;
+                }
                 listaEP = (List<vwExecutandoPositivo>)Session["ListaEP"];
             }
             else
@@ -1697,6 +1724,16 @@ namespace SB_Dashboard_Presentation.Controllers
             // TRata executando negativo
             if (item.ExecNegativo == 1 || item.ExecNegativo == null)
             {
+                if (item.RecebimentoInicio != null || item.RecebimentoFinal != null)
+                {
+                    List<vwExecutandoNegativo> listaEN = new List<vwExecutandoNegativo>();
+                    volta = enApp.ExecuteFilter(null, null, item.RecebimentoInicio, item.RecebimentoFinal, null, null, null, null, null, out listaEN);
+                    if (volta == 1)
+                    {
+                        Session["FalhaEN"] = 1;
+                    }
+                    Session["ListaEN"] = listaEN;
+                }
                 listaEN = (List<vwExecutandoNegativo>)Session["ListaEN"];
             }
             else

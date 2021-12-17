@@ -78,6 +78,7 @@ namespace Presentation.Start
             kernel.Bind<IOSEspAppService>().To<OSEspAppService>();
             kernel.Bind<IOSSitAppService>().To<OSSitAppService>();
             kernel.Bind<IOrdemServicoAppService>().To<OrdemServicoAppService>();
+            kernel.Bind<IProjetoAppService>().To<ProjetoAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<ICRService>().To<CRService>();
@@ -89,6 +90,7 @@ namespace Presentation.Start
             kernel.Bind<IOSEspService>().To<OSEspService>();
             kernel.Bind<IOSSitService>().To<OSSitService>();
             kernel.Bind<IOrdemServicoService>().To<OrdemServicoService>();
+            kernel.Bind<IProjetoService>().To<ProjetoService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<ICRRepository>().To<CRRepository>();
@@ -100,6 +102,7 @@ namespace Presentation.Start
             kernel.Bind<IOSEspRepository>().To<OSEspRepository>();
             kernel.Bind<IOSSitRepository>().To<OSSitRepository>();
             kernel.Bind<IOrdemServicoRepository>().To<OrdemServicoRepository>();
+            kernel.Bind<IProjetoRepository>().To<ProjetoRepository>();
 
         }
     }

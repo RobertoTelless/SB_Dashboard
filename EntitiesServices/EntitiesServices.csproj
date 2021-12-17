@@ -107,6 +107,7 @@
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
     <Compile Include="DTO\DTO_OS_ABA_3.cs" />
     <Compile Include="DTO\DTO_OS_UF.cs" />
+    <Compile Include="EntitiesServices\ProjetoService.cs" />
     <Compile Include="EntitiesServices\OrdemServicoService.cs" />
     <Compile Include="EntitiesServices\OSSitService.cs" />
     <Compile Include="EntitiesServices\OSEspService.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="EntitiesServices\CPService.cs" />
     <Compile Include="EntitiesServices\CRService.cs" />
     <Compile Include="EntitiesServices\ServiceBase.cs" />
+    <Compile Include="Interfaces\Entities\IProjetoService.cs" />
     <Compile Include="Interfaces\Entities\IOrdemServicoService.cs" />
     <Compile Include="Interfaces\Entities\IOSSitService.cs" />
     <Compile Include="Interfaces\Entities\IOSEspService.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Interfaces\Entities\ICPService.cs" />
     <Compile Include="Interfaces\Entities\ICRService.cs" />
     <Compile Include="Interfaces\Entities\IServiceBase.cs" />
+    <Compile Include="Interfaces\Repositories\IProjetoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IOrdemServicoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IOSRepository.cs" />
     <Compile Include="Interfaces\Repositories\IOSSitRepository.cs" />

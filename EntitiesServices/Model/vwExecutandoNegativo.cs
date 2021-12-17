@@ -17,5 +17,6 @@ namespace EntitiesServices.Model
         public int Id { get; set; }
         public Nullable<int> Revisao { get; set; }
         public Nullable<decimal> ExecutandoNegativo { get; set; }
+        public Nullable<System.DateTime> DataPrevisaoPagamento { get; set; }
     }
 }

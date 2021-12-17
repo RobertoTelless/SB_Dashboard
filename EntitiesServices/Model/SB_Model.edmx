@@ -2387,6 +2387,7 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwExecutandoNegativo' does not have 
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Revisao" Type="int" />
           <Property Name="ExecutandoNegativo" Type="money" />
+          <Property Name="DataPrevisaoPagamento" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwExecutandoPositivo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2394,8 +2395,9 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwExecutandoPositivo' does not have 
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ExecutandoPositivo" Type="money" />
+          <Property Name="DataPrevisaoRecebimento" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwLancamentosAPagar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2483,13 +2485,6 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServico' does not have a prim
           <Property Name="Data Previsao Emissao" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'OnSuiteBI.dbo.vwOrdemServicoCidade' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwOrdemServicoCidade">
-          <Property Name="Cidade" Type="nvarchar" MaxLength="200" />
-          <Property Name="Quantidade" Type="int" />
-          <Property Name="Total" Type="money" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServicoEspecialidade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwOrdemServicoEspecialidade">
           <Key>
@@ -2509,20 +2504,6 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwOrdemServicoSituacao' does not hav
           <Property Name="Quantidade" Type="int" />
           <Property Name="Total" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'OnSuiteBI.dbo.vwOrdemServicoTipo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwOrdemServicoTipo">
-          <Property Name="Tipo" Type="varchar" MaxLength="30" />
-          <Property Name="Quantidade" Type="int" />
-          <Property Name="Total" Type="money" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'OnSuiteBI.dbo.vwOrdemServicoUF' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vwOrdemServicoUF">
-          <Property Name="UF" Type="nvarchar" MaxLength="200" />
-          <Property Name="Quantidade" Type="int" />
-          <Property Name="Total" Type="money" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwParcelamento">
@@ -6883,13 +6864,15 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
             <DefiningQuery>SELECT 
     [vwExecutandoNegativo].[Id] AS [Id], 
     [vwExecutandoNegativo].[Revisao] AS [Revisao], 
-    [vwExecutandoNegativo].[ExecutandoNegativo] AS [ExecutandoNegativo]
+    [vwExecutandoNegativo].[ExecutandoNegativo] AS [ExecutandoNegativo], 
+    [vwExecutandoNegativo].[DataPrevisaoPagamento] AS [DataPrevisaoPagamento]
     FROM [dbo].[vwExecutandoNegativo] AS [vwExecutandoNegativo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwExecutandoPositivo" EntityType="Self.vwExecutandoPositivo" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwExecutandoPositivo].[Id] AS [Id], 
-    [vwExecutandoPositivo].[ExecutandoPositivo] AS [ExecutandoPositivo]
+    [vwExecutandoPositivo].[ExecutandoPositivo] AS [ExecutandoPositivo], 
+    [vwExecutandoPositivo].[DataPrevisaoRecebimento] AS [DataPrevisaoRecebimento]
     FROM [dbo].[vwExecutandoPositivo] AS [vwExecutandoPositivo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwLancamentosAPagar" EntityType="Self.vwLancamentosAPagar" store:Type="Views" store:Schema="dbo">
@@ -15785,6 +15768,7 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ExecutandoPositivo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DataPrevisaoRecebimento" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vwExecutandoNegativo">
           <Key>
@@ -15793,6 +15777,7 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Revisao" Type="Int32" />
           <Property Name="ExecutandoNegativo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DataPrevisaoPagamento" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vwOperacional">
           <Key>
@@ -18430,6 +18415,7 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
           <EntitySetMapping Name="vwExecutandoPositivo">
             <EntityTypeMapping TypeName="OnSuiteBIModel.vwExecutandoPositivo">
               <MappingFragment StoreEntitySet="vwExecutandoPositivo">
+                <ScalarProperty Name="DataPrevisaoRecebimento" ColumnName="DataPrevisaoRecebimento" />
                 <ScalarProperty Name="ExecutandoPositivo" ColumnName="ExecutandoPositivo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -18438,6 +18424,7 @@ warning 6002: The table/view 'OnSuiteBI.dbo.vwParcelamento' does not have a prim
           <EntitySetMapping Name="vwExecutandoNegativo">
             <EntityTypeMapping TypeName="OnSuiteBIModel.vwExecutandoNegativo">
               <MappingFragment StoreEntitySet="vwExecutandoNegativo">
+                <ScalarProperty Name="DataPrevisaoPagamento" ColumnName="DataPrevisaoPagamento" />
                 <ScalarProperty Name="ExecutandoNegativo" ColumnName="ExecutandoNegativo" />
                 <ScalarProperty Name="Revisao" ColumnName="Revisao" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
